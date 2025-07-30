@@ -11,7 +11,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
   return (
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
-      <div className="container mx-auto px-4 text-center z-10">
+      <div className="flex flex-col items-center justify-center px-4 text-center z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,13 +31,13 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-2xl"
           >
-            Creative Developer & 3D Artist crafting immersive digital experiences.
+            Creative Developer & Crafting immersive digital experiences.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex gap-4"
+            className="flex gap-4 justify-center"
           >
             <Button size="lg" onClick={() => scrollTo('#projects')}>View My Work</Button>
             <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>Get In Touch</Button>

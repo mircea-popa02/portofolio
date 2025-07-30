@@ -5,7 +5,6 @@ import { HeroSection } from "./components/HeroSection"
 import { AboutSection } from "./components/AboutSection"
 import { ProjectsSection } from "./components/ProjectsSection"
 import { ContactSection } from "./components/ContactSection"
-import SquigglyLine3D from "./components/SquigglyLine"
 import { useSmoothScroll } from "./hooks/useSmoothScroll"
 
 const sections = ["home", "about", "projects", "contact"];
@@ -18,7 +17,6 @@ function App() {
       <div className="min-h-screen">
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
-        <SquigglyLine3D currentSection={currentSection} />
         
         <main>
           <div id="home">
