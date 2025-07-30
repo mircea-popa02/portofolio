@@ -1,25 +1,38 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { CustomCursor } from "./components/CustomCursor"
-import { SmoothScroll } from "./components/SmoothScroll"
 import { Navigation } from "./components/Navigation"
 import { HeroSection } from "./components/HeroSection"
 import { AboutSection } from "./components/AboutSection"
 import { ProjectsSection } from "./components/ProjectsSection"
 import { ContactSection } from "./components/ContactSection"
+import SquigglyLine3D from "./components/SquigglyLine"
+import { useSmoothScroll } from "./hooks/useSmoothScroll"
+
+const sections = ["home", "about", "projects", "contact"];
 
 function App() {
+  const { currentSection, scrollTo } = useSmoothScroll(sections);
+
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <div className="min-h-screen">
         <CustomCursor />
-        <SmoothScroll />
-        <Navigation />
+        <Navigation scrollTo={scrollTo} currentSection={currentSection} />
+        <SquigglyLine3D currentSection={currentSection} />
         
         <main>
-          <HeroSection />
-          <AboutSection />
-          <ProjectsSection />
-          <ContactSection />
+          <div id="home">
+            <HeroSection scrollTo={scrollTo} />
+          </div>
+          <div id="about">
+            <AboutSection />
+          </div>
+          <div id="projects">
+            <ProjectsSection />
+          </div>
+          <div id="contact">
+            <ContactSection />
+          </div>
         </main>
         
         <footer className="py-8 text-center text-muted-foreground border-t border-border">

@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ModeToggle } from './ui/mode-toggle';
 
-export function Navigation() {
+interface NavigationProps {
+  scrollTo: (selector: string) => void;
+  currentSection: string;
+}
+
+export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,9 +20,9 @@ export function Navigation() {
   }, []);
 
   const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', label: 'About', id: 'about' },
+    { href: '#projects', label: 'Projects', id: 'projects' },
+    { href: '#contact', label: 'Contact', id: 'contact' },
   ];
 
   return (
@@ -34,8 +39,12 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <motion.a
-            href="#"
-            className="text-xl font-bold"
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('#home');
+            }}
+            className="text-xl font-bold cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -48,15 +57,26 @@ export function Navigation() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(item.href);
+                  }}
+                  className={`relative text-sm font-medium transition-colors cursor-pointer ${
+                    currentSection === item.id ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {item.label}
+                  {currentSection === item.id && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      layoutId="underline"
+                    />
+                  )}
                 </motion.a>
               ))}
             </div>
-            
             <ModeToggle />
           </div>
         </div>
