@@ -3,9 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+
 /* Custom cursor styles */
 * {
   cursor: none !important;
+  font-family: "TikTok Sans", sans-serif !important;
 }
 
 Smooth scroll behavior

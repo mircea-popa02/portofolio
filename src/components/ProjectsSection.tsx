@@ -7,7 +7,8 @@ export function ProjectsSection() {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 relative">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

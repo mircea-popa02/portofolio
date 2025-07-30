@@ -21,9 +21,9 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-blue-300 bg-clip-text text-transparent"
           >
-            Mircea Popa
+            Have a project in mind?
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
