@@ -115,7 +115,7 @@ export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelP
             })}
           </div>
         </motion.div>
-        <div className="absolute bottom-4 right-2 pointer-events-none text-lg font-semibold">
+        <div className="absolute bottom-4 right-2 pointer-events-none text-md shadow-lg z-20">
           {currentLabel}
         </div>
         <div
