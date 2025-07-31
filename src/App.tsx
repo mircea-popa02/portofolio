@@ -11,6 +11,7 @@ import { ContactSection } from "./components/ContactSection"
 import { useSmoothScroll } from "./hooks/useSmoothScroll"
 import { Trans } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 const sections = ["home", "about", "technologies", "projects", "contact"];
@@ -25,7 +26,7 @@ function App() {
         <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
-        
+
         <main>
           <div id="home">
             <HeroSection scrollTo={scrollTo} />
@@ -43,7 +44,7 @@ function App() {
             <ContactSection />
           </div>
         </main>
-        
+
         <footer className="py-8 text-center text-muted-foreground border-t border-border">
           <div className="container mx-auto px-4">
             <p>
@@ -51,8 +52,9 @@ function App() {
             </p>
           </div>
         </footer>
-        <Analytics />
       </div>
+      <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   )
 }
