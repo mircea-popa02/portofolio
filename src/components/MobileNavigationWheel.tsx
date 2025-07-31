@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 interface MobileNavigationWheelProps {
   currentSection: string;
+  scrollTo: (selector: string) => void;
 }
 
 const sections = [
