@@ -1,0 +1,96 @@
+{
+  "navigation": {
+    "about": "Despre",
+    "projects": "Proiecte",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Ai un proiect în minte?",
+    "subtitle": "Dezvoltator Creativ & Creez experiențe digitale captivante.",
+    "viewWork": "Vezi Munca Mea",
+    "getInTouch": "Contactează-mă",
+    "scrollDown": "Derulează pentru a explora"
+  },
+  "about": {
+    "title": "Construind Comerț Digital",
+    "description": "Creez site-uri e-commerce cu conversii ridicate și soluții web personalizate care stimulează creșterea afacerii. De la magazine WordPress la experiențe 3D de ultimă generație, aduc viziunea ta digitală la viață.",
+    "whatIDoBest": "Ce Fac Cel Mai Bine",
+    "whatIDoDescription": "Mă specializez în crearea de soluții e-commerce care chiar convertesc. Fie că ai nevoie de un magazin WordPress WooCommerce, o configurare OpenCart, sau o platformă complet personalizată, mă concentrez pe performanță, experiența utilizatorului și rezultate.",
+    "myApproach": "Abordarea Mea",
+    "myApproachDescription": "Fiecare proiect începe cu înțelegerea obiectivelor afacerii tale. Apoi creez soluții care combină design modern, practici solide de dezvoltare și uneori o atingere de magie 3D pentru a face site-ul tău cu adevărat memorabil.",
+    "skills": {
+      "woocommerce": {
+        "name": "WooCommerce",
+        "experience": "50+ magazine construite • Gateway-uri de plată • Configurări multi-vendor"
+      },
+      "opencart": {
+        "name": "OpenCart",
+        "experience": "Gestionare multi-magazin • Extensii personalizate • Optimizare performanță"
+      },
+      "custom": {
+        "name": "Soluții Personalizate",
+        "experience": "Commerce headless • Integrări API • Arhitecturi scalabile"
+      },
+      "threejs": {
+        "name": "Magia Three.js",
+        "experience": "Vizualizatori 3D produse • Experiențe interactive • Vrăjitorie WebGL"
+      },
+      "ui": {
+        "name": "Meșteșug UI/UX",
+        "experience": "Optimizare conversii • Cartografierea parcursului utilizatorului • Testare A/B"
+      },
+      "performance": {
+        "name": "Performanță",
+        "experience": "Core Web Vitals • Configurare CDN • Optimizare baze de date • Viteză = Vânzări"
+      }
+    }
+  },
+  "projects": {
+    "featuredTitle": "Proiecte Principale",
+    "featuredDescription": "O prezentare a muncii mele recente, cuprinzând aplicații web, experimente creative și contribuții open-source.",
+    "otherTitle": "Alte Proiecte",
+    "viewProject": "Vezi Proiectul",
+    "viewCode": "Vezi Codul",
+    "items": {
+      "ecommerce": {
+        "title": "Platformă E-Commerce",
+        "description": "O soluție e-commerce full-stack construită cu React, Node.js și PostgreSQL. Caracteristicile includ autentificare utilizatori, procesare plăți și dashboard admin."
+      },
+      "taskmanager": {
+        "title": "Aplicație Management Sarcini",
+        "description": "O aplicație colaborativă de management al sarcinilor cu actualizări în timp real, funcționalitate drag-and-drop și caracteristici de colaborare în echipă."
+      },
+      "weather": {
+        "title": "Dashboard Meteo",
+        "description": "Un dashboard meteo responsiv care afișează condițiile actuale și prognoze folosind API-uri meteo externe cu vizualizări frumoase ale datelor."
+      },
+      "portfolio": {
+        "title": "Site Portfolio",
+        "description": "Un site portfolio modern construit cu React, Three.js și Framer Motion cu animații 3D și efecte de derulare lină."
+      }
+    }
+  },
+  "contact": {
+    "title": "Să Lucrăm Împreună",
+    "subtitle": "Ai un proiect în minte? Mi-ar plăcea să aud despre el. Să creăm ceva minunat împreună.",
+    "getInTouch": "Contactează-mă",
+    "description": "Sunt întotdeauna deschis să discut despre noi oportunități, proiecte creative, sau doar să am o conversație despre tehnologie și dezvoltare.",
+    "quickMessage": "Mesaj Rapid",
+    "form": {
+      "name": "Nume",
+      "namePlaceholder": "Numele tău",
+      "email": "Email",
+      "emailPlaceholder": "email@tau.com",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajul tău...",
+      "send": "Trimite Mesajul"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Mircea Popa. Toate drepturile rezervate."
+  },
+  "language": {
+    "english": "English",
+    "romanian": "Română"
+  }
+}

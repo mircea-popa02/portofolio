@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider"
+import { useTranslation } from "react-i18next"
 import { CustomCursor } from "./components/CustomCursor"
 import { Navigation } from "./components/Navigation"
 import { HeroSection } from "./components/HeroSection"
@@ -11,6 +12,7 @@ const sections = ["home", "about", "projects", "contact"];
 
 function App() {
   const { currentSection, scrollTo } = useSmoothScroll(sections);
+  const { t } = useTranslation();
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -35,7 +37,7 @@ function App() {
         
         <footer className="py-8 text-center text-muted-foreground border-t border-border">
           <div className="container mx-auto px-4">
-            <p>&copy; 2025 Mircea Popa. All rights reserved.</p>
+            <p>{t('footer.copyright')}</p>
           </div>
         </footer>
       </div>

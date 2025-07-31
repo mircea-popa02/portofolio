@@ -9,11 +9,11 @@ export interface Project {
   featured: boolean;
 }
 
-export const projects: Project[] = [
+export const getProjects = (t: (key: string) => string): Project[] => [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.",
+    title: t('projects.items.ecommerce.title'),
+    description: t('projects.items.ecommerce.description'),
     technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
     image: "/api/placeholder/600/400",
     githubUrl: "https://github.com/yourusername/ecommerce",
@@ -22,8 +22,8 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+    title: t('projects.items.taskmanager.title'),
+    description: t('projects.items.taskmanager.description'),
     technologies: ["React", "TypeScript", "Socket.io", "Express", "MongoDB"],
     image: "/api/placeholder/600/400",
     githubUrl: "https://github.com/yourusername/taskmanager",
@@ -32,8 +32,8 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "A responsive weather dashboard that displays current conditions and forecasts using external weather APIs with beautiful data visualizations.",
+    title: t('projects.items.weather.title'),
+    description: t('projects.items.weather.description'),
     technologies: ["React", "Chart.js", "OpenWeather API", "CSS Grid"],
     image: "/api/placeholder/600/400",
     githubUrl: "https://github.com/yourusername/weather",
@@ -42,12 +42,12 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Portfolio Website",
-    description: "A modern portfolio website built with React, Three.js, and Framer Motion featuring 3D animations and smooth scroll effects.",
+    title: t('projects.items.portfolio.title'),
+    description: t('projects.items.portfolio.description'),
     technologies: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
     image: "/api/placeholder/600/400",
     githubUrl: "https://github.com/yourusername/portfolio",
     liveUrl: "https://yourportfolio.com",
-    featured: true
+    featured: false
   }
 ];

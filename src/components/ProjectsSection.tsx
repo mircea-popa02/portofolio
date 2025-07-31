@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ProjectCard } from './ProjectCard';
-import { projects } from '@/data/projects';
+import { getProjects } from '@/data/projects';
 
 export function ProjectsSection() {
+  const { t } = useTranslation();
+  const projects = getProjects(t);
   const featuredProjects = projects.filter(project => project.featured);
   const otherProjects = projects.filter(project => !project.featured);
 
@@ -17,10 +20,9 @@ export function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.featuredTitle')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent work, spanning web applications, creative experiments,
-            and open-source contributions.
+            {t('projects.featuredDescription')}
           </p>
         </motion.div>
 
@@ -41,7 +43,7 @@ export function ProjectsSection() {
               viewport={{ once: true }}
               className="text-2xl font-semibold mb-8 text-center"
             >
-              Other Projects
+              {t('projects.otherTitle')}
             </motion.h3>
             <div className="grid md:grid-cols-2 gap-6">
               {otherProjects.map((project, index) => (

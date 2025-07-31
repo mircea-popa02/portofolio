@@ -1,0 +1,96 @@
+{
+  "navigation": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Have a project in mind?",
+    "subtitle": "Creative Developer & Crafting immersive digital experiences.",
+    "viewWork": "View My Work",
+    "getInTouch": "Get In Touch",
+    "scrollDown": "Scroll to explore"
+  },
+  "about": {
+    "title": "Building Digital Commerce",
+    "description": "I create high-converting e-commerce websites and custom web solutions that drive business growth. From WordPress stores to cutting-edge 3D experiences, I bring your digital vision to life.",
+    "whatIDoBest": "What I Do Best",
+    "whatIDoDescription": "I specialize in creating e-commerce solutions that actually convert. Whether you need a WordPress WooCommerce store, an OpenCart setup, or a completely custom platform, I focus on performance, user experience, and results.",
+    "myApproach": "My Approach",
+    "myApproachDescription": "Every project starts with understanding your business goals. I then craft solutions that combine modern design, solid development practices, and sometimes a touch of 3D magic to make your website truly memorable.",
+    "skills": {
+      "woocommerce": {
+        "name": "WooCommerce",
+        "experience": "50+ stores built • Payment gateways • Multi-vendor setups"
+      },
+      "opencart": {
+        "name": "OpenCart",
+        "experience": "Multi-store management • Custom extensions • Performance optimization"
+      },
+      "custom": {
+        "name": "Custom Solutions",
+        "experience": "Headless commerce • API integrations • Scalable architectures"
+      },
+      "threejs": {
+        "name": "Three.js Magic",
+        "experience": "3D product viewers • Interactive experiences • WebGL wizardry"
+      },
+      "ui": {
+        "name": "UI/UX Craft",
+        "experience": "Conversion optimization • User journey mapping • A/B testing"
+      },
+      "performance": {
+        "name": "Performance",
+        "experience": "Core Web Vitals • CDN setup • Database optimization • Speed = Sales"
+      }
+    }
+  },
+  "projects": {
+    "featuredTitle": "Featured Projects",
+    "featuredDescription": "A showcase of my recent work, spanning web applications, creative experiments, and open-source contributions.",
+    "otherTitle": "Other Projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "items": {
+      "ecommerce": {
+        "title": "E-Commerce Platform",
+        "description": "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard."
+      },
+      "taskmanager": {
+        "title": "Task Management App",
+        "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features."
+      },
+      "weather": {
+        "title": "Weather Dashboard",
+        "description": "A responsive weather dashboard that displays current conditions and forecasts using external weather APIs with beautiful data visualizations."
+      },
+      "portfolio": {
+        "title": "Portfolio Website",
+        "description": "A modern portfolio website built with React, Three.js, and Framer Motion featuring 3D animations and smooth scroll effects."
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind? I'd love to hear about it. Let's create something amazing together.",
+    "getInTouch": "Get In Touch",
+    "description": "I'm always open to discussing new opportunities, creative projects, or just having a chat about technology and development.",
+    "quickMessage": "Quick Message",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "send": "Send Message"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Mircea Popa. All rights reserved."
+  },
+  "language": {
+    "english": "English",
+    "romanian": "Română"
+  }
+}

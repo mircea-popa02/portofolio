@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { ArrowDown } from 'lucide-react';
 import { HeroBackground } from './HeroBackground';
@@ -8,6 +9,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ scrollTo }: HeroSectionProps) {
+  const { t } = useTranslation();
+  
   return (
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
@@ -23,7 +26,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-blue-300 bg-clip-text text-transparent"
           >
-            Have a project in mind?
+            {t('hero.title')}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -31,7 +34,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-2xl"
           >
-            Creative Developer & Crafting immersive digital experiences.
+            {t('hero.subtitle')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,8 +42,8 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex gap-4 justify-center"
           >
-            <Button size="lg" onClick={() => scrollTo('#projects')}>View My Work</Button>
-            <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>Get In Touch</Button>
+            <Button size="lg" onClick={() => scrollTo('#projects')}>{t('hero.viewWork')}</Button>
+            <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>{t('hero.getInTouch')}</Button>
           </motion.div>
         </motion.div>
       </div>

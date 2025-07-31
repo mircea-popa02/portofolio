@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ModeToggle } from './ui/mode-toggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavigationProps {
   scrollTo: (selector: string) => void;
@@ -9,6 +11,7 @@ interface NavigationProps {
 
 export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +23,9 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   }, []);
 
   const navItems = [
-    { href: '#about', label: 'About', id: 'about' },
-    { href: '#projects', label: 'Projects', id: 'projects' },
-    { href: '#contact', label: 'Contact', id: 'contact' },
+    { href: '#about', label: t('navigation.about'), id: 'about' },
+    { href: '#projects', label: t('navigation.projects'), id: 'projects' },
+    { href: '#contact', label: t('navigation.contact'), id: 'contact' },
   ];
 
   return (
@@ -77,7 +80,10 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                 </motion.a>
               ))}
             </div>
-            <ModeToggle />
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+              <ModeToggle />
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ContactSection() {
+  const { t } = useTranslation();
+  
   return (
     <section id="contact" className="py-20 bg-secondary/20">
       <div className="container mx-auto px-4">
@@ -13,9 +16,9 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -27,10 +30,9 @@ export function ContactSection() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+              <h3 className="text-2xl font-semibold mb-6">{t('contact.getInTouch')}</h3>
               <p className="text-muted-foreground mb-6">
-                I'm always open to discussing new opportunities, creative projects,
-                or just having a chat about technology and development.
+                {t('contact.description')}
               </p>
               
               <div className="space-y-4">
@@ -69,43 +71,43 @@ export function ContactSection() {
               viewport={{ once: true }}
               className="bg-card p-8 rounded-xl border border-border"
             >
-              <h3 className="text-xl font-semibold mb-4">Quick Message</h3>
+              <h3 className="text-xl font-semibold mb-4">{t('contact.quickMessage')}</h3>
               <form className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name
+                    {t('contact.form.name')}
                   </label>
                   <input
                     type="text"
                     id="name"
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Your name"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
                     id="email"
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
                     rows={4}
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   />
                 </div>
                 <Button type="submit" className="w-full">
-                  Send Message
+                  {t('contact.form.send')}
                 </Button>
               </form>
             </motion.div>
