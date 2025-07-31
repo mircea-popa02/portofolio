@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -6,34 +6,36 @@ import * as THREE from 'three';
 function AnimatedSphere() {
   const ref = useRef<THREE.Points>(null);
   
-  // Alternative approach: use Fibonacci sphere distribution for more reliable results
-  const generateFibonacciSphere = (numPoints: number, radius: number): Float32Array => {
-    const positions = new Float32Array(numPoints * 3);
-    const goldenAngle = Math.PI * (3.0 - Math.sqrt(5.0)); // Golden angle in radians
+  // Generate sphere positions only once using useMemo
+  const sphere = useMemo(() => {
+    const positions = new Float32Array(5000);
     
-    for (let i = 0; i < numPoints; i++) {
-      const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
-      const radiusAtY = Math.sqrt(1 - y * y);
+    for (let i = 0; i < positions.length; i += 3) {
+      const radius = 0.85;
       
-      const theta = goldenAngle * i;
+      // Use rejection sampling method
+      let x, y, z;
+      do {
+        x = Math.random() * 2 - 1;
+        y = Math.random() * 2 - 1;
+        z = Math.random() * 2 - 1;
+      } while (x * x + y * y + z * z > 1);
       
-      const x = Math.cos(theta) * radiusAtY;
-      const z = Math.sin(theta) * radiusAtY;
-      
-      // Scale by radius and validate
-      const scaledX = radius * x;
-      const scaledY = radius * y;
-      const scaledZ = radius * z;
-      
-      positions[i * 3] = isFinite(scaledX) ? scaledX : 0;
-      positions[i * 3 + 1] = isFinite(scaledY) ? scaledY : 0;
-      positions[i * 3 + 2] = isFinite(scaledZ) ? scaledZ : 0;
+      // Normalize and scale
+      const length = Math.sqrt(x * x + y * y + z * z);
+      if (length > 0 && isFinite(length)) {
+        positions[i] = (x / length) * radius;
+        positions[i + 1] = (y / length) * radius;
+        positions[i + 2] = (z / length) * radius;
+      } else {
+        positions[i] = 0;
+        positions[i + 1] = 0;
+        positions[i + 2] = 0;
+      }
     }
     
     return positions;
-  };
-  
-  const sphere = generateFibonacciSphere(1667, 0.85); // 1667 points for 5000 array length
+  }, []);
 
   useFrame(({ clock }) => {
     if (ref.current) {
