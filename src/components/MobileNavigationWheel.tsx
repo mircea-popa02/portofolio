@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // IMPORTANT: DO NOT ADD COMMENTS TO THIS FILE
 
