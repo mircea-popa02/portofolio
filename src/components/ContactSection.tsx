@@ -3,10 +3,34 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useForm, ValidationError } from '@formspree/react';
+import { Turnstile } from '@marsidev/react-turnstile';
+import { useState, useEffect } from 'react';
 
 export function ContactSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [state, handleSubmit] = useForm("xldllzbj");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
+  // Reset Turnstile token when form is successfully submitted
+  useEffect(() => {
+    if (state.succeeded) {
+      setTurnstileToken(null);
+    }
+  }, [state.succeeded]);
+
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!turnstileToken) {
+      return; // Don't submit if Turnstile hasn't been completed
+    }
+
+    // Create FormData and append the turnstile token
+    const formData = new FormData(e.currentTarget);
+    formData.append('cf-turnstile-response', turnstileToken);
+    
+    handleSubmit(formData);
+  };
   
   return (
     <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
@@ -101,7 +125,7 @@ export function ContactSection() {
                 </div>
               )}
               
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={onFormSubmit} className="space-y-3">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     {t('contact.form.name')}
@@ -159,7 +183,31 @@ export function ContactSection() {
                     className="text-red-500 text-sm mt-1 block"
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={state.submitting}>
+                
+                <div className="flex flex-col items-center space-y-2">
+                  <Turnstile
+                    siteKey="0x4AAAAAABne4Dsmb-p-Hbb2"
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onError={() => setTurnstileToken(null)}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{
+                      theme: 'auto',
+                      size: 'normal',
+                      language: i18n.language === 'ro' ? 'ro' : 'en',
+                    }}
+                  />
+                  {!turnstileToken && (
+                    <p className="text-xs text-muted-foreground text-center">
+                      {t('contact.form.captchaRequired', 'Please complete the CAPTCHA verification.')}
+                    </p>
+                  )}
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={state.submitting || !turnstileToken}
+                >
                   {state.submitting ? t('contact.form.sending', 'Sending...') : t('contact.form.send')}
                 </Button>
               </form>

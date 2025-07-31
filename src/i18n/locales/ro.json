@@ -155,7 +155,8 @@
       "send": "Trimite mesajul",
       "sending": "Se trimite...",
       "success": "Mulțumim! Mesajul tău a fost trimis cu succes.",
-      "error": "Ne pare rău, a apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou."
+      "error": "Ne pare rău, a apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou.",
+      "captchaRequired": "Te rugăm să completezi verificarea CAPTCHA."
     }
   },
   "footer": {

@@ -151,7 +151,8 @@
       "send": "Send Message",
       "sending": "Sending...",
       "success": "Thank you! Your message has been sent successfully.",
-      "error": "Sorry, there was an error sending your message. Please try again."
+      "error": "Sorry, there was an error sending your message. Please try again.",
+      "captchaRequired": "Please complete the CAPTCHA verification."
     }
   },
   "footer": {
