@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -21,9 +20,9 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage.flag}</span>
+        <Button variant="outline" size="icon">
+          <span className="text-sm">{currentLanguage.flag}</span>
+          <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

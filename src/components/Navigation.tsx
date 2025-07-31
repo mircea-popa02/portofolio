@@ -64,7 +64,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                     e.preventDefault();
                     scrollTo(item.href);
                   }}
-                  className={`relative text-sm font-medium transition-colors cursor-pointer ${
+                  className={`relative text-sm font-medium transition-colors cursor-pointer px-3 py-2 ${
                     currentSection === item.id ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                   }`}
                   whileHover={{ scale: 1.05 }}

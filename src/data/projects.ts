@@ -32,6 +32,16 @@ export const getProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 3,
+    title: t('projects.items.taskmanager.title'),
+    description: t('projects.items.taskmanager.description'),
+    technologies: ["React", "TypeScript", "Socket.io", "Express", "MongoDB"],
+    image: "/api/placeholder/600/400",
+    githubUrl: "https://github.com/yourusername/taskmanager",
+    liveUrl: "https://taskmanager-demo.com",
+    featured: true
+  },
+  {
+    id: 4,
     title: t('projects.items.weather.title'),
     description: t('projects.items.weather.description'),
     technologies: ["React", "Chart.js", "OpenWeather API", "CSS Grid"],
@@ -41,7 +51,7 @@ export const getProjects = (t: (key: string) => string): Project[] => [
     featured: false
   },
   {
-    id: 4,
+    id: 5,
     title: t('projects.items.portfolio.title'),
     description: t('projects.items.portfolio.description'),
     technologies: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],

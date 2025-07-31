@@ -60,6 +60,10 @@
         "title": "Aplicație Management Sarcini",
         "description": "O aplicație colaborativă de management al sarcinilor cu actualizări în timp real, funcționalitate drag-and-drop și caracteristici de colaborare în echipă."
       },
+      "taskmanager2": {
+        "title": "Aplicație Management Sarcini",
+        "description": "O aplicație colaborativă de management al sarcinilor cu actualizări în timp real, funcționalitate drag-and-drop și caracteristici de colaborare în echipă."
+      },
       "weather": {
         "title": "Dashboard Meteo",
         "description": "Un dashboard meteo responsiv care afișează condițiile actuale și prognoze folosind API-uri meteo externe cu vizualizări frumoase ale datelor."
