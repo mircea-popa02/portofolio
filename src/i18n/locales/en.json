@@ -4,7 +4,9 @@
     "about": "About",
     "technologies": "Technologies",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Language",
+    "theme": "Theme"
   },
   "hero": {
     "title": "Have a <bold>project</bold> in mind?",

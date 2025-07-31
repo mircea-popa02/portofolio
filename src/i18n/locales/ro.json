@@ -4,7 +4,9 @@
     "about": "Despre Echipă",
     "technologies": "Servicii",
     "projects": "Proiecte",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Limbă",
+    "theme": "Temă"
   },
   "hero": {
     "title": "Ai un <bold>proiect</bold> în minte?",

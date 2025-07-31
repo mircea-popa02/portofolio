@@ -100,8 +100,6 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
 
               {/* Mobile Controls */}
               <div className="flex md:hidden items-center gap-4">
-                <LanguageSwitcher />
-                <ModeToggle />
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="p-2 text-foreground hover:text-primary transition-colors"
@@ -144,6 +142,18 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                     {item.label}
                   </motion.a>
                 ))}
+                
+                {/* Mobile Settings */}
+                <div className="border-t border-border pt-4 mt-2">
+                  <div className="flex items-center justify-between px-3 py-2">
+                    <span className="text-sm font-medium text-muted-foreground">{t('navigation.language')}</span>
+                    <LanguageSwitcher />
+                  </div>
+                  <div className="flex items-center justify-between px-3 py-2">
+                    <span className="text-sm font-medium text-muted-foreground">{t('navigation.theme')}</span>
+                    <ModeToggle />
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

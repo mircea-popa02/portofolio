@@ -191,13 +191,36 @@ html {
 }
 
 /* Technology icons scroll animation */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+/* Change the duration values below to adjust scroll speed:
+   - Lower values = faster scroll
+   - Higher values = slower scroll
+   - Mobile: currently 10s (was 20s)
+   - Desktop: currently 20s (was 40s)
+*/
+@keyframes scroll-mobile {
+  from { 
+    transform: translateX(0); 
   }
-  100% {
-    transform: translateX(-50%);
+  to { 
+    transform: translateX(calc(-50%)); 
   }
+}
+
+@keyframes scroll-desktop {
+  from { 
+    transform: translateX(0); 
+  }
+  to { 
+    transform: translateX(calc(-50%)); 
+  }
+}
+
+.animate-scroll-mobile {
+  animation: scroll-mobile 10s linear infinite; /* SPEED CONTROL: Change 10s to adjust mobile scroll speed */
+}
+
+.animate-scroll-desktop {
+  animation: scroll-desktop 20s linear infinite; /* SPEED CONTROL: Change 20s to adjust desktop scroll speed */
 }
 
 /* Floating animation for tech icons */
@@ -221,3 +244,6 @@ html {
     }
   }
 }
+
+
+
