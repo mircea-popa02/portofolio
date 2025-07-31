@@ -128,9 +128,9 @@ export function TechnologiesSection() {
 						{t('expertise.title')}
 					</h2>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-						<Trans 
+						<Trans
 							i18nKey="expertise.description"
-							components={{ 
+							components={{
 								bold: <strong className="text-foreground" />,
 								code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
 							}}
@@ -167,9 +167,9 @@ export function TechnologiesSection() {
 												className="text-muted-foreground text-sm flex items-center"
 											>
 												<div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
-												<Trans 
+												<Trans
 													i18nKey={itemKey}
-													components={{ 
+													components={{
 														code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
 													}}
 												/>
@@ -186,55 +186,59 @@ export function TechnologiesSection() {
 						whileInView={{ opacity: 1 }}
 						transition={{ duration: 1, delay: 0.5 }}
 						viewport={{ once: true }}
-						className="relative overflow-hidden py-12 mt-8"
+						className="relative overflow-hidden py-6 md:py-12 mt-4 md:mt-8"
 					>
-						{/* Background gradient overlay */}
 
-						<div className="flex animate-[scroll_20s_linear_infinite]">
+						<div className="flex animate-[scroll_10s_linear_infinite] md:animate-[scroll_20s_linear_infinite]">
 							{techIcons.map((tech, index) => (
 								<div
 									key={`first-${index}`}
-									className="flex-shrink-0 mx-6 flex flex-col items-center group"
+									className="flex-shrink-0 mx-3 md:mx-6 flex flex-col items-center group"
 								>
 									<div className="relative">
-										{/* Glowing ring effect */}
-										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
-										
+										{/* Glowing ring effect - disabled on mobile for performance */}
+										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
+
 										{/* Main icon container */}
-										<div className="relative w-20 h-20 bg-gradient-to-br from-card via-card to-muted/50 border-2 border-primary/20 rounded-full p-4 group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg hover:shadow-xl hover:shadow-primary/20 animate-[float_6s_ease-in-out_infinite]"
-											style={{ animationDelay: `${index * 0.5}s` }}>
+										<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20 animate-[float_4s_ease-in-out_infinite] md:animate-[float_6s_ease-in-out_infinite]"
+											style={{ animationDelay: `${index * 0.3}s` }}>
 											<img
 												src={tech.src}
 												alt={tech.alt}
-												className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110 dark:invert dark:brightness-0"
+												loading="eager"
+												decoding="async"
+												className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
 											/>
 										</div>
 									</div>
-									<span className="text-xs font-medium text-muted-foreground mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary">
+									<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary">
 										{tech.name}
 									</span>
 								</div>
 							))}
-							{techIcons.map((tech: { src: string; alt: string; name: string }, index: number) => (
+							{techIcons.map((tech, index) => (
 								<div
 									key={`second-${index}`}
-									className="flex-shrink-0 mx-6 flex flex-col items-center group"
+									className="flex-shrink-0 mx-3 md:mx-6 flex flex-col items-center group"
+									aria-hidden="true"
 								>
 									<div className="relative">
-										{/* Glowing ring effect */}
-										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
-										
+										{/* Glowing ring effect - disabled on mobile for performance */}
+										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
+
 										{/* Main icon container */}
-										<div className="relative w-20 h-20 bg-gradient-to-br from-card via-card to-muted/50 border-2 border-primary/20 rounded-full p-4 group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg hover:shadow-xl hover:shadow-primary/20 animate-[float_6s_ease-in-out_infinite]"
-											style={{ animationDelay: `${index * 0.5}s` }}>
+										<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20 animate-[float_4s_ease-in-out_infinite] md:animate-[float_6s_ease-in-out_infinite]"
+											style={{ animationDelay: `${index * 0.3}s` }}>
 											<img
 												src={tech.src}
 												alt={tech.alt}
-												className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110 dark:invert dark:brightness-0"
+												loading="eager"
+												decoding="async"
+												className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
 											/>
 										</div>
 									</div>
-									<span className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary">
 										{tech.name}
 									</span>
 								</div>
