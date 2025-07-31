@@ -1,6 +1,7 @@
 {
   "navigation": {
     "about": "About",
+    "technologies": "Technologies",
     "projects": "Projects",
     "contact": "Contact"
   },
@@ -12,37 +13,98 @@
     "scrollDown": "Scroll to explore"
   },
   "about": {
-    "title": "Building Digital Commerce",
-    "description": "I create high-converting e-commerce websites and custom web solutions that drive business growth. From WordPress stores to cutting-edge 3D experiences, I bring your digital vision to life.",
-    "whatIDoBest": "What I Do Best",
-    "whatIDoDescription": "I specialize in creating e-commerce solutions that actually convert. Whether you need a WordPress WooCommerce store, an OpenCart setup, or a completely custom platform, I focus on performance, user experience, and results.",
-    "myApproach": "My Approach",
-    "myApproachDescription": "Every project starts with understanding your business goals. I then craft solutions that combine modern design, solid development practices, and sometimes a touch of 3D magic to make your website truly memorable.",
-    "skills": {
-      "woocommerce": {
-        "name": "WooCommerce",
-        "experience": "50+ stores built • Payment gateways • Multi-vendor setups"
+    "title": "About Me",
+    "subtitle": "Passionate developer crafting digital experiences that make a difference. Let me tell you a bit about my journey and what drives me.",
+    "story": {
+      "title": "My Story",
+      "paragraph1": "With over 8 years of experience in web development, I've had the privilege of working with businesses from startups to established enterprises, helping them bring their digital visions to life.",
+      "paragraph2": "My journey began with a curiosity about how websites work, which quickly evolved into a passion for creating exceptional digital experiences. I specialize in e-commerce solutions, but my interests span across modern web technologies, 3D experiences, and everything in between."
+    },
+    "philosophy": {
+      "title": "My Philosophy",
+      "paragraph1": "I believe that great websites are more than just code—they're digital experiences that should delight users while achieving business goals. Every project is an opportunity to create something meaningful.",
+      "paragraph2": "Whether it's a complex e-commerce platform or a simple landing page, I approach each project with the same level of dedication, attention to detail, and commitment to excellence."
+    },
+    "valuesTitle": "What Drives Me",
+    "values": {
+      "craftsmanship": {
+        "title": "Quality Craftsmanship",
+        "description": "Every line of code is written with purpose, every design decision is deliberate, and every user interaction is carefully considered."
       },
-      "opencart": {
-        "name": "OpenCart",
-        "experience": "Multi-store management • Custom extensions • Performance optimization"
+      "passion": {
+        "title": "Genuine Passion",
+        "description": "I love what I do, and it shows in my work. Technology excites me, and I'm always eager to learn and experiment with new approaches."
       },
-      "custom": {
-        "name": "Custom Solutions",
-        "experience": "Headless commerce • API integrations • Scalable architectures"
+      "collaboration": {
+        "title": "True Collaboration",
+        "description": "The best projects happen when client and developer work together as partners, sharing ideas and building something amazing together."
       },
-      "threejs": {
-        "name": "Three.js Magic",
-        "experience": "3D product viewers • Interactive experiences • WebGL wizardry"
-      },
-      "ui": {
-        "name": "UI/UX Craft",
-        "experience": "Conversion optimization • User journey mapping • A/B testing"
-      },
-      "performance": {
-        "name": "Performance",
-        "experience": "Core Web Vitals • CDN setup • Database optimization • Speed = Sales"
+      "innovation": {
+        "title": "Forward Thinking",
+        "description": "I stay current with emerging technologies and trends, always looking for ways to push boundaries and create cutting-edge solutions."
       }
+    }
+  },
+  "expertise": {
+    "title": "Technologies & Expertise",
+    "description": "Specialized in modern web technologies and e-commerce solutions, delivering scalable and performant applications with a focus on user experience and business results.",
+    "areasTitle": "Areas of Expertise",
+    "ecommerce": {
+      "title": "E-Commerce Platforms",
+      "woocommerce": "WordPress WooCommerce Development",
+      "wordpress": "Custom WordPress Solutions",
+      "opencart": "OpenCart Multi-store Management",
+      "shopify": "Shopify Theme & App Development",
+      "plugins": "Custom E-commerce Plugins"
+    },
+    "payments": {
+      "title": "Payment Integration",
+      "gateways": "Payment Gateway Integration",
+      "stripe": "Stripe & PayPal Implementation",
+      "paypal": "Multi-currency Support",
+      "custom": "Custom Payment Solutions"
+    },
+    "development": {
+      "title": "Full-Stack Development",
+      "react": "React & Next.js Applications",
+      "nodejs": "Node.js Backend Development",
+      "php": "PHP & Laravel Solutions",
+      "apis": "RESTful API Development"
+    },
+    "design": {
+      "title": "UI/UX Design",
+      "bespoke": "Bespoke UI Design Systems",
+      "responsive": "Responsive Web Design",
+      "brand": "Brand Identity & Guidelines",
+      "conversion": "Conversion Rate Optimization"
+    },
+    "solutions": {
+      "title": "Custom Web Solutions",
+      "custom": "Tailored Website Solutions",
+      "headless": "Headless CMS Architecture",
+      "performance": "Performance Optimization",
+      "scalable": "Scalable Web Applications"
+    },
+    "integrations": {
+      "title": "Third-party Integrations",
+      "maps": "Google Maps & Location Services",
+      "captchas": "reCAPTCHA & Security Systems",
+      "databases": "Database Design & Integration",
+      "apis": "External API Integrations"
+    },
+    "interactive": {
+      "title": "3D & Interactive",
+      "threejs": "Three.js 3D Experiences",
+      "webgl": "WebGL Visualizations",
+      "animations": "Advanced CSS & JS Animations",
+      "experiences": "Interactive User Experiences"
+    },
+    "security": {
+      "title": "Security & Performance",
+      "ssl": "SSL Certificate Management",
+      "authentication": "User Authentication Systems",
+      "data": "Data Protection & GDPR",
+      "compliance": "Security Compliance"
     }
   },
   "projects": {

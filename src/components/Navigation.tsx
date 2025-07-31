@@ -24,6 +24,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
 
   const navItems = [
     { href: '#about', label: t('navigation.about'), id: 'about' },
+    { href: '#technologies', label: t('navigation.technologies'), id: 'technologies' },
     { href: '#projects', label: t('navigation.projects'), id: 'projects' },
     { href: '#contact', label: t('navigation.contact'), id: 'contact' },
   ];

@@ -6,7 +6,6 @@ import * as THREE from 'three';
 function AnimatedSphere() {
   const ref = useRef<THREE.Points>(null);
   
-  // Generate random points for the sphere
   const sphere = new Float32Array(5000);
   for (let i = 0; i < sphere.length; i += 3) {
     const radius = 0.85;
@@ -20,14 +19,10 @@ function AnimatedSphere() {
     sphere[i + 2] = radius * Math.cos(phi);
   }
 
-  useFrame(({ clock, mouse }) => {
+  useFrame(({ clock }) => {
     if (ref.current) {
       ref.current.rotation.x = clock.getElapsedTime() * 0.1;
       ref.current.rotation.y = clock.getElapsedTime() * 0.15;
-      
-      // Mouse interaction
-      ref.current.rotation.x += mouse.y * 0.1;
-      ref.current.rotation.y += mouse.x * 0.1;
     }
   });
 
@@ -35,10 +30,11 @@ function AnimatedSphere() {
     <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#3b82f6"
+        color="#ffffff"
         size={0.004}
         sizeAttenuation={true}
         depthWrite={false}
+        opacity={0.7}
       />
     </Points>
   );

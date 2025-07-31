@@ -4,11 +4,12 @@ import { CustomCursor } from "./components/CustomCursor"
 import { Navigation } from "./components/Navigation"
 import { HeroSection } from "./components/HeroSection"
 import { AboutSection } from "./components/AboutSection"
+import { TechnologiesSection } from "./components/TechnologiesSection"
 import { ProjectsSection } from "./components/ProjectsSection"
 import { ContactSection } from "./components/ContactSection"
 import { useSmoothScroll } from "./hooks/useSmoothScroll"
 
-const sections = ["home", "about", "projects", "contact"];
+const sections = ["home", "about", "technologies", "projects", "contact"];
 
 function App() {
   const { currentSection, scrollTo } = useSmoothScroll(sections);
@@ -26,6 +27,9 @@ function App() {
           </div>
           <div id="about">
             <AboutSection />
+          </div>
+          <div id="technologies">
+            <TechnologiesSection />
           </div>
           <div id="projects">
             <ProjectsSection />

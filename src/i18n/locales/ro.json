@@ -1,6 +1,7 @@
 {
   "navigation": {
     "about": "Despre",
+    "technologies": "Tehnologii",
     "projects": "Proiecte",
     "contact": "Contact"
   },
@@ -12,37 +13,98 @@
     "scrollDown": "Derulează pentru a explora"
   },
   "about": {
-    "title": "Construind Comerț Digital",
-    "description": "Creez site-uri e-commerce cu conversii ridicate și soluții web personalizate care stimulează creșterea afacerii. De la magazine WordPress la experiențe 3D de ultimă generație, aduc viziunea ta digitală la viață.",
-    "whatIDoBest": "Ce Fac Cel Mai Bine",
-    "whatIDoDescription": "Mă specializez în crearea de soluții e-commerce care chiar convertesc. Fie că ai nevoie de un magazin WordPress WooCommerce, o configurare OpenCart, sau o platformă complet personalizată, mă concentrez pe performanță, experiența utilizatorului și rezultate.",
-    "myApproach": "Abordarea Mea",
-    "myApproachDescription": "Fiecare proiect începe cu înțelegerea obiectivelor afacerii tale. Apoi creez soluții care combină design modern, practici solide de dezvoltare și uneori o atingere de magie 3D pentru a face site-ul tău cu adevărat memorabil.",
-    "skills": {
-      "woocommerce": {
-        "name": "WooCommerce",
-        "experience": "50+ magazine construite • Gateway-uri de plată • Configurări multi-vendor"
+    "title": "Despre Mine",
+    "subtitle": "Dezvoltator pasionat care creează experiențe digitale care fac diferența. Permite-mi să îți povestesc puțin despre călătoria mea și ce mă motivează.",
+    "story": {
+      "title": "Povestea Mea",
+      "paragraph1": "Cu peste 8 ani de experiență în dezvoltarea web, am avut privilegiul să lucrez cu afaceri de la startup-uri la întreprinderi consacrate, ajutându-le să își aducă viziunile digitale la viață.",
+      "paragraph2": "Călătoria mea a început cu o curiozitate despre cum funcționează site-urile web, care s-a transformat rapid într-o pasiune pentru crearea de experiențe digitale excepționale. Mă specializez în soluții e-commerce, dar interesele mele se întind peste tehnologii web moderne, experiențe 3D și tot ce se află între ele."
+    },
+    "philosophy": {
+      "title": "Filozofia Mea",
+      "paragraph1": "Cred că site-urile web grozave sunt mai mult decât cod—sunt experiențe digitale care ar trebui să încânte utilizatorii în timp ce îndeplinesc obiectivele de afaceri. Fiecare proiect este o oportunitate de a crea ceva semnificativ.",
+      "paragraph2": "Fie că este o platformă e-commerce complexă sau o pagină de destinație simplă, abordez fiecare proiect cu același nivel de dedicare, atenție la detalii și angajament față de excelență."
+    },
+    "valuesTitle": "Ce Mă Motivează",
+    "values": {
+      "craftsmanship": {
+        "title": "Meșteșug de Calitate",
+        "description": "Fiecare linie de cod este scrisă cu scop, fiecare decizie de design este deliberată, și fiecare interacțiune cu utilizatorul este atent considerată."
       },
-      "opencart": {
-        "name": "OpenCart",
-        "experience": "Gestionare multi-magazin • Extensii personalizate • Optimizare performanță"
+      "passion": {
+        "title": "Pasiune Genuină",
+        "description": "Îmi iubesc ceea ce fac, și se vede în munca mea. Tehnologia mă entuziasmează, și sunt mereu dornic să învăț și să experimentez cu abordări noi."
       },
-      "custom": {
-        "name": "Soluții Personalizate",
-        "experience": "Commerce headless • Integrări API • Arhitecturi scalabile"
+      "collaboration": {
+        "title": "Colaborare Adevărată",
+        "description": "Cele mai bune proiecte se întâmplă când clientul și dezvoltatorul lucrează împreună ca parteneri, împărtășind idei și construind ceva uimitor împreună."
       },
-      "threejs": {
-        "name": "Magia Three.js",
-        "experience": "Vizualizatori 3D produse • Experiențe interactive • Vrăjitorie WebGL"
-      },
-      "ui": {
-        "name": "Meșteșug UI/UX",
-        "experience": "Optimizare conversii • Cartografierea parcursului utilizatorului • Testare A/B"
-      },
-      "performance": {
-        "name": "Performanță",
-        "experience": "Core Web Vitals • Configurare CDN • Optimizare baze de date • Viteză = Vânzări"
+      "innovation": {
+        "title": "Gândire Progresistă",
+        "description": "Rămân la curent cu tehnologiile și tendințele emergente, căutând mereu modalități de a împinge granițele și de a crea soluții de ultimă generație."
       }
+    }
+  },
+  "expertise": {
+    "title": "Tehnologii & Expertiză",
+    "description": "Specializat în tehnologii web moderne și soluții e-commerce, livrând aplicații scalabile și performante cu focus pe experiența utilizatorului și rezultatele business-ului.",
+    "areasTitle": "Domenii de Expertiză",
+    "ecommerce": {
+      "title": "Platforme E-Commerce",
+      "woocommerce": "Dezvoltare WordPress WooCommerce",
+      "wordpress": "Soluții WordPress Personalizate",
+      "opencart": "Gestionare Multi-magazin OpenCart",
+      "shopify": "Dezvoltare Teme & Aplicații Shopify",
+      "plugins": "Plugin-uri E-commerce Personalizate"
+    },
+    "payments": {
+      "title": "Integrare Plăți",
+      "gateways": "Integrare Gateway-uri de Plată",
+      "stripe": "Implementare Stripe & PayPal",
+      "paypal": "Suport Multi-valută",
+      "custom": "Soluții de Plată Personalizate"
+    },
+    "development": {
+      "title": "Dezvoltare Full-Stack",
+      "react": "Aplicații React & Next.js",
+      "nodejs": "Dezvoltare Backend Node.js",
+      "php": "Soluții PHP & Laravel",
+      "apis": "Dezvoltare API RESTful"
+    },
+    "design": {
+      "title": "Design UI/UX",
+      "bespoke": "Sisteme de Design UI Personalizate",
+      "responsive": "Design Web Responsiv",
+      "brand": "Identitate de Brand & Ghiduri",
+      "conversion": "Optimizare Rata de Conversie"
+    },
+    "solutions": {
+      "title": "Soluții Web Personalizate",
+      "custom": "Soluții Website Personalizate",
+      "headless": "Arhitectură CMS Headless",
+      "performance": "Optimizare Performanță",
+      "scalable": "Aplicații Web Scalabile"
+    },
+    "integrations": {
+      "title": "Integrări Terțe",
+      "maps": "Google Maps & Servicii de Locație",
+      "captchas": "reCAPTCHA & Sisteme de Securitate",
+      "databases": "Proiectare & Integrare Baze de Date",
+      "apis": "Integrări API Externe"
+    },
+    "interactive": {
+      "title": "3D & Interactiv",
+      "threejs": "Experiențe 3D Three.js",
+      "webgl": "Vizualizări WebGL",
+      "animations": "Animații CSS & JS Avansate",
+      "experiences": "Experiențe Interactive pentru Utilizatori"
+    },
+    "security": {
+      "title": "Securitate & Performanță",
+      "ssl": "Gestionare Certificate SSL",
+      "authentication": "Sisteme de Autentificare Utilizatori",
+      "data": "Protecția Datelor & GDPR",
+      "compliance": "Conformitate cu Securitatea"
     }
   },
   "projects": {
