@@ -23,6 +23,28 @@ export const useSmoothScroll = (sections: string[]) => {
     }
   }, [navigate]);
 
+  const detectCurrentSectionFallback = useCallback(() => {
+    const viewportHeight = window.innerHeight;
+    const scrollTop = window.scrollY;
+    
+    for (const sectionId of sections) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const elementTop = scrollTop + rect.top;
+        const elementBottom = elementTop + rect.height;
+        
+        // Check if section is currently in view
+        if (scrollTop >= elementTop - viewportHeight * 0.5 && 
+            scrollTop < elementBottom - viewportHeight * 0.3) {
+          return sectionId;
+        }
+      }
+    }
+    
+    return sections[0]; // Default to first section
+  }, [sections]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -54,11 +76,12 @@ export const useSmoothScroll = (sections: string[]) => {
           }
         }
 
-        if (mostVisibleEntry && maxVisibility > 0.15) { // Require minimum visibility
+        if (mostVisibleEntry && maxVisibility > 0.1) { // Lower threshold for more reliable detection
           const id = `#${mostVisibleEntry.target.id}`;
           const newSection = mostVisibleEntry.target.id;
           
           if (newSection !== currentSection) {
+            console.log(`Section changed: ${currentSection} -> ${newSection}, visibility: ${maxVisibility.toFixed(3)}`);
             setCurrentSection(newSection);
             if (location.pathname !== id) {
               navigate(id, { replace: true });
@@ -67,7 +90,7 @@ export const useSmoothScroll = (sections: string[]) => {
         }
       },
       {
-        rootMargin: '0px',
+        rootMargin: '-10% 0px -10% 0px', // Slightly smaller detection area for more precise detection
         threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
       }
     );
@@ -76,6 +99,9 @@ export const useSmoothScroll = (sections: string[]) => {
       const element = document.querySelector(`#${id}`);
       if (element) {
         observer.observe(element);
+        console.log(`Observing section: ${id}`);
+      } else {
+        console.warn(`Section element not found: ${id}`);
       }
     });
 
@@ -94,6 +120,16 @@ export const useSmoothScroll = (sections: string[]) => {
     
     const handleScroll = () => {
       rafId = requestAnimationFrame(() => {
+        // Fallback section detection if IntersectionObserver fails
+        if (!currentSection) {
+          const fallbackSection = detectCurrentSectionFallback();
+          if (fallbackSection && fallbackSection !== currentSection) {
+            console.log(`Fallback detection: ${fallbackSection}`);
+            setCurrentSection(fallbackSection);
+            navigate(`#${fallbackSection}`, { replace: true });
+          }
+        }
+        
         if (!currentSection) {
           setSectionScrollData({ 
             progress: 0, 
@@ -174,7 +210,7 @@ export const useSmoothScroll = (sections: string[]) => {
         cancelAnimationFrame(rafId);
       }
     };
-  }, [currentSection, sectionScrollData?.progress]);
+  }, [currentSection, sectionScrollData?.progress, detectCurrentSectionFallback, navigate]);
 
   useEffect(() => {
     if (location.pathname === '/' && sections.length > 0) {

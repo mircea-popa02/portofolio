@@ -6,23 +6,42 @@ import * as THREE from 'three';
 function AnimatedSphere() {
   const ref = useRef<THREE.Points>(null);
   
-  const sphere = new Float32Array(5000);
-  for (let i = 0; i < sphere.length; i += 3) {
-    const radius = 0.85;
-    const u = Math.random();
-    const v = Math.random();
-    const theta = 2 * Math.PI * u;
-    const phi = Math.acos(2 * v - 1);
+  // Alternative approach: use Fibonacci sphere distribution for more reliable results
+  const generateFibonacciSphere = (numPoints: number, radius: number): Float32Array => {
+    const positions = new Float32Array(numPoints * 3);
+    const goldenAngle = Math.PI * (3.0 - Math.sqrt(5.0)); // Golden angle in radians
     
-    sphere[i] = radius * Math.sin(phi) * Math.cos(theta);
-    sphere[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
-    sphere[i + 2] = radius * Math.cos(phi);
-  }
+    for (let i = 0; i < numPoints; i++) {
+      const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
+      const radiusAtY = Math.sqrt(1 - y * y);
+      
+      const theta = goldenAngle * i;
+      
+      const x = Math.cos(theta) * radiusAtY;
+      const z = Math.sin(theta) * radiusAtY;
+      
+      // Scale by radius and validate
+      const scaledX = radius * x;
+      const scaledY = radius * y;
+      const scaledZ = radius * z;
+      
+      positions[i * 3] = isFinite(scaledX) ? scaledX : 0;
+      positions[i * 3 + 1] = isFinite(scaledY) ? scaledY : 0;
+      positions[i * 3 + 2] = isFinite(scaledZ) ? scaledZ : 0;
+    }
+    
+    return positions;
+  };
+  
+  const sphere = generateFibonacciSphere(1667, 0.85); // 1667 points for 5000 array length
 
   useFrame(({ clock }) => {
     if (ref.current) {
-      ref.current.rotation.x = clock.getElapsedTime() * 0.1;
-      ref.current.rotation.y = clock.getElapsedTime() * 0.15;
+      const time = clock.getElapsedTime();
+      if (isFinite(time)) {
+        ref.current.rotation.x = time * 0.1;
+        ref.current.rotation.y = time * 0.15;
+      }
     }
   });
 
@@ -42,8 +61,19 @@ function AnimatedSphere() {
 
 export function HeroBackground() {
   return (
-    <div className="absolute inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+    <div className="absolute inset-0 -z-10 pointer-events-none">
+      <Canvas 
+        camera={{ position: [0, 0, 1] }}
+        style={{ pointerEvents: 'none' }}
+        gl={{ 
+          antialias: false,
+          alpha: true,
+          powerPreference: "high-performance"
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
+      >
         <AnimatedSphere />
       </Canvas>
     </div>
