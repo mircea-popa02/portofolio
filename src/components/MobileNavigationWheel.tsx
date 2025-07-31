@@ -6,10 +6,6 @@ import { motion } from 'framer-motion';
 
 interface MobileNavigationWheelProps {
   currentSection: string;
-  sectionScrollData: {
-    progress: number;
-    remaining: number;
-  };
 }
 
 const sections = [
@@ -20,7 +16,7 @@ const sections = [
   { id: 'contact', selector: '#contact', key: 'navigation.contact' },
 ];
 
-export function MobileNavigationWheel({ currentSection, sectionScrollData }: MobileNavigationWheelProps) {
+export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelProps) {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -69,14 +65,7 @@ export function MobileNavigationWheel({ currentSection, sectionScrollData }: Mob
 
   // Get current section info
   const currentSectionIndex = sections.findIndex(section => section.id === currentSection);
-
-  const sectionsToDisplay = [];
-  if (currentSectionIndex >= 0) {
-    sectionsToDisplay.push(sections[currentSectionIndex]);
-    if (currentSectionIndex + 1 < sections.length) {
-      sectionsToDisplay.push(sections[currentSectionIndex + 1]);
-    }
-  }
+  const currentLabel = currentSectionIndex >= 0 ? t(sections[currentSectionIndex].key) : '';
 
   if (!isMobile) return null;
 
@@ -105,20 +94,6 @@ export function MobileNavigationWheel({ currentSection, sectionScrollData }: Mob
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
         >
           <div className="w-full h-full rounded-full border-2 border-primary/30 bg-background/80 backdrop-blur-md shadow-lg relative overflow-visible">
-            <svg width={wheelDiameter} height={wheelDiameter} viewBox={`0 0 ${wheelDiameter} ${wheelDiameter}`} className="absolute">
-              <circle
-                cx={wheelRadius}
-                cy={wheelRadius}
-                r={wheelRadius - 5}
-                fill="none"
-                stroke="hsl(var(--primary))"
-                strokeWidth="4"
-                strokeDasharray={`${2 * Math.PI * (wheelRadius - 5)}`}
-                strokeDashoffset={`${(2 * Math.PI * (wheelRadius - 5)) * (1 - sectionScrollData.progress)}`}
-                transform={`rotate(-90 ${wheelRadius} ${wheelRadius})`}
-                style={{ transition: 'stroke-dashoffset 0.1s linear' }}
-              />
-            </svg>
             {[...Array(24)].map((_, i) => {
               const spokeAngle = i * (360 / 24);
               return (
@@ -138,40 +113,11 @@ export function MobileNavigationWheel({ currentSection, sectionScrollData }: Mob
                 />
               );
             })}
-            {sectionsToDisplay.map((section) => {
-              const index = sections.findIndex(s => s.id === section.id);
-              const angle = index * (360 / sections.length);
-              const textRadius = wheelRadius * 1; // Adjust this to position text inside the wheel
-              return (
-                <div
-                  key={section.id}
-                  className="absolute"
-                  style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: `rotate(${angle}deg) translate(0, -${textRadius}px)`,
-                    transformOrigin: 'center center',
-                  }}
-                >
-                  <motion.div
-                    style={{
-                      textAlign: 'center',
-                      fontSize: '10px',
-                      fontWeight: 'bold',
-                      color: 'hsl(var(--foreground))',
-                      textShadow: '0px 0px 4px hsl(var(--background))',
-                      zIndex: 2,
-                    }}
-                    animate={{ rotate: -angle - (rotation + 270) }}
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                  >
-                    {t(section.key).toUpperCase()}
-                  </motion.div>
-                </div>
-              );
-            })}
           </div>
         </motion.div>
+        <div className="absolute bottom-4 right-2 pointer-events-none text-lg font-semibold">
+          {currentLabel}
+        </div>
         <div
           className="absolute z-10"
           style={{ bottom: `-${wheelRadius}px`, right: `-${wheelRadius}px` }}
