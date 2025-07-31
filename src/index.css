@@ -17,6 +17,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* hide overflow horizontally */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Hide default scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
