@@ -10,6 +10,7 @@ import { ProjectsSection } from "./components/ProjectsSection"
 import { ContactSection } from "./components/ContactSection"
 import { useSmoothScroll } from "./hooks/useSmoothScroll"
 import { Trans } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 
 
 const sections = ["home", "about", "technologies", "projects", "contact"];
@@ -50,6 +51,7 @@ function App() {
             </p>
           </div>
         </footer>
+        <Analytics />
       </div>
     </ThemeProvider>
   )
