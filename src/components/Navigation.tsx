@@ -53,14 +53,13 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                 scrollTo('#home');
               }}
               className="text-xl font-bold cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.00 }}
+              whileTap={{ scale: 1.00 }}
             >
               proiecte<strong className='text-foreground'>software.ro</strong>
             </motion.a>
 
             <div className="flex items-center gap-8">
-              {/* Desktop Navigation */}
               <div className="hidden md:flex items-center gap-6">
                 {navItems.map((item) => (
                   <motion.a
@@ -113,7 +112,6 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -121,7 +119,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border md:hidden"
+            className="fixed top-16 left-0 right-0 z-40 bg-background/50 backdrop-blur-md border-b border-border md:hidden shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col gap-4">

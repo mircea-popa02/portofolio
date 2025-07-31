@@ -13,11 +13,13 @@ export function ModeToggle() {
                 onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
                 aria-label="Toggle dark mode"
             />
-            {isDark ? (
-                <Moon className="h-[1.2rem] w-[1.2rem]" />
-            ) : (
-                <Sun className="h-[1.2rem] w-[1.2rem]" />
-            )}
+            <span className="hidden md:inline-flex">
+                {isDark ? (
+                    <Moon className="h-[1.2rem] w-[1.2rem]" />
+                ) : (
+                    <Sun className="h-[1.2rem] w-[1.2rem]" />
+                )}
+            </span>
         </div>
     )
 }
