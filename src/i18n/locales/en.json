@@ -14,35 +14,35 @@
     "scrollDown": "Scroll to explore"
   },
   "about": {
-    "title": "About Me",
-    "subtitle": "Passionate developer crafting <bold>digital experiences</bold> that make a difference. Let me tell you a bit about my journey and what drives me.",
+    "title": "Who We Are",
+    "subtitle": "We are a team of <bold>young technology enthusiasts</bold>, graduates of the <bold>Faculty of Automatic Control and Computer Science</bold> at Politehnica University of Bucharest, dedicated to transforming ideas into high-performance digital solutions.",
     "story": {
-      "title": "My Story",
-      "paragraph1": "With over <bold>8 years of experience</bold> in web development, I've had the privilege of working with businesses from startups to established enterprises, helping them bring their digital visions to life.",
-      "paragraph2": "My journey began with a curiosity about how websites work, which quickly evolved into a passion for creating <bold>exceptional digital experiences</bold>. I specialize in e-commerce solutions, but my interests span across modern web technologies, 3D experiences, and everything in between."
+      "title": "Our Story",
+      "paragraph1": "We formed as a team at <bold>Politehnica University of Bucharest</bold>, Faculty of Automatic Control and Computer Science, where our <bold>passion for technology</bold> united us and motivated us to create together.",
+      "paragraph2": "We have diverse experience - we've worked in <bold>large corporations</bold>, <bold>dynamic startups</bold>, and as <bold>independent freelancers</bold>. This variety of experiences has given us a unique perspective on the needs of different types of businesses."
     },
     "philosophy": {
-      "title": "My Philosophy",
-      "paragraph1": "I believe that great websites are more than just code—they're <bold>digital experiences</bold> that should delight users while achieving business goals. Every project is an opportunity to create something meaningful.",
-      "paragraph2": "Whether it's a complex e-commerce platform or a simple landing page, I approach each project with the same level of <bold>dedication, attention to detail</bold>, and commitment to excellence."
+      "title": "Our Vision",
+      "paragraph1": "We believe that <bold>modern technology</bold> can transform any business. We focus on <bold>process automation</bold> and creating digital experiences that deliver concrete and measurable results.",
+      "paragraph2": "We have the <bold>patience to understand</bold> the needs and business cases of your company. We know that the decision to automate processes is difficult - there's an <bold>inertia in the face of innovation</bold> and changing traditional processes can seem intimidating."
     },
-    "valuesTitle": "What Drives Me",
+    "valuesTitle": "What Defines Us",
     "values": {
-      "craftsmanship": {
-        "title": "Quality Craftsmanship",
-        "description": "Every line of code is written with purpose, every design decision is deliberate, and every user interaction is carefully considered."
+      "innovation": {
+        "title": "Custom Solutions",
+        "description": "We develop <bold>personalized solutions</bold> for each client, perfectly adapted to your business needs and objectives."
       },
       "passion": {
-        "title": "Genuine Passion",
-        "description": "I love what I do, and it shows in my work. Technology excites me, and I'm always eager to learn and experiment with new approaches."
+        "title": "From Excel to Automation",
+        "description": "We help you <bold>transition from manual processes</bold> (<code>Excel</code>, pen and paper) to <bold>modern solutions</bold> that simplify your business and support growth."
       },
       "collaboration": {
-        "title": "True Collaboration",
-        "description": "The best projects happen when client and developer work together as partners, sharing ideas and building something amazing together."
+        "title": "Long-term Partnership",
+        "description": "We work <bold>together</bold> with our clients as partners and provide <bold>maintenance after project completion</bold> - your success is our success."
       },
-      "innovation": {
-        "title": "Forward Thinking",
-        "description": "I stay current with emerging technologies and trends, always looking for ways to push boundaries and create cutting-edge solutions."
+      "craftsmanship": {
+        "title": "Diverse Experience",
+        "description": "Our combination of experience in <bold>corporations, startups, and freelancing</bold> gives us a complete market perspective."
       }
     }
   },
@@ -52,25 +52,25 @@
     "areasTitle": "Areas of Expertise",
     "ecommerce": {
       "title": "E-Commerce Platforms",
-      "woocommerce": "WordPress WooCommerce Development",
-      "wordpress": "Custom WordPress Solutions",
-      "opencart": "OpenCart Multi-store Management",
-      "shopify": "Shopify Theme & App Development",
+      "woocommerce": "<code>WordPress WooCommerce</code> Development",
+      "wordpress": "Custom <code>WordPress</code> Solutions",
+      "opencart": "<code>OpenCart</code> Multi-store Management",
+      "shopify": "<code>Shopify</code> Theme & App Development",
       "plugins": "Custom E-commerce Plugins"
     },
     "payments": {
       "title": "Payment Integration",
       "gateways": "Payment Gateway Integration",
-      "stripe": "Stripe & PayPal Implementation",
+      "stripe": "<code>Stripe</code> & <code>PayPal</code> Implementation",
       "paypal": "Multi-currency Support",
       "custom": "Custom Payment Solutions"
     },
     "development": {
       "title": "Full-Stack Development",
-      "react": "React & Next.js Applications",
-      "nodejs": "Node.js Backend Development",
-      "php": "PHP & Laravel Solutions",
-      "apis": "RESTful API Development"
+      "react": "<code>React</code> & <code>Next.js</code> Applications",
+      "nodejs": "<code>Node.js</code> Backend Development",
+      "php": "<code>PHP</code> & <code>Laravel</code> Solutions",
+      "apis": "<code>RESTful API</code> Development"
     },
     "design": {
       "title": "UI/UX Design",
@@ -82,29 +82,29 @@
     "solutions": {
       "title": "Custom Web Solutions",
       "custom": "Tailored Website Solutions",
-      "headless": "Headless CMS Architecture",
+      "headless": "<code>Headless CMS</code> Architecture",
       "performance": "Performance Optimization",
       "scalable": "Scalable Web Applications"
     },
     "integrations": {
       "title": "Third-party Integrations",
-      "maps": "Google Maps & Location Services",
-      "captchas": "reCAPTCHA & Security Systems",
+      "maps": "<code>Google Maps</code> & Location Services",
+      "captchas": "<code>reCAPTCHA</code> & Security Systems",
       "databases": "Database Design & Integration",
-      "apis": "External API Integrations"
+      "apis": "External <code>API</code> Integrations"
     },
     "interactive": {
       "title": "3D & Interactive",
-      "threejs": "Three.js 3D Experiences",
-      "webgl": "WebGL Visualizations",
-      "animations": "Advanced CSS & JS Animations",
+      "threejs": "<code>Three.js</code> 3D Experiences",
+      "webgl": "<code>WebGL</code> Visualizations",
+      "animations": "Advanced <code>CSS</code> & <code>JS</code> Animations",
       "experiences": "Interactive User Experiences"
     },
     "security": {
       "title": "Security & Performance",
-      "ssl": "SSL Certificate Management",
+      "ssl": "<code>SSL</code> Certificate Management",
       "authentication": "User Authentication Systems",
-      "data": "Data Protection & GDPR",
+      "data": "Data Protection & <code>GDPR</code>",
       "compliance": "Security Compliance"
     }
   },
@@ -150,7 +150,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 Mircea Popa. All rights reserved."
+    "copyright": "© 2025 proiectesoftware.ro. All rights reserved."
   },
   "language": {
     "english": "English",

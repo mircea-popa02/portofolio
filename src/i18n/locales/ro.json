@@ -14,35 +14,35 @@
     "scrollDown": "Derulează pentru detalii"
   },
   "about": {
-    "title": "Despre Noi",
-    "subtitle": "Suntem o echipă de <bold>tineri entuziaști</bold>, specializați în tehnologie și automatizare, dedicați să ajutăm afacerile să evolueze prin soluții digitale personalizate.",
+    "title": "Cine Suntem Noi",
+    "subtitle": "Suntem o echipă de <bold>tineri pasionați de tehnologie</bold>, absolvenți ai Facultății de <bold>Automatică și Calculatoare</bold> de la Universitatea Politehnica București, dedicați să transformăm ideile în soluții digitale performante.",
     "story": {
       "title": "Povestea Noastră",
-      "paragraph1": "Ne-am format ca echipă la <bold>Universitatea Politehnica București</bold>, Facultatea de Automatică și Calculatoare, unde pasiunea pentru tehnologie ne-a unit.",
-      "paragraph2": "Credem că fiecare business are nevoi unice. Oferim <bold>soluții adaptate</bold> pentru automatizarea proceselor, promovarea online și digitalizarea operațiunilor."
+      "paragraph1": "Ne-am format ca echipă la <bold>Universitatea Politehnica București</bold>, Facultatea de Automatică și Calculatoare, unde <bold>pasiunea pentru tehnologie</bold> ne-a unit și ne-a motivat să creăm împreună.",
+      "paragraph2": "Avem experiență diversificată - am lucrat atât în <bold>corporații mari</bold>, cât și în <bold>startup-uri dinamice</bold> și ca <bold>freelanceri independenți</bold>. Această varietate de experiențe ne-a dat o perspectivă unică asupra nevoilor diferitelor tipuri de business-uri."
     },
     "philosophy": {
       "title": "Viziunea Noastră",
-      "paragraph1": "<bold>Automatizarea și digitalizarea</bold> sunt cheia succesului în mediul de business modern. Ne dorim să simplificăm procesele și să creăm experiențe digitale eficiente.",
-      "paragraph2": "Fiecare proiect este abordat cu <bold>profesionalism, atenție la detalii</bold> și dorința de a aduce valoare reală clienților noștri."
+      "paragraph1": "Credem că <bold>tehnologia modernă</bold> poate transforma orice afacere. Ne concentrăm pe <bold>automatizarea proceselor</bold> și crearea de experiențe digitale care aduc rezultate concrete și măsurabile.",
+      "paragraph2": "Avem <bold>răbdarea să înțelegem</bold> nevoile și cazurile de business ale afacerii tale. Știm că decizia de a automatiza procesele este dificilă - există o <bold>inerție în fața inovației</bold> și schimbarea proceselor clasice poate părea intimidantă."
     },
-    "valuesTitle": "Ce Ne Motivează",
+    "valuesTitle": "Ce Ne Definește",
     "values": {
-      "craftsmanship": {
-        "title": "Calitate și Inovație",
-        "description": "Punem accent pe soluții de calitate, inovatoare, adaptate nevoilor fiecărui client."
+      "innovation": {
+        "title": "Soluții Custom",
+        "description": "Dezvoltăm <bold>soluții personalizate</bold> pentru fiecare client, adaptate perfect nevoilor și obiectivelor business-ului tău."
       },
       "passion": {
-        "title": "Pasiune pentru Tehnologie",
-        "description": "Suntem motivați de dorința de a învăța și de a aplica cele mai noi tehnologii în proiectele noastre."
+        "title": "De la Excel la Automatizare",
+        "description": "Te ajutăm să <bold>treci de la procese manuale</bold> (<code>Excel</code>, foaie și pix) la <bold>soluții moderne</bold> care simplifică afacerea și susțin creșterea."
       },
       "collaboration": {
-        "title": "Lucru în Echipă",
-        "description": "Colaborăm strâns cu clienții pentru a înțelege și a rezolva provocările specifice fiecărei afaceri."
+        "title": "Parteneriat pe Termen Lung",
+        "description": "Lucrăm <bold>împreună</bold> cu clienții noștri ca parteneri și oferim <bold>mentenanță după finalizarea proiectelor</bold> - succesul tău este și succesul nostru."
       },
-      "innovation": {
-        "title": "Soluții Personalizate",
-        "description": "Dezvoltăm soluții custom, adaptate cerințelor pieței și evoluției tehnologice."
+      "craftsmanship": {
+        "title": "Experiență Diversificată",
+        "description": "Combinația de experiență în <bold>corporații, startup-uri și freelance</bold> ne dă o perspectivă completă asupra pieței."
       }
     }
   },
@@ -52,25 +52,25 @@
     "areasTitle": "Servicii Oferite",
     "ecommerce": {
       "title": "Site-uri de E-Commerce",
-      "woocommerce": "Magazine online WooCommerce",
-      "wordpress": "Site-uri WordPress personalizate",
-      "opencart": "Soluții OpenCart multi-magazin",
-      "shopify": "Magazine Shopify și aplicații dedicate",
+      "woocommerce": "Magazine online <code>WooCommerce</code>",
+      "wordpress": "Site-uri <code>WordPress</code> personalizate",
+      "opencart": "Soluții <code>OpenCart</code> multi-magazin",
+      "shopify": "Magazine <code>Shopify</code> și aplicații dedicate",
       "plugins": "Module și plugin-uri custom"
     },
     "payments": {
       "title": "Integrare Sisteme de Plată",
       "gateways": "Integrare procesatori de plăți",
-      "stripe": "Implementare Stripe & PayPal",
+      "stripe": "Implementare <code>Stripe</code> & <code>PayPal</code>",
       "paypal": "Suport plăți multi-valută",
       "custom": "Sisteme de plată personalizate"
     },
     "development": {
       "title": "Soluții Custom de Business",
-      "react": "Dashboard-uri interne, aplicații React & Next.js",
-      "nodejs": "Automatizări backend Node.js",
-      "php": "Aplicații PHP & Laravel",
-      "apis": "API-uri RESTful pentru integrare"
+      "react": "Dashboard-uri pentru management intern",
+      "nodejs": "Automatizări backend <code>Node.js</code>",
+      "php": "Aplicații <code>PHP</code> & <code>Laravel</code>",
+      "apis": "API-uri <code>RESTful</code> pentru integrare"
     },
     "design": {
       "title": "Site-uri de Prezentare & UI/UX",
@@ -82,29 +82,29 @@
     "solutions": {
       "title": "Digitalizare & Automatizare",
       "custom": "Soluții software custom pentru business",
-      "headless": "Arhitecturi moderne CMS Headless",
+      "headless": "Arhitecturi moderne <code>CMS Headless</code>",
       "performance": "Optimizare performanță aplicații",
       "scalable": "Sisteme scalabile pentru creștere"
     },
     "integrations": {
       "title": "Integrări & Conectivitate",
-      "maps": "Google Maps și servicii de localizare",
-      "captchas": "Sisteme de securitate și reCAPTCHA",
+      "maps": "<code>Google Maps</code> și servicii de localizare",
+      "captchas": "Sisteme de securitate și <code>reCAPTCHA</code>",
       "databases": "Integrare baze de date",
-      "apis": "Conectare cu API-uri externe"
+      "apis": "Conectare cu <code>API-uri</code> externe"
     },
     "interactive": {
       "title": "Aplicații Interactive & 3D",
-      "threejs": "Experiențe 3D cu Three.js",
-      "webgl": "Vizualizări interactive WebGL",
-      "animations": "Animații avansate CSS & JS",
+      "threejs": "Experiențe 3D cu <code>Three.js</code>",
+      "webgl": "Vizualizări interactive <code>WebGL</code>",
+      "animations": "Animații avansate <code>CSS</code> & <code>JS</code>",
       "experiences": "Interactivitate pentru utilizatori"
     },
     "security": {
       "title": "Securitate & Conformitate",
-      "ssl": "Certificate SSL și protecție date",
+      "ssl": "Certificate <code>SSL</code> și protecție date",
       "authentication": "Sisteme de autentificare",
-      "data": "GDPR și protecția datelor",
+      "data": "<code>GDPR</code> și protecția datelor",
       "compliance": "Conformitate cu standardele de securitate"
     }
   },
@@ -154,7 +154,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 echipatehnologie.ro - Toate drepturile rezervate."
+    "copyright": "© 2025 proiectesoftware.ro - Toate drepturile rezervate."
   },
   "language": {
     "english": "English",

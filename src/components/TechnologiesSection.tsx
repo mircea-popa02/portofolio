@@ -10,81 +10,81 @@ export function TechnologiesSection() {
 			icon: ShoppingCart,
 			title: t('expertise.ecommerce.title'),
 			items: [
-				t('expertise.ecommerce.woocommerce'),
-				t('expertise.ecommerce.wordpress'),
-				t('expertise.ecommerce.opencart'),
-				t('expertise.ecommerce.shopify'),
-				t('expertise.ecommerce.plugins'),
+				'expertise.ecommerce.woocommerce',
+				'expertise.ecommerce.wordpress',
+				'expertise.ecommerce.opencart',
+				'expertise.ecommerce.shopify',
+				'expertise.ecommerce.plugins',
 			],
 		},
 		{
 			icon: CreditCard,
 			title: t('expertise.payments.title'),
 			items: [
-				t('expertise.payments.gateways'),
-				t('expertise.payments.stripe'),
-				t('expertise.payments.paypal'),
-				t('expertise.payments.custom'),
+				'expertise.payments.gateways',
+				'expertise.payments.stripe',
+				'expertise.payments.paypal',
+				'expertise.payments.custom',
 			],
 		},
 		{
 			icon: Code,
 			title: t('expertise.development.title'),
 			items: [
-				t('expertise.development.react'),
-				t('expertise.development.nodejs'),
-				t('expertise.development.php'),
-				t('expertise.development.apis'),
+				'expertise.development.react',
+				'expertise.development.nodejs',
+				'expertise.development.php',
+				'expertise.development.apis',
 			],
 		},
 		{
 			icon: Paintbrush,
 			title: t('expertise.design.title'),
 			items: [
-				t('expertise.design.bespoke'),
-				t('expertise.design.responsive'),
-				t('expertise.design.brand'),
-				t('expertise.design.conversion'),
+				'expertise.design.bespoke',
+				'expertise.design.responsive',
+				'expertise.design.brand',
+				'expertise.design.conversion',
 			],
 		},
 		{
 			icon: Globe,
 			title: t('expertise.solutions.title'),
 			items: [
-				t('expertise.solutions.custom'),
-				t('expertise.solutions.headless'),
-				t('expertise.solutions.performance'),
-				t('expertise.solutions.scalable'),
+				'expertise.solutions.custom',
+				'expertise.solutions.headless',
+				'expertise.solutions.performance',
+				'expertise.solutions.scalable',
 			],
 		},
 		{
 			icon: Database,
 			title: t('expertise.integrations.title'),
 			items: [
-				t('expertise.integrations.maps'),
-				t('expertise.integrations.captchas'),
-				t('expertise.integrations.databases'),
-				t('expertise.integrations.apis'),
+				'expertise.integrations.maps',
+				'expertise.integrations.captchas',
+				'expertise.integrations.databases',
+				'expertise.integrations.apis',
 			],
 		},
 		{
 			icon: Box,
 			title: t('expertise.interactive.title'),
 			items: [
-				t('expertise.interactive.threejs'),
-				t('expertise.interactive.webgl'),
-				t('expertise.interactive.animations'),
-				t('expertise.interactive.experiences'),
+				'expertise.interactive.threejs',
+				'expertise.interactive.webgl',
+				'expertise.interactive.animations',
+				'expertise.interactive.experiences',
 			],
 		},
 		{
 			icon: Shield,
 			title: t('expertise.security.title'),
 			items: [
-				t('expertise.security.ssl'),
-				t('expertise.security.authentication'),
-				t('expertise.security.data'),
-				t('expertise.security.compliance'),
+				'expertise.security.ssl',
+				'expertise.security.authentication',
+				'expertise.security.data',
+				'expertise.security.compliance',
 			],
 		},
 	];
@@ -109,7 +109,10 @@ export function TechnologiesSection() {
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
 						<Trans 
 							i18nKey="expertise.description"
-							components={{ bold: <strong className="text-foreground" /> }}
+							components={{ 
+								bold: <strong className="text-foreground" />,
+								code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+							}}
 						/>
 					</p>
 				</motion.div>
@@ -137,13 +140,18 @@ export function TechnologiesSection() {
 									<area.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
 									<h4 className="text-lg font-semibold mb-4">{area.title}</h4>
 									<ul className="space-y-2">
-										{area.items.map((item) => (
+										{area.items.map((itemKey) => (
 											<li
-												key={item}
+												key={itemKey}
 												className="text-muted-foreground text-sm flex items-center"
 											>
 												<div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
-												{item}
+												<Trans 
+													i18nKey={itemKey}
+													components={{ 
+														code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+													}}
+												/>
 											</li>
 										))}
 									</ul>

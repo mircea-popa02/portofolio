@@ -1,30 +1,30 @@
 import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
-import { User, Heart, Coffee, Globe2 } from 'lucide-react';
+import { User, Heart, Handshake, Blocks } from 'lucide-react';
 
 export function AboutSection() {
 	const { t } = useTranslation();
 
 	const personalValues = [
 		{
-			icon: User,
-			title: t('about.values.craftsmanship.title'),
-			description: t('about.values.craftsmanship.description'),
+			icon: Blocks,
+			title: t('about.values.innovation.title'),
+			descriptionKey: 'about.values.innovation.description',
 		},
 		{
 			icon: Heart,
 			title: t('about.values.passion.title'),
-			description: t('about.values.passion.description'),
+			descriptionKey: 'about.values.passion.description',
 		},
 		{
-			icon: Coffee,
+			icon: Handshake,
 			title: t('about.values.collaboration.title'),
-			description: t('about.values.collaboration.description'),
+			descriptionKey: 'about.values.collaboration.description',
 		},
 		{
-			icon: Globe2,
-			title: t('about.values.innovation.title'),
-			description: t('about.values.innovation.description'),
+			icon: User,
+			title: t('about.values.craftsmanship.title'),
+			descriptionKey: 'about.values.craftsmanship.description',
 		},
 	];
 
@@ -126,12 +126,21 @@ export function AboutSection() {
 								viewport={{ once: true }}
 								className="group text-center"
 							>
-								<div className="bg-card border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30">
-									<value.icon className="w-12 h-12 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
-									<h4 className="text-lg font-semibold mb-3">{value.title}</h4>
-									<p className="text-muted-foreground text-sm leading-relaxed">
-										{value.description}
-									</p>
+								<div className="bg-card border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30 relative overflow-hidden">
+									<div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+									<div className="relative z-10">
+										<value.icon className="w-12 h-12 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
+										<h4 className="text-lg font-semibold mb-3">{value.title}</h4>
+										<p className="text-muted-foreground text-sm leading-relaxed">
+											<Trans 
+												i18nKey={value.descriptionKey}
+												components={{ 
+													bold: <strong className="text-foreground" />,
+													code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+												}}
+											/>
+										</p>
+									</div>
 								</div>
 							</motion.div>
 						))}
