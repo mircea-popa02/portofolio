@@ -1,11 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // IMPORTANT: DO NOT ADD COMMENTS TO THIS FILE
 
 interface MobileNavigationWheelProps {
   currentSection: string;
+  sectionScrollData?: { 
+    progress: number; 
+    remaining: number; 
+    nextProgress: number;
+    prevProgress: number;
+  };
 }
 
 const sections = [
@@ -16,12 +23,18 @@ const sections = [
   { id: 'contact', selector: '#contact', key: 'navigation.contact' },
 ];
 
-export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelProps) {
+export function MobileNavigationWheel({ currentSection, sectionScrollData }: MobileNavigationWheelProps) {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [rotation, setRotation] = useState(0);
   const lastScrollY = useRef(0);
   const wheelRef = useRef<HTMLDivElement>(null);
+
+  // Get scroll progress values with defaults
+  const progress = sectionScrollData?.progress || 0;
+  const remaining = sectionScrollData?.remaining || 1;
+  const nextProgress = sectionScrollData?.nextProgress || 0;
+  const prevProgress = sectionScrollData?.prevProgress || 1;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -66,6 +79,12 @@ export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelP
   // Get current section info
   const currentSectionIndex = sections.findIndex(section => section.id === currentSection);
   const currentLabel = currentSectionIndex >= 0 ? t(sections[currentSectionIndex].key) : '';
+  
+  // Get next and previous section labels
+  const nextSectionIndex = (currentSectionIndex + 1) % sections.length;
+  const prevSectionIndex = (currentSectionIndex - 1 + sections.length) % sections.length;
+  const nextLabel = currentSectionIndex >= 0 ? t(sections[nextSectionIndex].key) : '';
+  const prevLabel = currentSectionIndex >= 0 ? t(sections[prevSectionIndex].key) : '';
 
   if (!isMobile) return null;
 
@@ -115,9 +134,88 @@ export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelP
             })}
           </div>
         </motion.div>
-        <div className="absolute bottom-4 right-2 pointer-events-none text-lg font-semibold">
-          {currentLabel}
+        
+        {/* Previous label - only show if not on first section */}
+        {currentSectionIndex > 0 && (
+          <div className="absolute bottom-22 left-30 pointer-events-auto">
+            <motion.button 
+              key={`prev-${prevLabel}`}
+              className="text-xs font-medium border backdrop-blur-md rounded-full px-2 py-0.5 shadow-md hover:bg-background/70 transition-colors cursor-pointer"
+              style={{
+                backgroundColor: `rgba(var(--background), ${0.2 + (prevProgress * 0.5)})`,
+                borderColor: `rgba(var(--foreground), ${0.1 + (prevProgress * 0.3)})`,
+                color: `rgba(var(--foreground), ${0.3 + (prevProgress * 0.6)})`
+              }}
+              initial={{ opacity: 0, x: -10, scale: 0.9 }}
+              animate={{ 
+                opacity: 0.2 + (prevProgress * 0.7), 
+                x: 0,
+                scale: 0.85 + (prevProgress * 0.2)
+              }}
+              exit={{ opacity: 0, x: -10, scale: 0.9 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              onClick={() => {
+                const prevSection = document.querySelector(sections[prevSectionIndex].selector);
+                prevSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {prevLabel}
+            </motion.button>
+          </div>
+        )}
+        
+        {/* Current label - bottom right position */}
+        <div className="absolute bottom-10 right-10 pointer-events-none">
+          <motion.div 
+            key={`current-${currentLabel}`}
+            className="text-md font-semibold border backdrop-blur-md rounded-full px-3 py-1 shadow-lg"
+            style={{
+              backgroundColor: `rgba(var(--foreground), ${0.85 + (remaining * 0.1)})`,
+              borderColor: `rgba(var(--foreground), ${0.8 + (remaining * 0.2)})`,
+              color: `rgba(var(--background), ${0.9 + (remaining * 0.1)})`
+            }}
+            initial={{ opacity: 0, scale: 0.8, y: 5 }}
+            animate={{ 
+              opacity: currentSectionIndex >= 0 ? 0.9 + (remaining * 0.1) : 0,
+              scale: currentSectionIndex >= 0 ? 1 + (progress * 0.1) : 0.8,
+              y: currentSectionIndex >= 0 ? 0 : 5
+            }}
+            exit={{ opacity: 0, scale: 0.8, y: 5 }}
+            transition={{ duration: 0.6, ease: "easeInOut", type: "spring", stiffness: 150, damping: 25 }}
+          >
+            {currentLabel}
+          </motion.div>
         </div>
+        
+        {/* Next label - only show if not on last section */}
+        {currentSectionIndex < sections.length - 1 && currentSectionIndex >= 0 && (
+          <div className="absolute top-42 right-20 pointer-events-auto">
+            <motion.button 
+              key={`next-${nextLabel}`}
+              className="text-xs font-medium border backdrop-blur-md rounded-full px-2 py-0.5 shadow-md hover:bg-background/70 transition-colors cursor-pointer"
+              style={{
+                backgroundColor: `rgba(var(--background), ${0.2 + (nextProgress * 0.5)})`,
+                borderColor: `rgba(var(--foreground), ${0.1 + (nextProgress * 0.3)})`,
+                color: `rgba(var(--foreground), ${0.3 + (nextProgress * 0.6)})`
+              }}
+              initial={{ opacity: 0, y: -10, scale: 0.9 }}
+              animate={{ 
+                opacity: 0.2 + (nextProgress * 0.7), 
+                y: 0,
+                scale: 0.8 + (nextProgress * 0.25)
+              }}
+              exit={{ opacity: 0, y: -10, scale: 0.9 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              onClick={() => {
+                const nextSection = document.querySelector(sections[nextSectionIndex].selector);
+                nextSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {nextLabel}
+            </motion.button>
+          </div>
+        )}
+        
         <div
           className="absolute z-10"
           style={{ bottom: `-${wheelRadius}px`, right: `-${wheelRadius}px` }}
