@@ -17,7 +17,7 @@ const sections = [
   { id: 'contact', selector: '#contact', key: 'navigation.contact' },
 ];
 
-export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelProps) {
+export function MobileNavigationWheel({ currentSection, scrollTo }: MobileNavigationWheelProps) {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [rotation, setRotation] = useState(0);
