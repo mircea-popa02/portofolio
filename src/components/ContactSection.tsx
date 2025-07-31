@@ -1,14 +1,21 @@
 import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
-import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ContactSection() {
   const { t } = useTranslation();
   
   return (
-    <section id="contact" className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-primary/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full blur-3xl opacity-30"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,18 +59,25 @@ export function ContactSection() {
                 
                 <div className="flex gap-4 mt-6">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" asChild>
                     <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-                      <Twitter className="w-4 h-4" />
+                    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+                      <Instagram className="w-4 h-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer">
+                      <Facebook className="w-4 h-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04 0z"/>
+                      </svg>
                     </a>
                   </Button>
                 </div>
@@ -75,10 +89,10 @@ export function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-card p-8 rounded-xl border border-border"
+              className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
             >
               <h3 className="text-xl font-semibold mb-4">{t('contact.quickMessage')}</h3>
-              <form className="space-y-4">
+              <form className="space-y-3">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     {t('contact.form.name')}
@@ -86,7 +100,7 @@ export function ContactSection() {
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
@@ -97,7 +111,7 @@ export function ContactSection() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
@@ -108,7 +122,7 @@ export function ContactSection() {
                   <textarea
                     id="message"
                     rows={4}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.messagePlaceholder')}
                   />
                 </div>
