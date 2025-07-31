@@ -148,7 +148,10 @@
       "emailPlaceholder": "your@email.com",
       "message": "Message",
       "messagePlaceholder": "Your message...",
-      "send": "Send Message"
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Sorry, there was an error sending your message. Please try again."
     }
   },
   "footer": {

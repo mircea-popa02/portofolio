@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
 import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useForm, ValidationError } from '@formspree/react';
 
 export function ContactSection() {
   const { t } = useTranslation();
+  const [state, handleSubmit] = useForm("xldllzbj");
   
   return (
     <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
@@ -92,7 +94,14 @@ export function ContactSection() {
               className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
             >
               <h3 className="text-xl font-semibold mb-4">{t('contact.quickMessage')}</h3>
-              <form className="space-y-3">
+              
+              {state.succeeded && (
+                <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                  {t('contact.form.success', 'Thank you! Your message has been sent successfully.')}
+                </div>
+              )}
+              
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     {t('contact.form.name')}
@@ -100,8 +109,16 @@ export function ContactSection() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    required
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.namePlaceholder')}
+                  />
+                  <ValidationError 
+                    prefix="Name" 
+                    field="name"
+                    errors={state.errors}
+                    className="text-red-500 text-sm mt-1 block"
                   />
                 </div>
                 <div>
@@ -111,8 +128,16 @@ export function ContactSection() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    required
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.emailPlaceholder')}
+                  />
+                  <ValidationError 
+                    prefix="Email" 
+                    field="email"
+                    errors={state.errors}
+                    className="text-red-500 text-sm mt-1 block"
                   />
                 </div>
                 <div>
@@ -121,13 +146,21 @@ export function ContactSection() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    required
                     rows={4}
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.messagePlaceholder')}
                   />
+                  <ValidationError 
+                    prefix="Message" 
+                    field="message"
+                    errors={state.errors}
+                    className="text-red-500 text-sm mt-1 block"
+                  />
                 </div>
-                <Button type="submit" className="w-full">
-                  {t('contact.form.send')}
+                <Button type="submit" className="w-full" disabled={state.submitting}>
+                  {state.submitting ? t('contact.form.sending', 'Sending...') : t('contact.form.send')}
                 </Button>
               </form>
             </motion.div>
