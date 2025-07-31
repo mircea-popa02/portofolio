@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { Project } from '@/data/projects';
 
@@ -53,14 +53,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
         
         <div className="flex gap-2">
-          {project.githubUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-2" />
-                Code
-              </a>
-            </Button>
-          )}
           {project.liveUrl && (
             <Button size="sm" asChild>
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">

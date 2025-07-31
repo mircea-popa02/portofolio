@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { Menu, X } from 'lucide-react';
 import { ModeToggle } from './ui/mode-toggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -11,6 +12,7 @@ interface NavigationProps {
 
 export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -30,64 +32,117 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border' 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <motion.a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo('#home');
-            }}
-            className="text-xl font-bold cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            MP
-          </motion.a>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-background/80 backdrop-blur-md border-b border-border' 
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <motion.a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('#home');
+              }}
+              className="text-xl font-bold cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              MP
+            </motion.a>
 
-          <div className="flex items-center gap-8">
-            <div className="hidden md:flex items-center gap-6">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollTo(item.href);
-                  }}
-                  className={`relative text-sm font-medium transition-colors cursor-pointer px-3 py-2 ${
-                    currentSection === item.id ? 'text-primary' : 'text-muted-foreground hover:text-primary'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
+            <div className="flex items-center gap-8">
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center gap-6">
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollTo(item.href);
+                    }}
+                    className={`relative text-sm font-medium transition-colors cursor-pointer px-3 py-2 ${
+                      currentSection === item.id ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.label}
+                    {currentSection === item.id && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                        layoutId="underline"
+                      />
+                    )}
+                  </motion.a>
+                ))}
+              </div>
+              
+              {/* Desktop Controls */}
+              <div className="hidden md:flex items-center gap-4">
+                <LanguageSwitcher />
+                <ModeToggle />
+              </div>
+
+              {/* Mobile Controls */}
+              <div className="flex md:hidden items-center gap-4">
+                <LanguageSwitcher />
+                <ModeToggle />
+                <motion.button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="p-2 text-foreground hover:text-primary transition-colors"
                   whileTap={{ scale: 0.95 }}
                 >
-                  {item.label}
-                  {currentSection === item.id && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      layoutId="underline"
-                    />
-                  )}
-                </motion.a>
-              ))}
-            </div>
-            <div className="flex items-center gap-4">
-              <LanguageSwitcher />
-              <ModeToggle />
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </motion.button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border md:hidden"
+          >
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollTo(item.href);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`text-sm font-medium transition-colors cursor-pointer px-3 py-2 ${
+                      currentSection === item.id ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                    }`}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
