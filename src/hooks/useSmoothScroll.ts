@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export const useSmoothScroll = (sections: string[]) => {
   const [currentSection, setCurrentSection] = useState('');
+  const [sectionScrollData, setSectionScrollData] = useState({ progress: 0, remaining: 1 });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,6 +55,35 @@ export const useSmoothScroll = (sections: string[]) => {
   }, [sections, navigate, location.pathname]);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (!currentSection) {
+        setSectionScrollData({ progress: 0, remaining: 1 });
+        return;
+      }
+      const element = document.getElementById(currentSection);
+      if (!element) return;
+
+      const { top, height } = element.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const scrollableDist = height - viewportHeight;
+
+      let progress = 0;
+      if (scrollableDist > 0) {
+        const scrolledInSection = -top;
+        progress = Math.max(0, Math.min(1, scrolledInSection / scrollableDist));
+      } else {
+        progress = top < 0 ? 1 : 0;
+      }
+
+      setSectionScrollData({ progress, remaining: 1 - progress });
+      console.log(`Section: ${currentSection}, Progress: ${progress}, Remaining: ${1 - progress}`);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentSection]);
+
+  useEffect(() => {
     if (location.pathname === '/' && sections.length > 0) {
       setCurrentSection(sections[0]);
     } else {
@@ -65,5 +95,5 @@ export const useSmoothScroll = (sections: string[]) => {
     }
   }, [location.pathname, sections]);
 
-  return { currentSection, scrollTo };
+  return { currentSection, scrollTo, sectionScrollData };
 };

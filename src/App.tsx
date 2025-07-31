@@ -14,7 +14,7 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll"
 const sections = ["home", "about", "technologies", "projects", "contact"];
 
 function App() {
-  const { currentSection, scrollTo } = useSmoothScroll(sections);
+  const { currentSection, scrollTo, sectionScrollData } = useSmoothScroll(sections);
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ function App() {
         <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
-        <MobileNavigationWheel currentSection={currentSection} />
+        <MobileNavigationWheel currentSection={currentSection} sectionScrollData={sectionScrollData} />
         
         <main>
           <div id="home">
