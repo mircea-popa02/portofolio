@@ -186,21 +186,18 @@ export function TechnologiesSection() {
 						whileInView={{ opacity: 1 }}
 						transition={{ duration: 1, delay: 0.5 }}
 						viewport={{ once: true }}
-						className="relative overflow-hidden py-6 md:py-12 mt-4 md:mt-8"
+						className="py-6 md:py-12 mt-4 md:mt-8"
 					>
-						<div className="flex animate-scroll-mobile md:animate-scroll-desktop">
-							{[...techIcons, ...techIcons].map((tech, index) => (
+						<div className="flex justify-center flex-wrap gap-4 md:gap-8">
+							{techIcons.map((tech, index) => (
 								<div
 									key={index}
-									className="flex-shrink-0 mx-2 md:mx-6 flex flex-col items-center group"
+									className="flex flex-col items-center group"
 								>
 									<div className="relative">
-										{/* Glowing ring effect - disabled on mobile for performance */}
 										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
 
-										{/* Main icon container */}
-										<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20 animate-[float_4s_ease-in-out_infinite] md:animate-[float_6s_ease-in-out_infinite]"
-											style={{ animationDelay: `${(index % techIcons.length) * 0.3}s` }}>
+										<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20">
 											<img
 												src={tech.src}
 												alt={tech.alt}
