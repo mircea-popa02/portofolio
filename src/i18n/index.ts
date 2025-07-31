@@ -17,7 +17,8 @@ i18n
         translation: ro
       }
     },
-    fallbackLng: 'en',
+    fallbackLng: 'ro',
+    lng: 'ro', // Set Romanian as default
     debug: false,
     
     interpolation: {

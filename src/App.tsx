@@ -1,7 +1,9 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { useTranslation } from "react-i18next"
+import { LanguageSync } from "./components/LanguageSync"
 import { CustomCursor } from "./components/CustomCursor"
 import { Navigation } from "./components/Navigation"
+import { MobileNavigationWheel } from "./components/MobileNavigationWheel"
 import { HeroSection } from "./components/HeroSection"
 import { AboutSection } from "./components/AboutSection"
 import { TechnologiesSection } from "./components/TechnologiesSection"
@@ -18,8 +20,10 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <div className="min-h-screen">
+        <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
+        <MobileNavigationWheel scrollTo={scrollTo} currentSection={currentSection} />
         
         <main>
           <div id="home">
