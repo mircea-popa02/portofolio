@@ -2,12 +2,33 @@ import { ShoppingCart, Code, Box, CreditCard, Database, Shield, Paintbrush, Glob
 import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
 
+import AngularIcon from '../assets/angular.svg';
+import CssIcon from '../assets/css.svg';
+import Html5Icon from '../assets/html5.svg';
+import JavascriptIcon from '../assets/javascript.svg';
+import ReactIcon from '../assets/react.svg';
+import ShopifyIcon from '../assets/shopify.svg';
+import WoocommerceIcon from '../assets/woocommerce.svg';
+import WordpressIcon from '../assets/wordpress.svg';
+
 export function TechnologiesSection() {
 	const { t } = useTranslation();
-	
+
+	const techIcons = [
+		{ src: ReactIcon, alt: 'React', name: 'React' },
+		{ src: AngularIcon, alt: 'Angular', name: 'Angular' },
+		{ src: JavascriptIcon, alt: 'JavaScript', name: 'JavaScript' },
+		{ src: Html5Icon, alt: 'HTML5', name: 'HTML5' },
+		{ src: CssIcon, alt: 'CSS', name: 'CSS' },
+		{ src: ShopifyIcon, alt: 'Shopify', name: 'Shopify' },
+		{ src: WoocommerceIcon, alt: 'WooCommerce', name: 'WooCommerce' },
+		{ src: WordpressIcon, alt: 'WordPress', name: 'WordPress' },
+	];
+
 	const expertise = [
 		{
 			icon: ShoppingCart,
+			key: 'ecommerce',
 			title: t('expertise.ecommerce.title'),
 			items: [
 				'expertise.ecommerce.woocommerce',
@@ -159,6 +180,67 @@ export function TechnologiesSection() {
 							</motion.div>
 						))}
 					</div>
+
+					<motion.div
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ duration: 1, delay: 0.5 }}
+						viewport={{ once: true }}
+						className="relative overflow-hidden py-12 mt-8"
+					>
+						{/* Background gradient overlay */}
+
+						<div className="flex animate-[scroll_20s_linear_infinite]">
+							{techIcons.map((tech, index) => (
+								<div
+									key={`first-${index}`}
+									className="flex-shrink-0 mx-6 flex flex-col items-center group"
+								>
+									<div className="relative">
+										{/* Glowing ring effect */}
+										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
+										
+										{/* Main icon container */}
+										<div className="relative w-20 h-20 bg-gradient-to-br from-card via-card to-muted/50 border-2 border-primary/20 rounded-full p-4 group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg hover:shadow-xl hover:shadow-primary/20 animate-[float_6s_ease-in-out_infinite]"
+											style={{ animationDelay: `${index * 0.5}s` }}>
+											<img
+												src={tech.src}
+												alt={tech.alt}
+												className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110 dark:invert dark:brightness-0"
+											/>
+										</div>
+									</div>
+									<span className="text-xs font-medium text-muted-foreground mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary">
+										{tech.name}
+									</span>
+								</div>
+							))}
+							{techIcons.map((tech: { src: string; alt: string; name: string }, index: number) => (
+								<div
+									key={`second-${index}`}
+									className="flex-shrink-0 mx-6 flex flex-col items-center group"
+								>
+									<div className="relative">
+										{/* Glowing ring effect */}
+										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
+										
+										{/* Main icon container */}
+										<div className="relative w-20 h-20 bg-gradient-to-br from-card via-card to-muted/50 border-2 border-primary/20 rounded-full p-4 group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg hover:shadow-xl hover:shadow-primary/20 animate-[float_6s_ease-in-out_infinite]"
+											style={{ animationDelay: `${index * 0.5}s` }}>
+											<img
+												src={tech.src}
+												alt={tech.alt}
+												className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110 dark:invert dark:brightness-0"
+											/>
+										</div>
+									</div>
+									<span className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+										{tech.name}
+									</span>
+								</div>
+							))}
+						</div>
+					</motion.div>
 				</motion.div>
 			</div>
 		</section>

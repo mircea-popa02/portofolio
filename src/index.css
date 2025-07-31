@@ -189,3 +189,23 @@ html {
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
 }
+
+/* Technology icons scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Floating animation for tech icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
