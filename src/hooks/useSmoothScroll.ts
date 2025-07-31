@@ -1,228 +1,171 @@
-import { useState, useEffect, useCallback } from 'react';
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const useSmoothScroll = (sections: string[]) => {
-  const [currentSection, setCurrentSection] = useState('');
-  const [sectionScrollData, setSectionScrollData] = useState({ 
-    progress: 0, 
+interface SectionScrollData {
+  progress: number;
+  remaining: number;
+  nextProgress: number;
+  prevProgress: number;
+}
+
+export function useSmoothScroll(sections: string[]) {
+  const [currentSection, setCurrentSection] = useState<string>('');
+  const [scrollData, setScrollData] = useState<SectionScrollData>({
+    progress: 0,
     remaining: 1,
     nextProgress: 0,
-    prevProgress: 0 
+    prevProgress: 0,
   });
   const navigate = useNavigate();
   const location = useLocation();
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
+  // Scroll to a section by selector
   const scrollTo = useCallback((selector: string) => {
-    const element = document.querySelector(selector) as HTMLElement;
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth',
-      });
+    const el = document.querySelector(selector);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
       navigate(selector, { replace: true });
     }
   }, [navigate]);
 
-  const detectCurrentSectionFallback = useCallback(() => {
-    const viewportHeight = window.innerHeight;
-    const scrollTop = window.scrollY;
-    
-    for (const sectionId of sections) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const elementTop = scrollTop + rect.top;
-        const elementBottom = elementTop + rect.height;
-        
-        // Check if section is currently in view
-        if (scrollTop >= elementTop - viewportHeight * 0.5 && 
-            scrollTop < elementBottom - viewportHeight * 0.3) {
-          return sectionId;
+  // Fallback: detect section by scroll position
+  const detectSectionFallback = useCallback(() => {
+    const viewport = window.innerHeight;
+    const scrollY = window.scrollY;
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        const elTop = scrollY + rect.top;
+        const elBottom = elTop + rect.height;
+        if (scrollY >= elTop - viewport * 0.5 && scrollY < elBottom - viewport * 0.3) {
+          return id;
         }
       }
     }
-    
-    return sections[0]; // Default to first section
+    return sections[0] || '';
   }, [sections]);
 
+  // IntersectionObserver for section detection
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let mostVisibleEntry: IntersectionObserverEntry | null = null;
-        let maxVisibility = 0;
+    if (!sections.length) return;
+    if (observerRef.current) observerRef.current.disconnect();
 
-        // Find the entry with the highest visibility ratio
+    observerRef.current = new window.IntersectionObserver(
+      (entries) => {
+        let best: IntersectionObserverEntry | null = null;
+        let bestScore = 0;
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            // Calculate a weighted visibility score
             const rect = entry.target.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            
-            // How much of the element is visible in the viewport
-            const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            // Normalize by the smaller of viewport height or element height
-            const visibilityRatio = visibleHeight / Math.min(rect.height, viewportHeight);
-            
-            // Prefer elements that are centered in the viewport (give them a bonus)
-            const distanceFromCenter = Math.abs((rect.top + rect.bottom) / 2 - viewportHeight / 2);
-            const centeringFactor = 1 - (distanceFromCenter / (viewportHeight / 2)) * 0.3; // Up to 30% bonus for centering
-            
-            const totalVisibility = visibilityRatio * centeringFactor;
-            
-            if (totalVisibility > maxVisibility) {
-              maxVisibility = totalVisibility;
-              mostVisibleEntry = entry;
+            const vh = window.innerHeight;
+            const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+            const ratio = visible / Math.min(rect.height, vh);
+            const centerDist = Math.abs((rect.top + rect.bottom) / 2 - vh / 2);
+            const centerBonus = 1 - (centerDist / (vh / 2)) * 0.3;
+            const score = ratio * centerBonus;
+            if (score > bestScore) {
+              bestScore = score;
+              best = entry;
             }
           }
         }
-
-        if (mostVisibleEntry && maxVisibility > 0.1) { // Lower threshold for more reliable detection
-          const id = `#${mostVisibleEntry.target.id}`;
-          const newSection = mostVisibleEntry.target.id;
-          
-          if (newSection !== currentSection) {
-            console.log(`Section changed: ${currentSection} -> ${newSection}, visibility: ${maxVisibility.toFixed(3)}`);
-            setCurrentSection(newSection);
-            if (location.pathname !== id) {
-              navigate(id, { replace: true });
+        if (best && bestScore > 0.1) {
+          const id = best.target.id;
+          if (id && id !== currentSection) {
+            setCurrentSection(id);
+            if (location.pathname !== `#${id}`) {
+              navigate(`#${id}`, { replace: true });
             }
           }
         }
       },
       {
-        rootMargin: '-10% 0px -10% 0px', // Slightly smaller detection area for more precise detection
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+        rootMargin: '-10% 0px -10% 0px',
+        threshold: Array.from({ length: 11 }, (_, i) => i / 10),
       }
     );
 
     sections.forEach((id) => {
-      const element = document.querySelector(`#${id}`);
-      if (element) {
-        observer.observe(element);
-        console.log(`Observing section: ${id}`);
-      } else {
-        console.warn(`Section element not found: ${id}`);
-      }
+      const el = document.getElementById(id);
+      if (el) observerRef.current?.observe(el);
     });
 
     return () => {
-      sections.forEach((id) => {
-        const element = document.querySelector(`#${id}`);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
+      observerRef.current?.disconnect();
     };
-  }, [sections, navigate, location.pathname, currentSection]);
+  }, [sections, currentSection, navigate, location.pathname]);
 
+  // Scroll progress calculation
   useEffect(() => {
-    let rafId: number;
-    
-    const handleScroll = () => {
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        // Fallback section detection if IntersectionObserver fails
-        if (!currentSection) {
-          const fallbackSection = detectCurrentSectionFallback();
-          if (fallbackSection && fallbackSection !== currentSection) {
-            console.log(`Fallback detection: ${fallbackSection}`);
-            setCurrentSection(fallbackSection);
-            navigate(`#${fallbackSection}`, { replace: true });
-          }
-        }
-        
-        if (!currentSection) {
-          setSectionScrollData({ 
-            progress: 0, 
-            remaining: 1,
-            nextProgress: 0,
-            prevProgress: 0
-          });
+        const id = currentSection || detectSectionFallback();
+        if (!id) {
+          setScrollData({ progress: 0, remaining: 1, nextProgress: 0, prevProgress: 0 });
           return;
         }
-        
-        const element = document.getElementById(currentSection);
-        if (!element) return;
-
-        const { top, bottom, height } = element.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        
+        const el = document.getElementById(id);
+        if (!el) return;
+        const { top, bottom, height } = el.getBoundingClientRect();
+        const vh = window.innerHeight;
         let progress = 0;
-        
-        // More reliable progress calculation
-        if (height <= viewportHeight) {
-          // For sections smaller than or equal to viewport height
+        if (height <= vh) {
           if (top <= 0 && bottom >= 0) {
-            // Section is crossing the viewport
-            const visibleFromTop = Math.min(viewportHeight, bottom);
-            const totalPassedHeight = Math.min(height, Math.abs(top) + visibleFromTop);
-            progress = Math.min(1, totalPassedHeight / height);
+            const visible = Math.min(vh, bottom);
+            const passed = Math.min(height, Math.abs(top) + visible);
+            progress = Math.min(1, passed / height);
           } else if (top > 0) {
-            // Section hasn't started scrolling yet
             progress = 0;
           } else {
-            // Section has completely passed
             progress = 1;
           }
         } else {
-          // For sections larger than viewport height
           if (top <= 0) {
-            // Calculate how much of the section has been scrolled through
-            const scrolledDistance = Math.abs(top);
-            const maxScrollDistance = height - viewportHeight;
-            progress = Math.min(1, scrolledDistance / maxScrollDistance);
+            const scrolled = Math.abs(top);
+            const maxScroll = height - vh;
+            progress = Math.min(1, scrolled / maxScroll);
           } else {
-            // Section hasn't started yet
             progress = 0;
           }
         }
-        
-        // Apply a more subtle easing function for smoother transitions
-        const smoothProgress = progress < 0.5 
-          ? 4 * progress * progress * progress 
+        const smooth = progress < 0.5
+          ? 4 * progress * progress * progress
           : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-        // Calculate opposing progress values for next and previous navigation
-        // Use a more responsive curve for better visual feedback
-        // nextProgress starts at 0 and increases as we scroll down through the section
-        const nextProgress = Math.min(1, Math.pow(smoothProgress, 0.8) * 1.1);
-        // prevProgress starts at 1 and decreases as we scroll down through the section  
-        const prevProgress = Math.max(0, Math.pow(1 - smoothProgress, 0.8));
-
-        setSectionScrollData({ 
-          progress: smoothProgress, 
-          remaining: 1 - smoothProgress,
-          nextProgress: nextProgress,
-          prevProgress: prevProgress
+        const nextProgress = Math.min(1, Math.pow(smooth, 0.8) * 1.1);
+        const prevProgress = Math.max(0, Math.pow(1 - smooth, 0.8));
+        setScrollData({
+          progress: smooth,
+          remaining: 1 - smooth,
+          nextProgress,
+          prevProgress,
         });
-        
-        // Track significant changes in progress for debugging
-        if (Math.abs(smoothProgress - (sectionScrollData?.progress || 0)) > 0.01) {
-          console.log(`Section: ${currentSection}, Raw: ${progress.toFixed(3)}, Smooth: ${smoothProgress.toFixed(3)}, Next: ${nextProgress.toFixed(3)}, Prev: ${prevProgress.toFixed(3)}, Top: ${element.getBoundingClientRect().top.toFixed(0)}px`);
-        }
       });
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [currentSection, sectionScrollData?.progress, detectCurrentSectionFallback, navigate]);
+  }, [currentSection, detectSectionFallback]);
 
+  // Sync section with location on mount
   useEffect(() => {
-    if (location.pathname === '/' && sections.length > 0) {
+    if (!sections.length) return;
+    if (location.pathname === '/' && sections[0]) {
       setCurrentSection(sections[0]);
     } else {
-      const sectionId = location.pathname.slice(1);
-      if (sections.includes(sectionId)) {
-        setCurrentSection(sectionId);
-        document.querySelector(`#${sectionId}`)?.scrollIntoView();
+      const id = location.pathname.replace(/^#?\/?/, '');
+      if (sections.includes(id)) {
+        setCurrentSection(id);
+        document.getElementById(id)?.scrollIntoView();
       }
     }
   }, [location.pathname, sections]);
 
-  return { currentSection, scrollTo, sectionScrollData };
-};
+  return { currentSection, scrollTo, sectionScrollData: scrollData };
+}
