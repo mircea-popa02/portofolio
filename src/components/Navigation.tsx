@@ -25,6 +25,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
   }, []);
 
   const navItems = [
+    { href: '#home', label: t('navigation.home'), id: 'home' },
     { href: '#about', label: t('navigation.about'), id: 'about' },
     { href: '#technologies', label: t('navigation.technologies'), id: 'technologies' },
     { href: '#projects', label: t('navigation.projects'), id: 'projects' },
@@ -80,6 +81,11 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                       <motion.div
                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                         layoutId="underline"
+                        transition={{ 
+                          type: "tween", 
+                          duration: 0.2,
+                          ease: "easeInOut"
+                        }}
                       />
                     )}
                   </motion.a>
