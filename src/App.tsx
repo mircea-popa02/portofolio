@@ -23,7 +23,7 @@ function App() {
         <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
-        <MobileNavigationWheel scrollTo={scrollTo} currentSection={currentSection} />
+        <MobileNavigationWheel currentSection={currentSection} />
         
         <main>
           <div id="home">

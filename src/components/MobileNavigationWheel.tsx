@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 
 interface MobileNavigationWheelProps {
   currentSection: string;
-  scrollTo: (selector: string) => void;
 }
 
 const sections = [
@@ -17,14 +16,12 @@ const sections = [
   { id: 'contact', selector: '#contact', key: 'navigation.contact' },
 ];
 
-export function MobileNavigationWheel({ currentSection, scrollTo }: MobileNavigationWheelProps) {
+export function MobileNavigationWheel({ currentSection }: MobileNavigationWheelProps) {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [rotation, setRotation] = useState(0);
   const lastScrollY = useRef(0);
   const wheelRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const startY = useRef(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -66,30 +63,6 @@ export function MobileNavigationWheel({ currentSection, scrollTo }: MobileNaviga
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
 
-  // Touch interaction handlers
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!isMobile) return;
-    isDragging.current = true;
-    startY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging.current || !isMobile) return;
-    
-    const currentY = e.touches[0].clientY;
-    const deltaY = startY.current - currentY;
-    
-    if (Math.abs(deltaY) > 5) {
-      // Scroll the page based on the drag direction
-      window.scrollBy(0, deltaY * 2);
-      startY.current = currentY;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    isDragging.current = false;
-  };
-
   // Get current section info
   const currentSectionIndex = sections.findIndex(section => section.id === currentSection);
   const currentLabel = currentSectionIndex >= 0 ? t(sections[currentSectionIndex].key) : '';
@@ -106,9 +79,6 @@ export function MobileNavigationWheel({ currentSection, scrollTo }: MobileNaviga
         className="relative pointer-events-auto"
         style={{ width: wheelDiameter, height: wheelDiameter }}
         ref={wheelRef}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         {/* Rotating wheel component */}
         <motion.div
