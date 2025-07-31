@@ -55,7 +55,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              MP
+              proiecte<strong className='text-foreground'>software.ro</strong>
             </motion.a>
 
             <div className="flex items-center gap-8">

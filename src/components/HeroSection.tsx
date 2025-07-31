@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Button } from './ui/button';
 import { ArrowDown } from 'lucide-react';
 import { HeroBackground } from './HeroBackground';
@@ -26,7 +26,10 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold mb-4 text-center"
           >
-            {t('hero.title')}
+            <Trans 
+              i18nKey="hero.title"
+              components={{ bold: <strong className="text-primary" /> }}
+            />
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -34,7 +37,10 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-2xl"
           >
-            {t('hero.subtitle')}
+            <Trans 
+              i18nKey="hero.subtitle"
+              components={{ bold: <strong className="text-foreground" /> }}
+            />
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

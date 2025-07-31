@@ -1,160 +1,160 @@
 {
   "navigation": {
     "home": "Acasă",
-    "about": "Despre",
-    "technologies": "Tehnologii",
+    "about": "Despre Echipă",
+    "technologies": "Servicii",
     "projects": "Proiecte",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Ai un proiect în minte?",
-    "subtitle": "Dezvoltator Creativ & Creez experiențe digitale captivante.",
-    "viewWork": "Vezi Munca Mea",
-    "getInTouch": "Contactează-mă",
-    "scrollDown": "Derulează pentru a explora"
+    "title": "Ai un <bold>proiect</bold> în minte?",
+    "subtitle": "Suntem <bold>tineri pasionați</bold>, absolvenți ai Facultății de Automatică și Calculatoare, gata să aducem inovația în afacerea ta.",
+    "viewWork": "Vezi proiectele noastre",
+    "getInTouch": "Contactează-ne",
+    "scrollDown": "Derulează pentru detalii"
   },
   "about": {
-    "title": "Despre Mine",
-    "subtitle": "Dezvoltator pasionat care creează experiențe digitale care fac diferența. Permite-mi să îți povestesc puțin despre călătoria mea și ce mă motivează.",
+    "title": "Despre Noi",
+    "subtitle": "Suntem o echipă de <bold>tineri entuziaști</bold>, specializați în tehnologie și automatizare, dedicați să ajutăm afacerile să evolueze prin soluții digitale personalizate.",
     "story": {
-      "title": "Povestea Mea",
-      "paragraph1": "Cu peste 8 ani de experiență în dezvoltarea web, am avut privilegiul să lucrez cu afaceri de la startup-uri la întreprinderi consacrate, ajutându-le să își aducă viziunile digitale la viață.",
-      "paragraph2": "Călătoria mea a început cu o curiozitate despre cum funcționează site-urile web, care s-a transformat rapid într-o pasiune pentru crearea de experiențe digitale excepționale. Mă specializez în soluții e-commerce, dar interesele mele se întind peste tehnologii web moderne, experiențe 3D și tot ce se află între ele."
+      "title": "Povestea Noastră",
+      "paragraph1": "Ne-am format ca echipă la <bold>Universitatea Politehnica București</bold>, Facultatea de Automatică și Calculatoare, unde pasiunea pentru tehnologie ne-a unit.",
+      "paragraph2": "Credem că fiecare business are nevoi unice. Oferim <bold>soluții adaptate</bold> pentru automatizarea proceselor, promovarea online și digitalizarea operațiunilor."
     },
     "philosophy": {
-      "title": "Filozofia Mea",
-      "paragraph1": "Cred că site-urile web grozave sunt mai mult decât cod—sunt experiențe digitale care ar trebui să încânte utilizatorii în timp ce îndeplinesc obiectivele de afaceri. Fiecare proiect este o oportunitate de a crea ceva semnificativ.",
-      "paragraph2": "Fie că este o platformă e-commerce complexă sau o pagină de destinație simplă, abordez fiecare proiect cu același nivel de dedicare, atenție la detalii și angajament față de excelență."
+      "title": "Viziunea Noastră",
+      "paragraph1": "<bold>Automatizarea și digitalizarea</bold> sunt cheia succesului în mediul de business modern. Ne dorim să simplificăm procesele și să creăm experiențe digitale eficiente.",
+      "paragraph2": "Fiecare proiect este abordat cu <bold>profesionalism, atenție la detalii</bold> și dorința de a aduce valoare reală clienților noștri."
     },
-    "valuesTitle": "Ce Mă Motivează",
+    "valuesTitle": "Ce Ne Motivează",
     "values": {
       "craftsmanship": {
-        "title": "Meșteșug de Calitate",
-        "description": "Fiecare linie de cod este scrisă cu scop, fiecare decizie de design este deliberată, și fiecare interacțiune cu utilizatorul este atent considerată."
+        "title": "Calitate și Inovație",
+        "description": "Punem accent pe soluții de calitate, inovatoare, adaptate nevoilor fiecărui client."
       },
       "passion": {
-        "title": "Pasiune Genuină",
-        "description": "Îmi iubesc ceea ce fac, și se vede în munca mea. Tehnologia mă entuziasmează, și sunt mereu dornic să învăț și să experimentez cu abordări noi."
+        "title": "Pasiune pentru Tehnologie",
+        "description": "Suntem motivați de dorința de a învăța și de a aplica cele mai noi tehnologii în proiectele noastre."
       },
       "collaboration": {
-        "title": "Colaborare Adevărată",
-        "description": "Cele mai bune proiecte se întâmplă când clientul și dezvoltatorul lucrează împreună ca parteneri, împărtășind idei și construind ceva uimitor împreună."
+        "title": "Lucru în Echipă",
+        "description": "Colaborăm strâns cu clienții pentru a înțelege și a rezolva provocările specifice fiecărei afaceri."
       },
       "innovation": {
-        "title": "Gândire Progresistă",
-        "description": "Rămân la curent cu tehnologiile și tendințele emergente, căutând mereu modalități de a împinge granițele și de a crea soluții de ultimă generație."
+        "title": "Soluții Personalizate",
+        "description": "Dezvoltăm soluții custom, adaptate cerințelor pieței și evoluției tehnologice."
       }
     }
   },
   "expertise": {
-    "title": "Tehnologii & Expertiză",
-    "description": "Specializat în tehnologii web moderne și soluții e-commerce, livrând aplicații scalabile și performante cu focus pe experiența utilizatorului și rezultatele business-ului.",
-    "areasTitle": "Domenii de Expertiză",
+    "title": "Servicii & Expertiză",
+    "description": "Oferim <bold>servicii digitale moderne</bold> pentru automatizarea și digitalizarea afacerilor, cu accent pe eficiență, scalabilitate și rezultate.",
+    "areasTitle": "Servicii Oferite",
     "ecommerce": {
-      "title": "Platforme E-Commerce",
-      "woocommerce": "Dezvoltare WordPress WooCommerce",
-      "wordpress": "Soluții WordPress Personalizate",
-      "opencart": "Gestionare Multi-magazin OpenCart",
-      "shopify": "Dezvoltare Teme & Aplicații Shopify",
-      "plugins": "Plugin-uri E-commerce Personalizate"
+      "title": "Site-uri de E-Commerce",
+      "woocommerce": "Magazine online WooCommerce",
+      "wordpress": "Site-uri WordPress personalizate",
+      "opencart": "Soluții OpenCart multi-magazin",
+      "shopify": "Magazine Shopify și aplicații dedicate",
+      "plugins": "Module și plugin-uri custom"
     },
     "payments": {
-      "title": "Integrare Plăți",
-      "gateways": "Integrare Gateway-uri de Plată",
+      "title": "Integrare Sisteme de Plată",
+      "gateways": "Integrare procesatori de plăți",
       "stripe": "Implementare Stripe & PayPal",
-      "paypal": "Suport Multi-valută",
-      "custom": "Soluții de Plată Personalizate"
+      "paypal": "Suport plăți multi-valută",
+      "custom": "Sisteme de plată personalizate"
     },
     "development": {
-      "title": "Dezvoltare Full-Stack",
-      "react": "Aplicații React & Next.js",
-      "nodejs": "Dezvoltare Backend Node.js",
-      "php": "Soluții PHP & Laravel",
-      "apis": "Dezvoltare API RESTful"
+      "title": "Soluții Custom de Business",
+      "react": "Dashboard-uri interne, aplicații React & Next.js",
+      "nodejs": "Automatizări backend Node.js",
+      "php": "Aplicații PHP & Laravel",
+      "apis": "API-uri RESTful pentru integrare"
     },
     "design": {
-      "title": "Design UI/UX",
-      "bespoke": "Sisteme de Design UI Personalizate",
-      "responsive": "Design Web Responsiv",
-      "brand": "Identitate de Brand & Ghiduri",
-      "conversion": "Optimizare Rata de Conversie"
+      "title": "Site-uri de Prezentare & UI/UX",
+      "bespoke": "Design personalizat pentru brand",
+      "responsive": "Site-uri responsive pentru orice dispozitiv",
+      "brand": "Identitate vizuală și branding",
+      "conversion": "Optimizare pentru conversii"
     },
     "solutions": {
-      "title": "Soluții Web Personalizate",
-      "custom": "Soluții Website Personalizate",
-      "headless": "Arhitectură CMS Headless",
-      "performance": "Optimizare Performanță",
-      "scalable": "Aplicații Web Scalabile"
+      "title": "Digitalizare & Automatizare",
+      "custom": "Soluții software custom pentru business",
+      "headless": "Arhitecturi moderne CMS Headless",
+      "performance": "Optimizare performanță aplicații",
+      "scalable": "Sisteme scalabile pentru creștere"
     },
     "integrations": {
-      "title": "Integrări Terțe",
-      "maps": "Google Maps & Servicii de Locație",
-      "captchas": "reCAPTCHA & Sisteme de Securitate",
-      "databases": "Proiectare & Integrare Baze de Date",
-      "apis": "Integrări API Externe"
+      "title": "Integrări & Conectivitate",
+      "maps": "Google Maps și servicii de localizare",
+      "captchas": "Sisteme de securitate și reCAPTCHA",
+      "databases": "Integrare baze de date",
+      "apis": "Conectare cu API-uri externe"
     },
     "interactive": {
-      "title": "3D & Interactiv",
-      "threejs": "Experiențe 3D Three.js",
-      "webgl": "Vizualizări WebGL",
-      "animations": "Animații CSS & JS Avansate",
-      "experiences": "Experiențe Interactive pentru Utilizatori"
+      "title": "Aplicații Interactive & 3D",
+      "threejs": "Experiențe 3D cu Three.js",
+      "webgl": "Vizualizări interactive WebGL",
+      "animations": "Animații avansate CSS & JS",
+      "experiences": "Interactivitate pentru utilizatori"
     },
     "security": {
-      "title": "Securitate & Performanță",
-      "ssl": "Gestionare Certificate SSL",
-      "authentication": "Sisteme de Autentificare Utilizatori",
-      "data": "Protecția Datelor & GDPR",
-      "compliance": "Conformitate cu Securitatea"
+      "title": "Securitate & Conformitate",
+      "ssl": "Certificate SSL și protecție date",
+      "authentication": "Sisteme de autentificare",
+      "data": "GDPR și protecția datelor",
+      "compliance": "Conformitate cu standardele de securitate"
     }
   },
   "projects": {
-    "featuredTitle": "Proiecte Principale",
-    "featuredDescription": "O prezentare a muncii mele recente, cuprinzând aplicații web, experimente creative și contribuții open-source.",
+    "featuredTitle": "Proiecte Reprezentative",
+    "featuredDescription": "Vezi câteva dintre proiectele noastre: soluții digitale, automatizări și site-uri moderne pentru diverse afaceri.",
     "otherTitle": "Alte Proiecte",
-    "viewProject": "Vezi Proiectul",
-    "viewCode": "Vezi Codul",
+    "viewProject": "Vezi detalii",
+    "viewCode": "Vezi codul sursă",
     "items": {
       "ecommerce": {
-        "title": "Platformă E-Commerce",
-        "description": "O soluție e-commerce full-stack construită cu React, Node.js și PostgreSQL. Caracteristicile includ autentificare utilizatori, procesare plăți și dashboard admin."
+        "title": "Magazin Online Personalizat",
+        "description": "Platformă e-commerce adaptată nevoilor clientului, cu integrare plăți și administrare facilă."
       },
       "taskmanager": {
-        "title": "Aplicație Management Sarcini",
-        "description": "O aplicație colaborativă de management al sarcinilor cu actualizări în timp real, funcționalitate drag-and-drop și caracteristici de colaborare în echipă."
+        "title": "Dashboard Intern",
+        "description": "Soluție pentru managementul sarcinilor și automatizarea proceselor interne."
       },
       "taskmanager2": {
-        "title": "Aplicație Management Sarcini",
-        "description": "O aplicație colaborativă de management al sarcinilor cu actualizări în timp real, funcționalitate drag-and-drop și caracteristici de colaborare în echipă."
+        "title": "Dashboard Intern",
+        "description": "Soluție pentru managementul sarcinilor și automatizarea proceselor interne."
       },
       "weather": {
-        "title": "Dashboard Meteo",
-        "description": "Un dashboard meteo responsiv care afișează condițiile actuale și prognoze folosind API-uri meteo externe cu vizualizări frumoase ale datelor."
+        "title": "Aplicație Informativă",
+        "description": "Dashboard cu date în timp real, integrat cu API-uri externe pentru vizualizare și analiză."
       },
       "portfolio": {
-        "title": "Site Portfolio",
-        "description": "Un site portfolio modern construit cu React, Three.js și Framer Motion cu animații 3D și efecte de derulare lină."
+        "title": "Site de Prezentare",
+        "description": "Site modern pentru promovarea afacerii, cu design atractiv și funcționalități interactive."
       }
     }
   },
   "contact": {
-    "title": "Să Lucrăm Împreună",
-    "subtitle": "Ai un proiect în minte? Mi-ar plăcea să aud despre el. Să creăm ceva minunat împreună.",
-    "getInTouch": "Contactează-mă",
-    "description": "Sunt întotdeauna deschis să discut despre noi oportunități, proiecte creative, sau doar să am o conversație despre tehnologie și dezvoltare.",
-    "quickMessage": "Mesaj Rapid",
+    "title": "Hai să discutăm despre afacerea ta",
+    "subtitle": "Ai nevoie de <bold>automatizare sau promovare online</bold>? Suntem aici să te ajutăm să-ți duci business-ul la următorul nivel.",
+    "getInTouch": "Contactează echipa",
+    "description": "Suntem deschiși la colaborări, <bold>proiecte noi</bold> și discuții despre digitalizarea afacerii tale.",
+    "quickMessage": "Trimite un mesaj rapid",
     "form": {
       "name": "Nume",
       "namePlaceholder": "Numele tău",
       "email": "Email",
       "emailPlaceholder": "email@tau.com",
       "message": "Mesaj",
-      "messagePlaceholder": "Mesajul tău...",
-      "send": "Trimite Mesajul"
+      "messagePlaceholder": "Scrie-ne despre nevoile tale...",
+      "send": "Trimite mesajul"
     }
   },
   "footer": {
-    "copyright": "© 2025 Mircea Popa. Toate drepturile rezervate."
+    "copyright": "© 2025 echipatehnologie.ro - Toate drepturile rezervate."
   },
   "language": {
     "english": "English",

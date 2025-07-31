@@ -7,24 +7,24 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Have a project in mind?",
-    "subtitle": "Creative Developer & Crafting immersive digital experiences.",
+    "title": "Have a <bold>project</bold> in mind?",
+    "subtitle": "<bold>Creative Developer</bold> & Crafting immersive digital experiences.",
     "viewWork": "View My Work",
     "getInTouch": "Get In Touch",
     "scrollDown": "Scroll to explore"
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Passionate developer crafting digital experiences that make a difference. Let me tell you a bit about my journey and what drives me.",
+    "subtitle": "Passionate developer crafting <bold>digital experiences</bold> that make a difference. Let me tell you a bit about my journey and what drives me.",
     "story": {
       "title": "My Story",
-      "paragraph1": "With over 8 years of experience in web development, I've had the privilege of working with businesses from startups to established enterprises, helping them bring their digital visions to life.",
-      "paragraph2": "My journey began with a curiosity about how websites work, which quickly evolved into a passion for creating exceptional digital experiences. I specialize in e-commerce solutions, but my interests span across modern web technologies, 3D experiences, and everything in between."
+      "paragraph1": "With over <bold>8 years of experience</bold> in web development, I've had the privilege of working with businesses from startups to established enterprises, helping them bring their digital visions to life.",
+      "paragraph2": "My journey began with a curiosity about how websites work, which quickly evolved into a passion for creating <bold>exceptional digital experiences</bold>. I specialize in e-commerce solutions, but my interests span across modern web technologies, 3D experiences, and everything in between."
     },
     "philosophy": {
       "title": "My Philosophy",
-      "paragraph1": "I believe that great websites are more than just code—they're digital experiences that should delight users while achieving business goals. Every project is an opportunity to create something meaningful.",
-      "paragraph2": "Whether it's a complex e-commerce platform or a simple landing page, I approach each project with the same level of dedication, attention to detail, and commitment to excellence."
+      "paragraph1": "I believe that great websites are more than just code—they're <bold>digital experiences</bold> that should delight users while achieving business goals. Every project is an opportunity to create something meaningful.",
+      "paragraph2": "Whether it's a complex e-commerce platform or a simple landing page, I approach each project with the same level of <bold>dedication, attention to detail</bold>, and commitment to excellence."
     },
     "valuesTitle": "What Drives Me",
     "values": {
@@ -48,7 +48,7 @@
   },
   "expertise": {
     "title": "Technologies & Expertise",
-    "description": "Specialized in modern web technologies and e-commerce solutions, delivering scalable and performant applications with a focus on user experience and business results.",
+    "description": "Specialized in <bold>modern web technologies</bold> and e-commerce solutions, delivering scalable and performant applications with a focus on user experience and business results.",
     "areasTitle": "Areas of Expertise",
     "ecommerce": {
       "title": "E-Commerce Platforms",
@@ -135,9 +135,9 @@
   },
   "contact": {
     "title": "Let's Work Together",
-    "subtitle": "Have a project in mind? I'd love to hear about it. Let's create something amazing together.",
+    "subtitle": "Have a <bold>project in mind</bold>? I'd love to hear about it. Let's create something amazing together.",
     "getInTouch": "Get In Touch",
-    "description": "I'm always open to discussing new opportunities, creative projects, or just having a chat about technology and development.",
+    "description": "I'm always open to discussing <bold>new opportunities</bold>, creative projects, or just having a chat about technology and development.",
     "quickMessage": "Quick Message",
     "form": {
       "name": "Name",

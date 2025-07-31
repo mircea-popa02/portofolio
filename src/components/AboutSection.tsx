@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { User, Heart, Coffee, Globe2 } from 'lucide-react';
 
 export function AboutSection() {
@@ -46,7 +46,10 @@ export function AboutSection() {
 						{t('about.title')}
 					</h2>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-						{t('about.subtitle')}
+						<Trans 
+							i18nKey="about.subtitle"
+							components={{ bold: <strong className="text-foreground" /> }}
+						/>
 					</p>
 				</motion.div>
 
@@ -63,10 +66,16 @@ export function AboutSection() {
 								{t('about.story.title')}
 							</h3>
 							<p className="text-muted-foreground text-base leading-relaxed mb-4">
-								{t('about.story.paragraph1')}
+								<Trans 
+									i18nKey="about.story.paragraph1"
+									components={{ bold: <strong className="text-foreground" /> }}
+								/>
 							</p>
 							<p className="text-muted-foreground text-base leading-relaxed">
-								{t('about.story.paragraph2')}
+								<Trans 
+									i18nKey="about.story.paragraph2"
+									components={{ bold: <strong className="text-foreground" /> }}
+								/>
 							</p>
 						</div>
 					</motion.div>
@@ -83,10 +92,16 @@ export function AboutSection() {
 								{t('about.philosophy.title')}
 							</h3>
 							<p className="text-muted-foreground text-base leading-relaxed mb-4">
-								{t('about.philosophy.paragraph1')}
+								<Trans 
+									i18nKey="about.philosophy.paragraph1"
+									components={{ bold: <strong className="text-foreground" /> }}
+								/>
 							</p>
 							<p className="text-muted-foreground text-base leading-relaxed">
-								{t('about.philosophy.paragraph2')}
+								<Trans 
+									i18nKey="about.philosophy.paragraph2"
+									components={{ bold: <strong className="text-foreground" /> }}
+								/>
 							</p>
 						</div>
 					</motion.div>

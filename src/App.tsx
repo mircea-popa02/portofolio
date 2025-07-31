@@ -3,20 +3,20 @@ import { useTranslation } from "react-i18next"
 import { LanguageSync } from "./components/LanguageSync"
 import { CustomCursor } from "./components/CustomCursor"
 import { Navigation } from "./components/Navigation"
-// import { MobileNavigationWheel } from "./components/MobileNavigationWheel"
 import { HeroSection } from "./components/HeroSection"
 import { AboutSection } from "./components/AboutSection"
 import { TechnologiesSection } from "./components/TechnologiesSection"
 import { ProjectsSection } from "./components/ProjectsSection"
 import { ContactSection } from "./components/ContactSection"
 import { useSmoothScroll } from "./hooks/useSmoothScroll"
+import { Trans } from 'react-i18next';
+
 
 const sections = ["home", "about", "technologies", "projects", "contact"];
 
 function App() {
-  // const { currentSection, scrollTo, sectionScrollData } = useSmoothScroll(sections);
   const { scrollTo, currentSection } = useSmoothScroll(sections);
-  const { t } = useTranslation();
+  useTranslation();
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -24,7 +24,6 @@ function App() {
         <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
-        {/* <MobileNavigationWheel currentSection={currentSection} sectionScrollData={sectionScrollData} /> */}
         
         <main>
           <div id="home">
@@ -46,7 +45,9 @@ function App() {
         
         <footer className="py-8 text-center text-muted-foreground border-t border-border">
           <div className="container mx-auto px-4">
-            <p>{t('footer.copyright')}</p>
+            <p>
+              <Trans i18nKey="footer.copyright" />
+            </p>
           </div>
         </footer>
       </div>

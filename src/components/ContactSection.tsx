@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -18,7 +18,10 @@ export function ContactSection() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('contact.subtitle')}
+            <Trans 
+              i18nKey="contact.subtitle"
+              components={{ bold: <strong className="text-foreground" /> }}
+            />
           </p>
         </motion.div>
 
@@ -32,7 +35,10 @@ export function ContactSection() {
             >
               <h3 className="text-2xl font-semibold mb-6">{t('contact.getInTouch')}</h3>
               <p className="text-muted-foreground mb-6">
-                {t('contact.description')}
+                <Trans 
+                  i18nKey="contact.description"
+                  components={{ bold: <strong className="text-foreground" /> }}
+                />
               </p>
               
               <div className="space-y-4">

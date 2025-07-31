@@ -1,6 +1,6 @@
 import { ShoppingCart, Code, Box, CreditCard, Database, Shield, Paintbrush, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
 export function TechnologiesSection() {
 	const { t } = useTranslation();
@@ -107,7 +107,10 @@ export function TechnologiesSection() {
 						{t('expertise.title')}
 					</h2>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-						{t('expertise.description')}
+						<Trans 
+							i18nKey="expertise.description"
+							components={{ bold: <strong className="text-foreground" /> }}
+						/>
 					</p>
 				</motion.div>
 
