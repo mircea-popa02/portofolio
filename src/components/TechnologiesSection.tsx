@@ -21,7 +21,7 @@ export function TechnologiesSection() {
 		{ src: Html5Icon, alt: 'HTML5', name: 'HTML5' },
 		{ src: CssIcon, alt: 'CSS', name: 'CSS' },
 		{ src: ShopifyIcon, alt: 'Shopify', name: 'Shopify' },
-		{ src: WoocommerceIcon, alt: 'WooCommerce', name: 'Woo' },
+		{ src: WoocommerceIcon, alt: 'WooCommerce', name: 'WooCommerce' },
 		{ src: WordpressIcon, alt: 'WordPress', name: 'WordPress' },
 	];
 
@@ -147,7 +147,7 @@ export function TechnologiesSection() {
 					<h3 className="text-3xl font-semibold text-center mb-12">
 						{t('expertise.areasTitle')}
 					</h3>
-					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 						{expertise.map((area, index) => (
 							<motion.div
 								key={area.title}
@@ -193,6 +193,7 @@ export function TechnologiesSection() {
 								<div
 									key={index}
 									className="flex flex-col items-center group"
+									style={{ width: '80px' }} // Fixed width container
 								>
 									<div className="relative">
 										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
@@ -207,9 +208,11 @@ export function TechnologiesSection() {
 											/>
 										</div>
 									</div>
-									<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary">
-										{tech.name}
-									</span>
+									<div className="h-6 flex items-center justify-center"> {/* Fixed height container */}
+										<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary absolute">
+											{tech.name}
+										</span>
+									</div>
 								</div>
 							))}
 						</div>
