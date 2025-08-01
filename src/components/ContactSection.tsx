@@ -3,59 +3,42 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useForm, ValidationError } from '@formspree/react';
-import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
-import { useState, useEffect, useRef } from 'react';
-import { useTheme } from '@/components/theme-provider';
+import { useRef, useState, useEffect } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { useTheme } from './theme-provider';
 
 export function ContactSection() {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const [state, handleSubmit] = useForm("xldllzbj");
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
-  const turnstileRef = useRef<TurnstileInstance | null>(null);
+  const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
+  const [hcaptchaTheme, setHcaptchaTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const updateResolvedTheme = () => {
-      if (theme === "system") {
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        setResolvedTheme(systemTheme);
-      } else {
-        setResolvedTheme(theme);
-      }
-    };
-
-    updateResolvedTheme();
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      if (theme === "system") {
-        updateResolvedTheme();
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    const currentTheme = theme === 'system'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      : theme;
+    setHcaptchaTheme(currentTheme);
   }, [theme]);
-
-  useEffect(() => {
-    if (state.succeeded) {
-      setTurnstileToken(null);
-      turnstileRef.current?.reset();
-    }
-  }, [state.succeeded]);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!turnstileToken) {
+    if (!hcaptchaToken) {
+      // Maybe show an error to the user
       return;
     }
 
     const formData = new FormData(e.currentTarget);
-    formData.append('cf-turnstile-response', turnstileToken);
+    formData.append('h-captcha-response', hcaptchaToken);
 
-    handleSubmit(formData);
+    handleSubmit(formData).then(() => {
+      if (captchaRef.current) {
+        captchaRef.current.resetCaptcha();
+      }
+      setHcaptchaToken(null);
+    });
   };
 
   return (
@@ -210,29 +193,19 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex flex-col items-center space-y-2">
-                  <Turnstile
-                    ref={turnstileRef}
-                    siteKey="0x4AAAAAABne4Dsmb-p-Hbb2"
-                    onSuccess={(token) => setTurnstileToken(token)}
-                    onError={() => setTurnstileToken(null)}
-                    onExpire={() => setTurnstileToken(null)}
-                    options={{
-                      theme: resolvedTheme,
-                      size: 'normal',
-                      language: i18n.language === 'ro' ? 'ro' : 'en',
-                    }}
+                  <HCaptcha
+                    sitekey="df1455a8-d312-4064-91b4-ff606282bbd4"
+                    onVerify={setHcaptchaToken}
+                    ref={captchaRef}
+                    theme={hcaptchaTheme}
+                    languageOverride={i18n.language}
                   />
-                  {!turnstileToken && (
-                    <p className="text-xs text-muted-foreground text-center">
-                      {t('contact.form.captchaRequired', 'Please complete the CAPTCHA verification.')}
-                    </p>
-                  )}
                 </div>
 
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={state.submitting || !turnstileToken}
+                  disabled={state.submitting || !hcaptchaToken}
                 >
                   {state.submitting ? t('contact.form.sending', 'Sending...') : t('contact.form.send')}
                 </Button>
