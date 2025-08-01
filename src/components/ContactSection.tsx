@@ -3,8 +3,8 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useForm, ValidationError } from '@formspree/react';
-import { Turnstile } from '@marsidev/react-turnstile';
-import { useState, useEffect } from 'react';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/components/theme-provider';
 
 export function ContactSection() {
@@ -13,8 +13,8 @@ export function ContactSection() {
   const [state, handleSubmit] = useForm("xldllzbj");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
 
-  // Update resolved theme when theme changes
   useEffect(() => {
     const updateResolvedTheme = () => {
       if (theme === "system") {
@@ -27,7 +27,6 @@ export function ContactSection() {
 
     updateResolvedTheme();
 
-    // Listen for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       if (theme === "system") {
@@ -42,22 +41,23 @@ export function ContactSection() {
   useEffect(() => {
     if (state.succeeded) {
       setTurnstileToken(null);
+      turnstileRef.current?.reset();
     }
   }, [state.succeeded]);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!turnstileToken) {
       return;
     }
 
     const formData = new FormData(e.currentTarget);
     formData.append('cf-turnstile-response', turnstileToken);
-    
+
     handleSubmit(formData);
   };
-  
+
   return (
     <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -65,7 +65,7 @@ export function ContactSection() {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-primary/20 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full blur-3xl opacity-30"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export function ContactSection() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            <Trans 
+            <Trans
               i18nKey="contact.subtitle"
               components={{ bold: <strong className="text-foreground" /> }}
             />
@@ -93,12 +93,12 @@ export function ContactSection() {
             >
               <h3 className="text-2xl font-semibold mb-6">{t('contact.getInTouch')}</h3>
               <p className="text-muted-foreground mb-6">
-                <Trans 
+                <Trans
                   i18nKey="contact.description"
                   components={{ bold: <strong className="text-foreground" /> }}
                 />
               </p>
-              
+
               <div className="space-y-4">
                 <a
                   href="mailto:hello@mirceapopa.dev"
@@ -107,7 +107,7 @@ export function ContactSection() {
                   <Mail className="w-5 h-5" />
                   hello@mirceapopa.dev
                 </a>
-                
+
                 <div className="flex gap-4 mt-6">
                   <Button variant="outline" size="sm" asChild>
                     <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
@@ -127,7 +127,7 @@ export function ContactSection() {
                   <Button variant="outline" size="sm" asChild>
                     <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer">
                       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04 0z"/>
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04 0z" />
                       </svg>
                     </a>
                   </Button>
@@ -143,13 +143,13 @@ export function ContactSection() {
               className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
             >
               <h3 className="text-xl font-semibold mb-4">{t('contact.quickMessage')}</h3>
-              
+
               {state.succeeded && (
                 <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
                   {t('contact.form.success', 'Thank you! Your message has been sent successfully.')}
                 </div>
               )}
-              
+
               <form onSubmit={onFormSubmit} className="space-y-3">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -163,8 +163,8 @@ export function ContactSection() {
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.namePlaceholder')}
                   />
-                  <ValidationError 
-                    prefix="Name" 
+                  <ValidationError
+                    prefix="Name"
                     field="name"
                     errors={state.errors}
                     className="text-red-500 text-sm mt-1 block"
@@ -182,8 +182,8 @@ export function ContactSection() {
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.emailPlaceholder')}
                   />
-                  <ValidationError 
-                    prefix="Email" 
+                  <ValidationError
+                    prefix="Email"
                     field="email"
                     errors={state.errors}
                     className="text-red-500 text-sm mt-1 block"
@@ -201,16 +201,17 @@ export function ContactSection() {
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none shadow-md focus:shadow-lg transition-shadow"
                     placeholder={t('contact.form.messagePlaceholder')}
                   />
-                  <ValidationError 
-                    prefix="Message" 
+                  <ValidationError
+                    prefix="Message"
                     field="message"
                     errors={state.errors}
                     className="text-red-500 text-sm mt-1 block"
                   />
                 </div>
-                
+
                 <div className="flex flex-col items-center space-y-2">
                   <Turnstile
+                    ref={turnstileRef}
                     siteKey="0x4AAAAAABne4Dsmb-p-Hbb2"
                     onSuccess={(token) => setTurnstileToken(token)}
                     onError={() => setTurnstileToken(null)}
@@ -227,10 +228,10 @@ export function ContactSection() {
                     </p>
                   )}
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full" 
+
+                <Button
+                  type="submit"
+                  className="w-full"
                   disabled={state.submitting || !turnstileToken}
                 >
                   {state.submitting ? t('contact.form.sending', 'Sending...') : t('contact.form.send')}
