@@ -114,24 +114,29 @@
     "featuredTitle": "Featured Projects",
     "featuredDescription": "A showcase of my recent work, spanning web applications, creative experiments, and open-source contributions.",
     "otherTitle": "Other Projects",
+    "featured": "Featured",
     "viewProject": "View Project",
     "viewCode": "View Code",
     "items": {
       "ecommerce": {
         "title": "E-Commerce Platform",
-        "description": "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard."
+        "description": "A complete online store solution with secure payment processing, inventory management, and admin dashboard. Built with modern technologies for optimal performance and user experience."
       },
       "taskmanager": {
-        "title": "Task Management App",
-        "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features."
+        "title": "Task Management System",
+        "description": "A collaborative project management tool with real-time updates, team collaboration features, and advanced reporting. Perfect for modern teams and agile workflows."
+      },
+      "crm": {
+        "title": "Customer Relationship Management",
+        "description": "A comprehensive CRM system for managing customer relationships, sales pipelines, and business processes. Includes automated workflows and detailed analytics."
       },
       "weather": {
-        "title": "Weather Dashboard",
-        "description": "A responsive weather dashboard that displays current conditions and forecasts using external weather APIs with beautiful data visualizations."
+        "title": "Weather Analytics Dashboard",
+        "description": "An interactive weather dashboard with real-time data visualization, forecasting, and location-based services. Features beautiful charts and responsive design."
       },
       "portfolio": {
-        "title": "Portfolio Website",
-        "description": "A modern portfolio website built with React, Three.js, and Framer Motion featuring 3D animations and smooth scroll effects."
+        "title": "Interactive Portfolio Website",
+        "description": "A modern portfolio showcasing creative work with 3D animations, smooth transitions, and interactive elements. Built with cutting-edge web technologies."
       }
     }
   },

@@ -29,11 +29,11 @@ export const getProjects = (t: (key: string) => string): Project[] => [
   },
   {
     id: 3,
-    title: t('projects.items.taskmanager.title'),
-    description: t('projects.items.taskmanager.description'),
-    technologies: ["React", "TypeScript", "Socket.io", "Express", "MongoDB"],
+    title: t('projects.items.crm.title'),
+    description: t('projects.items.crm.description'),
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL"],
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop&crop=center",
-    liveUrl: "https://taskmanager-demo.com",
+    liveUrl: "https://crm-demo.com",
     featured: true
   },
   {

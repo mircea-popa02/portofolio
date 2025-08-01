@@ -114,28 +114,29 @@
     "featuredTitle": "Proiecte Reprezentative",
     "featuredDescription": "Vezi câteva dintre proiectele noastre: soluții digitale, automatizări și site-uri moderne pentru diverse afaceri.",
     "otherTitle": "Alte Proiecte",
+    "featured": "Reprezentativ",
     "viewProject": "Vezi detalii",
     "viewCode": "Vezi codul sursă",
     "items": {
       "ecommerce": {
-        "title": "Magazin Online Personalizat",
-        "description": "Platformă e-commerce adaptată nevoilor clientului, cu integrare plăți și administrare facilă."
+        "title": "Magazin Online Complet",
+        "description": "Platformă e-commerce cu sistem de plăți securizat, gestionare stocuri și panou administrativ. Dezvoltată cu tehnologii moderne pentru performanță optimă."
       },
       "taskmanager": {
-        "title": "Dashboard Intern",
-        "description": "Soluție pentru managementul sarcinilor și automatizarea proceselor interne."
+        "title": "Sistem de Management Proiecte",
+        "description": "Soluție colaborativă pentru gestionarea proiectelor cu actualizări în timp real, funcții pentru echipe și raportare avansată. Ideal pentru echipe moderne."
       },
-      "taskmanager2": {
-        "title": "Dashboard Intern",
-        "description": "Soluție pentru managementul sarcinilor și automatizarea proceselor interne."
+      "crm": {
+        "title": "Sistem CRM pentru Clienți",
+        "description": "Platformă completă pentru gestionarea relațiilor cu clienții, pipeline de vânzări și procese de business. Include automatizări și analize detaliate."
       },
       "weather": {
-        "title": "Aplicație Informativă",
-        "description": "Dashboard cu date în timp real, integrat cu API-uri externe pentru vizualizare și analiză."
+        "title": "Dashboard Meteo cu Analize",
+        "description": "Tablou de bord interactiv cu vizualizare date meteo în timp real, prognoze și servicii de localizare. Design responsiv și grafice moderne."
       },
       "portfolio": {
-        "title": "Site de Prezentare",
-        "description": "Site modern pentru promovarea afacerii, cu design atractiv și funcționalități interactive."
+        "title": "Site Portofoliu Interactiv",
+        "description": "Portofoliu modern cu animații 3D, tranziții fluide și elemente interactive. Construit cu tehnologii web de ultimă generație."
       }
     }
   },
