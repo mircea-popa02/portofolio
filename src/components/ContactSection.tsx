@@ -5,13 +5,40 @@ import { Button } from '@/components/ui/button';
 import { useForm, ValidationError } from '@formspree/react';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { useState, useEffect } from 'react';
+import { useTheme } from '@/components/theme-provider';
 
 export function ContactSection() {
   const { t, i18n } = useTranslation();
+  const { theme } = useTheme();
   const [state, handleSubmit] = useForm("xldllzbj");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
-  // Reset Turnstile token when form is successfully submitted
+  // Update resolved theme when theme changes
+  useEffect(() => {
+    const updateResolvedTheme = () => {
+      if (theme === "system") {
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        setResolvedTheme(systemTheme);
+      } else {
+        setResolvedTheme(theme);
+      }
+    };
+
+    updateResolvedTheme();
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      if (theme === "system") {
+        updateResolvedTheme();
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [theme]);
+
   useEffect(() => {
     if (state.succeeded) {
       setTurnstileToken(null);
@@ -22,10 +49,9 @@ export function ContactSection() {
     e.preventDefault();
     
     if (!turnstileToken) {
-      return; // Don't submit if Turnstile hasn't been completed
+      return;
     }
 
-    // Create FormData and append the turnstile token
     const formData = new FormData(e.currentTarget);
     formData.append('cf-turnstile-response', turnstileToken);
     
@@ -34,7 +60,6 @@ export function ContactSection() {
   
   return (
     <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
-      {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-primary/20 rounded-full blur-3xl opacity-50"></div>
@@ -191,7 +216,7 @@ export function ContactSection() {
                     onError={() => setTurnstileToken(null)}
                     onExpire={() => setTurnstileToken(null)}
                     options={{
-                      theme: 'auto',
+                      theme: resolvedTheme,
                       size: 'normal',
                       language: i18n.language === 'ro' ? 'ro' : 'en',
                     }}
