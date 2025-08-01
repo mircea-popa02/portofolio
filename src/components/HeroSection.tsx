@@ -14,7 +14,37 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
   return (
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
-      <div className="flex flex-col items-center justify-center px-4 text-center z-10 w-full">
+      
+      {/* Animated gradient blobs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/10 to-purple-500/20 rounded-full blur-3xl opacity-60"
+          animate={{
+            x: [0, 150, -100, 0],
+            y: [0, -120, 100, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[40vw] h-[30vw] bg-gradient-to-br from-blue-500/30 to-primary/30 rounded-full blur-3xl opacity-60"
+          animate={{
+            x: [0, -150, 120, 0],
+            y: [0, 130, -80, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col items-center justify-center p-12 text-center z-10 w-full max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
