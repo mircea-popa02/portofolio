@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { useTheme } from './theme-provider';
 
 
-function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
+function AnimatedSphere({ mouse3D, particleSize }: { mouse3D: THREE.Vector3; particleSize: number }) {
   const ref = useRef<THREE.Points>(null);
   const { theme } = useTheme();
   const rotationRef = useRef(0); // Track current rotation
@@ -92,7 +92,7 @@ function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
       <PointMaterial
         transparent
         color={particleColor}
-        size={0.005}
+        size={particleSize}
         sizeAttenuation={true}
         depthWrite={false}
       />
@@ -103,7 +103,40 @@ function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
 
 export function HeroBackground() {
   const [mouse3D, setMouse3D] = useState(new THREE.Vector3(0, 0, 0));
+  const [particleSize, setParticleSize] = useState(0.001);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateParticleSize = () => {
+      if (!containerRef.current) return;
+      
+      // Calculate particle size based on screen dimensions
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const diagonal = Math.sqrt(width * width + height * height);
+      
+      // Base size calculation - scale with screen diagonal
+      // Adjust the multiplier to fine-tune the size
+      const baseSize = 0.002; // Minimum size
+      const scaleFactor = diagonal / 1000; // Scale factor based on diagonal
+      const calculatedSize = baseSize + (scaleFactor * 0.003);
+      
+      // Clamp the size to reasonable bounds
+      const minSize = 0.001;
+      const maxSize = 0.005;
+      const finalSize = Math.max(minSize, Math.min(maxSize, calculatedSize));
+      
+      setParticleSize(finalSize);
+    };
+
+    // Update on mount and window resize
+    updateParticleSize();
+    window.addEventListener('resize', updateParticleSize);
+    
+    return () => {
+      window.removeEventListener('resize', updateParticleSize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -152,7 +185,7 @@ export function HeroBackground() {
         }}
         style={{ pointerEvents: 'auto' }}
       >
-        <AnimatedSphere mouse3D={mouse3D} />
+        <AnimatedSphere mouse3D={mouse3D} particleSize={particleSize} />
       </Canvas>
     </div>
   );
