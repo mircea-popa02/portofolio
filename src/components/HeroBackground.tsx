@@ -10,6 +10,9 @@ function AnimatedSphere({ mouse3D, particleSize }: { mouse3D: THREE.Vector3; par
   const { theme } = useTheme();
   const rotationRef = useRef(0); // Track current rotation
 
+  // Inertia: smoothed mouse position
+  const smoothedMouseRef = useRef<THREE.Vector3>(mouse3D.clone());
+
   const particleColor = useMemo(() => {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
     return isDark ? '#ffffff' : '#333333';
@@ -43,6 +46,10 @@ function AnimatedSphere({ mouse3D, particleSize }: { mouse3D: THREE.Vector3; par
   }, []);
 
   useFrame(({ clock }, delta) => {
+    // Inertia: lerp smoothedMouseRef towards mouse3D
+    const lerpFactor = 1 - Math.exp(-delta * 6); // ~0.1-0.2 per frame at 60fps
+    smoothedMouseRef.current.lerp(mouse3D, lerpFactor);
+
     if (ref.current && ref.current.geometry) {
       const time = clock.getElapsedTime() * 0.3;
       const positionsAttribute = ref.current.geometry.attributes.position as THREE.BufferAttribute;
@@ -51,7 +58,7 @@ function AnimatedSphere({ mouse3D, particleSize }: { mouse3D: THREE.Vector3; par
       rotationRef.current += 0.03 * delta;
       
       // Apply inverse rotation to mouse position to account for sphere rotation
-      const rotatedMouse3D = mouse3D.clone();
+      const rotatedMouse3D = smoothedMouseRef.current.clone();
       rotatedMouse3D.applyAxisAngle(new THREE.Vector3(0, 1, 0), -rotationRef.current);
 
       for (let i = 0; i < positionsAttribute.count; i++) {
