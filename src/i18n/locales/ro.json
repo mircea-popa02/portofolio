@@ -10,6 +10,11 @@
   },
   "hero": {
     "title": "Ai un <bold>proiect</bold> în minte?",
+    "titles": [
+      "Ai un <bold>proiect</bold> în minte?",
+      "Hai să creăm ceva <bold>remarcabil</bold> împreună!",
+      "De la idee la <bold>lansare</bold>, suntem alături de tine."
+    ],
     "subtitle": "Suntem <bold>tineri pasionați</bold>, absolvenți ai Facultății de Automatică și Calculatoare, gata să aducem inovația în afacerea ta.",
     "viewWork": "Vezi proiectele noastre",
     "getInTouch": "Contactează-ne",

@@ -3,19 +3,143 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Button } from './ui/button';
 import { ArrowDown } from 'lucide-react';
 import { HeroBackground } from './HeroBackground';
+import { useState, useEffect } from 'react';
+
+// Custom typewriter component that handles bold tags
+const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpeed = 3500 }: {
+  words: string[];
+  typeSpeed?: number;
+  deleteSpeed?: number;
+  delaySpeed?: number;
+}) => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    const word = words[currentWordIndex];
+    const plainText = word.replace(/<\/?bold>/g, '');
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (currentText.length < plainText.length) {
+          setCurrentText(plainText.slice(0, currentText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), delaySpeed);
+        }
+      } else {
+        if (currentText.length > 0) {
+          setCurrentText(plainText.slice(0, currentText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, isDeleting ? deleteSpeed : typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentWordIndex, words, typeSpeed, deleteSpeed, delaySpeed]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  // Parse the current word to add bold formatting
+  const renderTextWithBold = () => {
+    const word = words[currentWordIndex];
+    if (!word) return currentText;
+    
+    // Create a version of the word that matches the current typed length
+    const plainText = word.replace(/<\/?bold>/g, '');
+    const typedLength = currentText.length;
+    
+    if (typedLength === 0) return '';
+    
+    // Find bold sections in the original word
+    const boldRegex = /<bold>(.*?)<\/bold>/g;
+    let match;
+    const boldSections: Array<{start: number, end: number}> = [];
+    let adjustedWord = word;
+    let offset = 0;
+    
+    while ((match = boldRegex.exec(word)) !== null) {
+      const originalStart = match.index - offset;
+      const originalEnd = originalStart + match[1].length;
+      boldSections.push({start: originalStart, end: originalEnd});
+      // Remove the tags for position calculation
+      adjustedWord = adjustedWord.replace(match[0], match[1]);
+      offset += 13; // Length of <bold></bold> tags
+    }
+    
+    // Build the JSX with proper bold formatting
+    const result = [];
+    let lastIndex = 0;
+    
+    for (const section of boldSections) {
+      // Add text before bold section
+      if (section.start > lastIndex && lastIndex < typedLength) {
+        const endIndex = Math.min(section.start, typedLength);
+        if (endIndex > lastIndex) {
+          result.push(
+            <span key={`normal-${lastIndex}`}>
+              {plainText.slice(lastIndex, endIndex)}
+            </span>
+          );
+        }
+      }
+      
+      // Add bold section if we've typed up to it
+      if (typedLength > section.start) {
+        const boldEnd = Math.min(section.end, typedLength);
+        if (boldEnd > section.start) {
+          result.push(
+            <strong key={`bold-${section.start}`} className="text-primary">
+              {plainText.slice(section.start, boldEnd)}
+            </strong>
+          );
+        }
+      }
+      
+      lastIndex = section.end;
+    }
+    
+    // Add remaining text after last bold section
+    if (lastIndex < typedLength) {
+      result.push(
+        <span key={`final-${lastIndex}`}>
+          {plainText.slice(lastIndex, typedLength)}
+        </span>
+      );
+    }
+    
+    return result.length > 0 ? result : currentText;
+  };
+
+  return (
+    <span>
+      {renderTextWithBold()}
+      <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+        |
+      </span>
+    </span>
+  );
+};
 
 interface HeroSectionProps {
   scrollTo: (selector: string) => void;
 }
 
 export function HeroSection({ scrollTo }: HeroSectionProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   return (
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
       
-      {/* Animated gradient blobs - Desktop only */}
       <div className="hidden md:block absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/8 to-purple-500/15 rounded-full blur-3xl opacity-60 will-change-transform"
@@ -70,10 +194,18 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-4xl md:text-6xl font-bold mb-4 text-center"
         >
-        <Trans 
-          i18nKey="hero.title"
-          components={{ bold: <strong className="text-primary" /> }}
-        />
+          <span className="text-primary">
+            <TypewriterWithBold
+              words={
+                Array.isArray(i18n.getResource(i18n.language, 'translation', 'hero.titles'))
+                  ? i18n.getResource(i18n.language, 'translation', 'hero.titles')
+                  : [t('hero.title')]
+              }
+              typeSpeed={30}
+              deleteSpeed={30}
+              delaySpeed={3500}
+            />
+          </span>
         </motion.h1>
         <motion.p 
         initial={{ opacity: 0, y: 20 }}
