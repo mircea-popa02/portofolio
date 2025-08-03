@@ -27,15 +27,12 @@ export function ContactSection() {
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!hcaptchaToken) {
-      // Maybe show an error to the user
       return;
     }
 
     const formData = new FormData(e.currentTarget);
-    formData.append("h-captcha-response", hcaptchaToken);
-
+    console.log("Submitting form with data:", Object.fromEntries(formData.entries()));
     handleSubmit(formData).then(() => {
       if (captchaRef.current) {
         captchaRef.current.resetCaptcha();
