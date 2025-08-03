@@ -162,7 +162,8 @@
       "sending": "Se trimite...",
       "success": "Mulțumim! Mesajul tău a fost trimis cu succes.",
       "error": "Ne pare rău, a apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou.",
-      "captchaRequired": "Te rugăm să completezi verificarea CAPTCHA."
+      "captchaRequired": "Te rugăm să completezi verificarea CAPTCHA.",
+      "messageDetails": "Îți vom răspunde cât mai curând posibil."
     }
   },
   "footer": {

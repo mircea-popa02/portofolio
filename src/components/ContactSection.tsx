@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import { Mail, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Mail, Linkedin, Instagram, Facebook, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState, useEffect } from "react";
@@ -14,6 +14,7 @@ export function ContactSection() {
   const [state, handleSubmit] = useForm("xldllzbj");
   const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [hcaptchaTheme, setHcaptchaTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -26,17 +27,6 @@ export function ContactSection() {
     setHcaptchaTheme(currentTheme);
   }, [theme]);
 
-  useEffect(() => {
-    if (state.succeeded) {
-      toast.success(
-        t(
-          "contact.form.success",
-          "Thank you! Your message has been sent successfully."
-        )
-      );
-    }
-  }, [state.succeeded, t]);
-
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!hcaptchaToken) {
@@ -47,6 +37,12 @@ export function ContactSection() {
     handleSubmit(formData).then(() => {
       if (captchaRef.current) {
         captchaRef.current.resetCaptcha();
+      }
+      toast.success(t("contact.form.success"), {
+        description: t("contact.form.messageDetails"),
+      });
+      if (formRef.current) {
+        formRef.current.reset();
       }
       setHcaptchaToken(null);
     });
@@ -167,7 +163,7 @@ export function ContactSection() {
                 {t("contact.quickMessage")}
               </h3>
 
-              <form onSubmit={onFormSubmit} className="space-y-3">
+              <form ref={formRef} onSubmit={onFormSubmit} className="space-y-3">
                 <div>
                   <label
                     htmlFor="name"
@@ -250,9 +246,14 @@ export function ContactSection() {
                   className="w-full p-4"
                   disabled={state.submitting || !hcaptchaToken}
                 >
-                  {state.submitting
-                    ? t("contact.form.sending", "Sending...")
-                    : t("contact.form.send")}
+                  {state.submitting ? (
+                    <>
+                      <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+                      {t("contact.form.sending", "Sending...")}
+                    </>
+                  ) : (
+                    t("contact.form.send")
+                  )}
                 </Button>
               </form>
             </motion.div>

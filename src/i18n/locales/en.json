@@ -162,7 +162,8 @@
       "sending": "Sending...",
       "success": "Thank you! Your message has been sent successfully.",
       "error": "Sorry, there was an error sending your message. Please try again.",
-      "captchaRequired": "Please complete the CAPTCHA verification."
+      "captchaRequired": "Please complete the CAPTCHA verification.",
+      "messageDetails": "We will get back to you as soon as possible."
     }
   },
   "footer": {
