@@ -7,7 +7,7 @@ import { useTheme } from './theme-provider';
 function AnimatedSphere() {
   const ref = useRef<THREE.Points>(null);
   const { theme } = useTheme();
-  const { viewport, mouse } = useThree();
+  const { mouse } = useThree();
 
   const particleColor = useMemo(() => {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -41,14 +41,15 @@ function AnimatedSphere() {
     return { positions, randomFactors, originalPositions: new Float32Array(positions) };
   }, []);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     if (ref.current && ref.current.geometry) {
-      const time = clock.getElapsedTime() * 0.5;
+      const time = clock.getElapsedTime() * 0.3;
       const positionsAttribute = ref.current.geometry.attributes.position as THREE.BufferAttribute;
 
+      // Convert mouse coordinates to 3D space with better scaling
       const mouse3D = new THREE.Vector3(
-        (mouse.x * viewport.width) / 2,
-        (mouse.y * viewport.height) / 2,
+        mouse.x * 2,
+        mouse.y * 2,
         0
       );
 
@@ -59,17 +60,29 @@ function AnimatedSphere() {
 
         const particlePos = new THREE.Vector3(x, y, z);
         const distance = particlePos.distanceTo(mouse3D);
-        const repulsion = Math.max(0, 1.0 - distance) * 0.5;
-
-        const dir = new THREE.Vector3().subVectors(particlePos, mouse3D).normalize();
         
-        positionsAttribute.setX(i, x + dir.x * repulsion + Math.sin(time + i * 0.01) * randomFactors[i * 3]);
-        positionsAttribute.setY(i, y + dir.y * repulsion + Math.cos(time + i * 0.01) * randomFactors[i * 3 + 1]);
-        positionsAttribute.setZ(i, z + dir.z * repulsion + Math.sin(time + i * 0.01) * randomFactors[i * 3 + 2]);
+        // Enhanced interaction with smoother falloff
+        const maxDistance = 1.5;
+        const influence = Math.max(0, 1 - (distance / maxDistance));
+        const repulsion = influence * influence * 0.3; // Quadratic falloff for smoother interaction
+
+        const dir = new THREE.Vector3().subVectors(particlePos, mouse3D);
+        if (dir.length() > 0) {
+          dir.normalize();
+        }
+        
+        // Add subtle floating animation
+        const floatX = Math.sin(time + i * 0.01) * randomFactors[i * 3] * 2;
+        const floatY = Math.cos(time + i * 0.015) * randomFactors[i * 3 + 1] * 2;
+        const floatZ = Math.sin(time * 0.8 + i * 0.008) * randomFactors[i * 3 + 2] * 2;
+        
+        positionsAttribute.setX(i, x + dir.x * repulsion + floatX);
+        positionsAttribute.setY(i, y + dir.y * repulsion + floatY);
+        positionsAttribute.setZ(i, z + dir.z * repulsion + floatZ);
       }
 
       positionsAttribute.needsUpdate = true;
-      ref.current.rotation.y += 0.0002;
+      ref.current.rotation.y += 0.03  * delta;
     }
   });
 
@@ -88,7 +101,7 @@ function AnimatedSphere() {
 
 export function HeroBackground() {
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10" style={{ pointerEvents: 'none' }}>
       <Canvas 
         camera={{ position: [0, 0, 2.5] }}
         gl={{ 
@@ -99,6 +112,7 @@ export function HeroBackground() {
         onCreated={({ gl }) => {
           gl.setClearColor(0x000000, 0);
         }}
+        style={{ pointerEvents: 'auto' }}
       >
         <AnimatedSphere />
       </Canvas>

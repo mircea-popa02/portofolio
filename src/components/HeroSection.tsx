@@ -15,46 +15,47 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
       
-      {/* Animated gradient blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/10 to-purple-500/20 rounded-full blur-3xl opacity-60"
-        animate={{
-        x: [0, 150, -100, 0],
-        y: [0, -120, 100, 0],
-        }}
-        transition={{
-        duration: 18,
-        repeat: Infinity,
-        ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[40vw] h-[30vw] bg-gradient-to-br from-blue-500/30 to-primary/30 rounded-full blur-3xl opacity-60"
-        animate={{
-        x: [0, -150, 120, 0],
-        y: [0, 130, -80, 0],
-        }}
-        transition={{
-        duration: 22,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 4
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 right-1/3 w-[45vw] h-[35vw] bg-gradient-to-tr from-orange-500/20 to-amber-400/30 rounded-full blur-3xl opacity-20"
-        animate={{
-        x: [0, 120, -80, 0],
-        y: [0, -100, 150, 0],
-        }}
-        transition={{
-        duration: 20,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 2
-        }}
-      />
+      {/* Animated gradient blobs - Desktop only */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/8 to-purple-500/15 rounded-full blur-3xl opacity-60 will-change-transform"
+          animate={{
+            x: [0, 75, -50, 0],
+            y: [0, -60, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[40vw] h-[30vw] bg-gradient-to-br from-blue-500/20 to-primary/20 rounded-full blur-3xl opacity-60 will-change-transform"
+          animate={{
+            x: [0, -75, 60, 0],
+            y: [0, 65, -40, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-[45vw] h-[35vw] bg-gradient-to-tr from-orange-500/15 to-amber-400/20 rounded-full blur-3xl opacity-20 will-change-transform"
+          animate={{
+            x: [0, 60, -40, 0],
+            y: [0, -50, 75, 0],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+        />
       </div>
 
       <div className="flex flex-col items-center justify-center p-12 text-center z-10 w-full max-w-2xl mx-auto">
