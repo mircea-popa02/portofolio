@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
-import { useTranslation, Trans } from 'react-i18next';
-import { Mail, Linkedin, Instagram, Facebook } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useForm, ValidationError } from '@formspree/react';
-import { useRef, useState, useEffect } from 'react';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { useTheme } from './theme-provider';
+import { motion } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
+import { Mail, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useForm, ValidationError } from "@formspree/react";
+import { useRef, useState, useEffect } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useTheme } from "./theme-provider";
 
 export function ContactSection() {
   const { t, i18n } = useTranslation();
@@ -13,12 +13,15 @@ export function ContactSection() {
   const [state, handleSubmit] = useForm("xldllzbj");
   const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
-  const [hcaptchaTheme, setHcaptchaTheme] = useState<'light' | 'dark'>('light');
+  const [hcaptchaTheme, setHcaptchaTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const currentTheme = theme === 'system'
-      ? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      : theme;
+    const currentTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
     setHcaptchaTheme(currentTheme);
   }, [theme]);
 
@@ -31,7 +34,7 @@ export function ContactSection() {
     }
 
     const formData = new FormData(e.currentTarget);
-    formData.append('h-captcha-response', hcaptchaToken);
+    formData.append("h-captcha-response", hcaptchaToken);
 
     handleSubmit(formData).then(() => {
       if (captchaRef.current) {
@@ -42,7 +45,10 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/20 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-20 bg-secondary/20 relative overflow-hidden"
+    >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-primary/20 rounded-full blur-3xl opacity-50"></div>
@@ -57,7 +63,9 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {t("contact.title")}
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             <Trans
               i18nKey="contact.subtitle"
@@ -74,7 +82,9 @@ export function ContactSection() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold mb-6">{t('contact.getInTouch')}</h3>
+              <h3 className="text-2xl font-semibold mb-6">
+                {t("contact.getInTouch")}
+              </h3>
               <p className="text-muted-foreground mb-6">
                 <Trans
                   i18nKey="contact.description"
@@ -93,23 +103,43 @@ export function ContactSection() {
 
                 <div className="flex gap-4 mt-6">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://linkedin.com/in/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Linkedin className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://instagram.com/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Instagram className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://facebook.com/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Facebook className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <a
+                      href="https://tiktok.com/@yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04 0z" />
                       </svg>
                     </a>
@@ -125,18 +155,34 @@ export function ContactSection() {
               viewport={{ once: true }}
               className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
             >
-              <h3 className="text-xl font-semibold mb-4">{t('contact.quickMessage')}</h3>
+              <h3 className="text-xl font-semibold mb-6">
+                {t("contact.quickMessage")}
+              </h3>
 
               {state.succeeded && (
-                <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                  {t('contact.form.success', 'Thank you! Your message has been sent successfully.')}
+                <div
+                  className={`mb-4 p-3 border rounded-md ${
+                    theme === "dark" ||
+                    (theme === "system" &&
+                      window.matchMedia("(prefers-color-scheme: dark)").matches)
+                      ? "bg-green-900 border-green-700 text-green-200"
+                      : "bg-green-100 border-green-400 text-green-700"
+                  }`}
+                >
+                  {t(
+                    "contact.form.success",
+                    "Thank you! Your message has been sent successfully."
+                  )}
                 </div>
               )}
 
               <form onSubmit={onFormSubmit} className="space-y-3">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    {t('contact.form.name')}
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.name")}
                   </label>
                   <input
                     type="text"
@@ -144,7 +190,7 @@ export function ContactSection() {
                     name="name"
                     required
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
-                    placeholder={t('contact.form.namePlaceholder')}
+                    placeholder={t("contact.form.namePlaceholder")}
                   />
                   <ValidationError
                     prefix="Name"
@@ -154,8 +200,11 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    {t('contact.form.email')}
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.email")}
                   </label>
                   <input
                     type="email"
@@ -163,7 +212,7 @@ export function ContactSection() {
                     name="email"
                     required
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
-                    placeholder={t('contact.form.emailPlaceholder')}
+                    placeholder={t("contact.form.emailPlaceholder")}
                   />
                   <ValidationError
                     prefix="Email"
@@ -173,8 +222,11 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    {t('contact.form.message')}
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.message")}
                   </label>
                   <textarea
                     id="message"
@@ -182,7 +234,7 @@ export function ContactSection() {
                     required
                     rows={4}
                     className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none shadow-md focus:shadow-lg transition-shadow"
-                    placeholder={t('contact.form.messagePlaceholder')}
+                    placeholder={t("contact.form.messagePlaceholder")}
                   />
                   <ValidationError
                     prefix="Message"
@@ -204,10 +256,12 @@ export function ContactSection() {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full p-4"
                   disabled={state.submitting || !hcaptchaToken}
                 >
-                  {state.submitting ? t('contact.form.sending', 'Sending...') : t('contact.form.send')}
+                  {state.submitting
+                  ? t("contact.form.sending", "Sending...")
+                  : t("contact.form.send")}
                 </Button>
               </form>
             </motion.div>
