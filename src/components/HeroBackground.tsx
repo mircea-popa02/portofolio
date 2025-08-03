@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 import { useTheme } from './theme-provider';
@@ -8,6 +8,7 @@ import { useTheme } from './theme-provider';
 function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
   const ref = useRef<THREE.Points>(null);
   const { theme } = useTheme();
+  const rotationRef = useRef(0); // Track current rotation
 
   const particleColor = useMemo(() => {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -46,20 +47,27 @@ function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
       const time = clock.getElapsedTime() * 0.3;
       const positionsAttribute = ref.current.geometry.attributes.position as THREE.BufferAttribute;
 
+      // Update rotation tracking
+      rotationRef.current += 0.03 * delta;
+      
+      // Apply inverse rotation to mouse position to account for sphere rotation
+      const rotatedMouse3D = mouse3D.clone();
+      rotatedMouse3D.applyAxisAngle(new THREE.Vector3(0, 1, 0), -rotationRef.current);
+
       for (let i = 0; i < positionsAttribute.count; i++) {
         const x = originalPositions[i * 3];
         const y = originalPositions[i * 3 + 1];
         const z = originalPositions[i * 3 + 2];
 
         const particlePos = new THREE.Vector3(x, y, z);
-        const distance = particlePos.distanceTo(mouse3D);
+        const distance = particlePos.distanceTo(rotatedMouse3D);
         
         // Enhanced interaction with smoother falloff
-        const maxDistance = 1.5;
+        const maxDistance = 1.0; // Reduced for more localized interaction
         const influence = Math.max(0, 1 - (distance / maxDistance));
-        const repulsion = influence * influence * 0.3; // Quadratic falloff for smoother interaction
+        const repulsion = influence * influence * 0.4; // Slightly increased strength
 
-        const dir = new THREE.Vector3().subVectors(particlePos, mouse3D);
+        const dir = new THREE.Vector3().subVectors(particlePos, rotatedMouse3D);
         if (dir.length() > 0) {
           dir.normalize();
         }
@@ -75,7 +83,7 @@ function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
       }
 
       positionsAttribute.needsUpdate = true;
-      ref.current.rotation.y += 0.03  * delta;
+      ref.current.rotation.y = rotationRef.current;
     }
   });
 
@@ -101,11 +109,29 @@ export function HeroBackground() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      // Normalize mouse position to [-1, 1] range for x and y
+      
+      // Normalize mouse position to [-1, 1] range
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      setMouse3D(new THREE.Vector3(x * 2, y * 2, 0));
+      
+      // Convert to world coordinates
+      // The camera is at [0, 0, 2.5] looking at origin
+      // Project mouse coordinates to the z=0 plane
+      const fov = 75 * (Math.PI / 180); // Convert to radians
+      const aspect = rect.width / rect.height;
+      const distance = 2.5; // Camera distance
+      
+      // Calculate the size of the projection plane at z=0
+      const planeHeight = 2 * Math.tan(fov / 2) * distance;
+      const planeWidth = planeHeight * aspect;
+      
+      // Convert normalized coordinates to world coordinates
+      const worldX = x * (planeWidth / 2);
+      const worldY = y * (planeHeight / 2);
+      
+      setMouse3D(new THREE.Vector3(worldX, worldY, 0));
     };
+    
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
