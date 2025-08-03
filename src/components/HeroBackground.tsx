@@ -1,13 +1,13 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 import { useTheme } from './theme-provider';
 
-function AnimatedSphere() {
+
+function AnimatedSphere({ mouse3D }: { mouse3D: THREE.Vector3 }) {
   const ref = useRef<THREE.Points>(null);
   const { theme } = useTheme();
-  const { mouse } = useThree();
 
   const particleColor = useMemo(() => {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -45,13 +45,6 @@ function AnimatedSphere() {
     if (ref.current && ref.current.geometry) {
       const time = clock.getElapsedTime() * 0.3;
       const positionsAttribute = ref.current.geometry.attributes.position as THREE.BufferAttribute;
-
-      // Convert mouse coordinates to 3D space with better scaling
-      const mouse3D = new THREE.Vector3(
-        mouse.x * 2,
-        mouse.y * 2,
-        0
-      );
 
       for (let i = 0; i < positionsAttribute.count; i++) {
         const x = originalPositions[i * 3];
@@ -99,9 +92,28 @@ function AnimatedSphere() {
   );
 }
 
+
 export function HeroBackground() {
+  const [mouse3D, setMouse3D] = useState(new THREE.Vector3(0, 0, 0));
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      // Normalize mouse position to [-1, 1] range for x and y
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      setMouse3D(new THREE.Vector3(x * 2, y * 2, 0));
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="absolute inset-0 -z-10" style={{ pointerEvents: 'none' }}>
+    <div ref={containerRef} className="absolute inset-0 -z-10" style={{ pointerEvents: 'auto' }}>
       <Canvas 
         camera={{ position: [0, 0, 2.5] }}
         gl={{ 
@@ -114,7 +126,7 @@ export function HeroBackground() {
         }}
         style={{ pointerEvents: 'auto' }}
       >
-        <AnimatedSphere />
+        <AnimatedSphere mouse3D={mouse3D} />
       </Canvas>
     </div>
   );
