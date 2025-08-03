@@ -63,9 +63,9 @@ function AnimatedSphere({ mouse3D, particleSize }: { mouse3D: THREE.Vector3; par
         const distance = particlePos.distanceTo(rotatedMouse3D);
         
         // Enhanced interaction with smoother falloff
-        const maxDistance = 1.0; // Reduced for more localized interaction
+        const maxDistance = 1.5; // Reduced for more localized interaction
         const influence = Math.max(0, 1 - (distance / maxDistance));
-        const repulsion = influence * influence * 0.4; // Slightly increased strength
+        const repulsion = influence * influence * 0.5; // Slightly increased strength
 
         const dir = new THREE.Vector3().subVectors(particlePos, rotatedMouse3D);
         if (dir.length() > 0) {
