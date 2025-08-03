@@ -6,6 +6,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState, useEffect } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useTheme } from "./theme-provider";
+import { toast } from "sonner";
 
 export function ContactSection() {
   const { t, i18n } = useTranslation();
@@ -25,6 +26,17 @@ export function ContactSection() {
     setHcaptchaTheme(currentTheme);
   }, [theme]);
 
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success(
+        t(
+          "contact.form.success",
+          "Thank you! Your message has been sent successfully."
+        )
+      );
+    }
+  }, [state.succeeded, t]);
+
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!hcaptchaToken) {
@@ -32,7 +44,6 @@ export function ContactSection() {
     }
 
     const formData = new FormData(e.currentTarget);
-    console.log("Submitting form with data:", Object.fromEntries(formData.entries()));
     handleSubmit(formData).then(() => {
       if (captchaRef.current) {
         captchaRef.current.resetCaptcha();
@@ -156,23 +167,6 @@ export function ContactSection() {
                 {t("contact.quickMessage")}
               </h3>
 
-              {state.succeeded && (
-                <div
-                  className={`mb-4 p-3 border rounded-md ${
-                    theme === "dark" ||
-                    (theme === "system" &&
-                      window.matchMedia("(prefers-color-scheme: dark)").matches)
-                      ? "bg-green-900 border-green-700 text-green-200"
-                      : "bg-green-100 border-green-400 text-green-700"
-                  }`}
-                >
-                  {t(
-                    "contact.form.success",
-                    "Thank you! Your message has been sent successfully."
-                  )}
-                </div>
-              )}
-
               <form onSubmit={onFormSubmit} className="space-y-3">
                 <div>
                   <label
@@ -257,8 +251,8 @@ export function ContactSection() {
                   disabled={state.submitting || !hcaptchaToken}
                 >
                   {state.submitting
-                  ? t("contact.form.sending", "Sending...")
-                  : t("contact.form.send")}
+                    ? t("contact.form.sending", "Sending...")
+                    : t("contact.form.send")}
                 </Button>
               </form>
             </motion.div>

@@ -12,6 +12,7 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll"
 import { Trans } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Toaster } from "@/components/ui/sonner"
 
 
 const sections = ["home", "about", "technologies", "projects", "contact"];
@@ -53,6 +54,7 @@ function App() {
           </div>
         </footer>
       </div>
+      <Toaster />
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>
