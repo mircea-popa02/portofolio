@@ -4,11 +4,9 @@ import * as THREE from 'three'
 
 const FilmGrainShader = {
   uniforms: {
-    tDiffuse: { value: null },
     time: { value: 0.0 },
-    nIntensity: { value: 0.2 },
-    sIntensity: { value: 0.05 },
-    sCount: { value: 4096 },
+    nIntensity: { value: 10.0 },
+    grainSize: { value: 7.0 },
   },
   vertexShader: `
     varying vec2 vUv;
@@ -20,27 +18,37 @@ const FilmGrainShader = {
   fragmentShader: `
     uniform float time;
     uniform float nIntensity;
+    uniform float grainSize;
     varying vec2 vUv;
 
-    float rand(vec2 co){
-      return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+    // A more complex random function to reduce visible patterns
+    float random(vec2 st) {
+        return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
     }
 
     void main() {
-      float dx = rand(vUv + time);
-      vec3 cResult = vec3(dx);
-      gl_FragColor = vec4(cResult, nIntensity);
+      vec2 uv = vUv;
+      // Add time-based offset to the UV coordinates to animate the noise
+      uv += random(vec2(time));
+      
+      // Generate noise value
+      float noise = random(uv * grainSize);
+      
+      // Apply intensity
+      gl_FragColor = vec4(vec3(noise), nIntensity);
     }
   `,
 }
 
-function Grain() {
+function Grain({ intensity, grainSize }: { intensity: number; grainSize: number }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
   const { viewport } = useThree()
 
   useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.uniforms.time.value = state.clock.getElapsedTime()
+      materialRef.current.uniforms.nIntensity.value = intensity
+      materialRef.current.uniforms.grainSize.value = grainSize
     }
   })
 
@@ -52,11 +60,17 @@ function Grain() {
   )
 }
 
-export function FilmGrainOverlay() {
+export function FilmGrainOverlay({
+  intensity = 0.2,
+  grainSize = 1.5,
+}: {
+  intensity?: number
+  grainSize?: number
+}) {
   return (
     <div className="film-grain-overlay">
       <Canvas style={{ pointerEvents: 'none' }}>
-        <Grain />
+        <Grain intensity={intensity} grainSize={grainSize} />
       </Canvas>
     </div>
   )
