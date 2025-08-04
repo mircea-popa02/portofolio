@@ -117,7 +117,7 @@ export function ContactSection() {
                   </Button>
                   <Button variant="outline" size="sm" asChild>
                     <a
-                      href="https://instagram.com/yourusername"
+                      href="https://www.instagram.com/proiectesoftware.ro/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -126,7 +126,7 @@ export function ContactSection() {
                   </Button>
                   <Button variant="outline" size="sm" asChild>
                     <a
-                      href="https://facebook.com/yourusername"
+                      href="https://www.facebook.com/profile.php?id=61578853842662"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
