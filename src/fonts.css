@@ -1,0 +1,426 @@
+/* fonts.css */
+/* Britanica Thin */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Thin Italic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Britanica Light */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Light Italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Britanica Regular */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Regular Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Britanica Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Bold Italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Britanica Extra Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Extra Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Extra Bold Italic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Britanica Heavy */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Heavy.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Heavy Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Britanica Black */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Black Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* --- Condensed --- */
+
+/* Britanica Condensed Thin */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: condensed;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Thin Italic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+  font-stretch: condensed;
+}
+
+/* Britanica Condensed Light */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: condensed;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Light Italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: condensed;
+}
+
+/* Britanica Condensed Regular */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: condensed;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Regular Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: condensed;
+}
+
+/* Britanica Condensed Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: condensed;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Bold Italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: condensed;
+}
+
+/* Britanica Condensed Extra Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Condensed Extra Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: condensed;
+}
+
+/* --- Expanded --- */
+
+/* Britanica Expanded Thin */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Thin Italic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Light */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Light Italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Regular */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Regular Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Bold Italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Extra Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Extra Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Extra Bold Italic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Heavy */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Heavy.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Heavy Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* Britanica Expanded Black */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Expanded Black Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: expanded;
+}
+
+/* --- Semi Expanded --- */
+
+/* Britanica Semi Expanded Thin */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Thin Italic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Light */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Light Italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Regular */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Regular Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Bold Italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Extra Bold */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Extra Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Extra Bold Italic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Heavy */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Heavy.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Heavy Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}
+
+/* Britanica Semi Expanded Black */
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: semi-expanded;
+}
+
+@font-face {
+  font-family: 'Britanica';
+  src: url('/fonts/Britanica Semi Expanded Black Italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: semi-expanded;
+}

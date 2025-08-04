@@ -1,28 +1,23 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import './fonts.css';
 
 @custom-variant dark (&:is(.dark *));
 
 
-/* Custom cursor styles */
 * {
   cursor: none !important;
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+  font-family: Britanica, sans-serif;
 }
 
-Smooth scroll behavior
 html {
   scroll-behavior: smooth;
 }
 
-/* hide overflow horizontally */
 html, body {
   overflow-x: hidden;
 }
 
-/* Hide default scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -39,6 +34,22 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.8);
 }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -147,48 +158,7 @@ html, body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Custom cursor styles */
-* {
-  cursor: none !important;
-}
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Hide default scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .bg-gradient-radial {
-    background: radial-gradient(circle, var(--tw-gradient-stops));
-  }
-}
 
 
 

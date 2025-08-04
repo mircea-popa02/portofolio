@@ -116,6 +116,8 @@ export function TechnologiesSection() {
 			className="py-20 bg-gradient-to-b from-background to-secondary/10 relative"
 		>
 			<div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+
+
 			<div className="container mx-auto px-4">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -137,7 +139,42 @@ export function TechnologiesSection() {
 						/>
 					</p>
 				</motion.div>
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					transition={{ duration: 1, delay: 0.5 }}
+					viewport={{ once: true }}
+					className="py-6 md:py-12 mt-4 md:mt-8"
+				>
+					<div className="flex justify-center flex-wrap gap-4 md:gap-8">
+						{techIcons.map((tech, index) => (
+							<div
+								key={index}
+								className="flex flex-col items-center group"
+								style={{ width: '80px' }} // Fixed width container
+							>
+								<div className="relative">
+									<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
 
+									<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20">
+										<img
+											src={tech.src}
+											alt={tech.alt}
+											loading="eager"
+											decoding="async"
+											className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
+										/>
+									</div>
+								</div>
+								<div className="h-6 flex items-center justify-center"> {/* Fixed height container */}
+									<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary absolute">
+										{tech.name}
+									</span>
+								</div>
+							</div>
+						))}
+					</div>
+				</motion.div>
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -181,42 +218,7 @@ export function TechnologiesSection() {
 						))}
 					</div>
 
-					<motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						transition={{ duration: 1, delay: 0.5 }}
-						viewport={{ once: true }}
-						className="py-6 md:py-12 mt-4 md:mt-8"
-					>
-						<div className="flex justify-center flex-wrap gap-4 md:gap-8">
-							{techIcons.map((tech, index) => (
-								<div
-									key={index}
-									className="flex flex-col items-center group"
-									style={{ width: '80px' }} // Fixed width container
-								>
-									<div className="relative">
-										<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
 
-										<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20">
-											<img
-												src={tech.src}
-												alt={tech.alt}
-												loading="eager"
-												decoding="async"
-												className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
-											/>
-										</div>
-									</div>
-									<div className="h-6 flex items-center justify-center"> {/* Fixed height container */}
-										<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary absolute">
-											{tech.name}
-										</span>
-									</div>
-								</div>
-							))}
-						</div>
-					</motion.div>
 				</motion.div>
 			</div>
 		</section>
