@@ -20,7 +20,7 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
   useEffect(() => {
     const word = words[currentWordIndex];
     const plainText = word.replace(/<\/?bold>/g, '');
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         if (currentText.length < plainText.length) {
@@ -52,33 +52,33 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
   const renderTextWithBold = () => {
     const word = words[currentWordIndex];
     if (!word) return currentText;
-    
+
     // Create a version of the word that matches the current typed length
     const plainText = word.replace(/<\/?bold>/g, '');
     const typedLength = currentText.length;
-    
+
     if (typedLength === 0) return '';
-    
+
     // Find bold sections in the original word
     const boldRegex = /<bold>(.*?)<\/bold>/g;
     let match;
-    const boldSections: Array<{start: number, end: number}> = [];
+    const boldSections: Array<{ start: number, end: number }> = [];
     let adjustedWord = word;
     let offset = 0;
-    
+
     while ((match = boldRegex.exec(word)) !== null) {
       const originalStart = match.index - offset;
       const originalEnd = originalStart + match[1].length;
-      boldSections.push({start: originalStart, end: originalEnd});
+      boldSections.push({ start: originalStart, end: originalEnd });
       // Remove the tags for position calculation
       adjustedWord = adjustedWord.replace(match[0], match[1]);
       offset += 13; // Length of <bold></bold> tags
     }
-    
+
     // Build the JSX with proper bold formatting
     const result = [];
     let lastIndex = 0;
-    
+
     for (const section of boldSections) {
       // Add text before bold section
       if (section.start > lastIndex && lastIndex < typedLength) {
@@ -91,7 +91,7 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
           );
         }
       }
-      
+
       // Add bold section if we've typed up to it
       if (typedLength > section.start) {
         const boldEnd = Math.min(section.end, typedLength);
@@ -103,10 +103,10 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
           );
         }
       }
-      
+
       lastIndex = section.end;
     }
-    
+
     // Add remaining text after last bold section
     if (lastIndex < typedLength) {
       result.push(
@@ -115,7 +115,7 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
         </span>
       );
     }
-    
+
     return result.length > 0 ? result : currentText;
   };
 
@@ -135,11 +135,11 @@ interface HeroSectionProps {
 
 export function HeroSection({ scrollTo }: HeroSectionProps) {
   const { t, i18n } = useTranslation();
-  
+
   return (
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
-      
+
       <div className="hidden md:block absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/8 to-purple-500/15 rounded-full blur-3xl opacity-60 will-change-transform"
@@ -182,62 +182,65 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center p-12 text-center z-10 w-full max-w-2xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-4xl md:text-6xl font-bold mb-4 text-center"
-        >
-          <span className="text-primary">
-            <TypewriterWithBold
-              words={
-                Array.isArray(i18n.getResource(i18n.language, 'translation', 'hero.titles'))
-                  ? i18n.getResource(i18n.language, 'translation', 'hero.titles')
-                  : [t('hero.title')]
-              }
-              typeSpeed={30}
-              deleteSpeed={30}
-              delaySpeed={3500}
-            />
-          </span>
-        </motion.h1>
-        <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-2xl"
-        >
-        <Trans 
-          i18nKey="hero.subtitle"
-          components={{ bold: <strong className="text-foreground" /> }}
-        />
-        </motion.p>
+      <div className="flex flex-col items-center justify-center p-8 text-center z-10 w-full max-w-2xl mx-auto">
         <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="flex gap-4 justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-        <Button size="lg" onClick={() => scrollTo('#projects')}>{t('hero.viewWork')}</Button>
-        <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>{t('hero.getInTouch')}</Button>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl md:text-6xl font-bold mb-3 text-center"
+          >
+            <span className="text-primary">
+              <TypewriterWithBold
+                words={
+                  Array.isArray(i18n.getResource(i18n.language, 'translation', 'hero.titles'))
+                    ? i18n.getResource(i18n.language, 'translation', 'hero.titles')
+                    : [t('hero.title')]
+                }
+                typeSpeed={30}
+                deleteSpeed={30}
+                delaySpeed={3500}
+              />
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl mb-8 text-center max-w-2xl"
+          >
+            <Trans
+              i18nKey="hero.subtitle"
+              components={{
+                bold: <strong className="text-foreground underline font-bold" style={{ fontWeight: 800 }} />,
+                code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-bold" style={{ fontWeight: 800 }} />
+              }}
+            />
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex gap-4 justify-center"
+          >
+            <Button size="lg" onClick={() => scrollTo('#projects')}>{t('hero.viewWork')}</Button>
+            <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>{t('hero.getInTouch')}</Button>
+          </motion.div>
         </motion.div>
-      </motion.div>
       </div>
       <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.8 }}
-      className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-      <button onClick={() => scrollTo('#about')} className="animate-bounce">
-        <ArrowDown className="h-6 w-6 text-muted-foreground" />
-      </button>
+        <button onClick={() => scrollTo('#about')} className="animate-bounce">
+          <ArrowDown className="h-6 w-6 text-muted-foreground" />
+        </button>
       </motion.div>
     </section>
   );

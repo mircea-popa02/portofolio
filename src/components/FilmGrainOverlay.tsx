@@ -61,7 +61,7 @@ function Grain({ intensity, grainSize }: { intensity: number; grainSize: number 
 }
 
 export function FilmGrainOverlay({
-  intensity = 0.2,
+  intensity = 0,
   grainSize = 1.5,
 }: {
   intensity?: number

@@ -12,44 +12,44 @@
     "title": "Ai un <bold>proiect</bold> în minte?",
     "titles": [
       "Ai un <bold>proiect</bold> în minte?",
-      "Hai să creăm ceva <bold>remarcabil</bold> împreună!",
-      "De la idee la <bold>lansare</bold>, suntem alături de tine."
+      "De la idee la <bold>lansare</bold>, suntem alături de tine.",
+      "Afacerea ta are nevoie de <bold>digitalizare</bold>?"
     ],
-    "subtitle": "Suntem <bold>tineri pasionați</bold>, absolvenți ai Facultății de Automatică și Calculatoare, gata să aducem inovația în afacerea ta.",
+    "subtitle": "Suntem o echipă de ingineri IT, cu experiență în <bold>dezvoltarea de soluții digitale</bold> și implementarea <bold>automatizărilor</bold> în <bold>mediul de afacere</bold>",
     "viewWork": "Vezi proiectele noastre",
     "getInTouch": "Contactează-ne",
     "scrollDown": "Derulează pentru detalii"
   },
   "about": {
-    "title": "Cine Suntem Noi",
-    "subtitle": "Suntem o echipă de <bold>tineri pasionați de tehnologie</bold>, absolvenți ai Facultății de <bold>Automatică și Calculatoare</bold> de la Universitatea Politehnica București, dedicați să transformăm ideile în soluții digitale performante.",
+    "title": "Cine mai cumpără software?",
+    "subtitle": "Suntem o echipă de <bold>oameni practici și pasionați</bold>, absolvenți ai Facultății de <bold>Automatică și Calculatoare</bold> din București. Construim soluții digitale care chiar fac diferența în business.",
     "story": {
       "title": "Povestea Noastră",
-      "paragraph1": "Ne-am format ca echipă la <bold>Universitatea Politehnica București</bold>, Facultatea de Automatică și Calculatoare, unde <bold>pasiunea pentru tehnologie</bold> ne-a unit și ne-a motivat să creăm împreună.",
-      "paragraph2": "Avem experiență diversificată - am lucrat atât în <bold>corporații mari</bold>, cât și în <bold>startup-uri dinamice</bold> și ca <bold>freelanceri independenți</bold>. Această varietate de experiențe ne-a dat o perspectivă unică asupra nevoilor diferitelor tipuri de business-uri."
+      "paragraph1": "Ne-am cunoscut la <bold>Politehnica din București</bold>, unde ne-am unit în jurul aceleiași idei: că tehnologia nu e un moft, ci o unealtă reală pentru firme care vor mai mult.",
+      "paragraph2": "Am lucrat prin <bold>multinaționale</bold>, am trecut prin <bold>startup-uri</bold> și ne-am descurcat și pe cont propriu. Acum aducem tot ce am învățat în slujba firmelor care au curajul să se digitalizeze."
     },
     "philosophy": {
       "title": "Viziunea Noastră",
-      "paragraph1": "Credem că <bold>tehnologia modernă</bold> poate transforma orice afacere. Ne concentrăm pe <bold>automatizarea proceselor</bold> și crearea de experiențe digitale care aduc rezultate concrete și măsurabile.",
-      "paragraph2": "Avem <bold>răbdarea să înțelegem</bold> nevoile și cazurile de business ale afacerii tale. Știm că decizia de a automatiza procesele este dificilă - există o <bold>inerție în fața inovației</bold> și schimbarea proceselor clasice poate părea intimidantă."
+      "paragraph1": "Oare mai merge doar cu foaie, pix și un <code>Excel</code>? Aproape 60% dintre IMM-urile din România măsoară deja impactul digitalizării. Și pentru un sfert dintre ele, tehnologia a adus un plus de peste 30% în cifră de afaceri.",
+      "paragraph2": "Știm că nu e simplu să decizi să investești în tehnologie. Dar și să rămâi blocat în metode vechi costă. <bold>Noi ascultăm, înțelegem și propunem ce are sens</bold> pentru tine, fără promisiuni deșarte."
     },
-    "valuesTitle": "Ce ne definește",
+    "valuesTitle": "De ce lucrăm altfel",
     "values": {
       "innovation": {
-        "title": "Soluții Custom",
-        "description": "Dezvoltăm <bold>soluții personalizate</bold> pentru fiecare client, adaptate perfect nevoilor și obiectivelor business-ului tău."
+        "title": "Soluții care se potrivesc",
+        "description": "Fiecare firmă are altă realitate. Nu forțăm șabloane, ci livrăm <bold>ce funcționează concret</bold> pentru obiectivele tale."
       },
       "passion": {
         "title": "De la Excel la Automatizare",
-        "description": "Te ajutăm să <bold>treci de la procese manuale</bold> (<code>Excel</code>, foaie și pix) la <bold>soluții moderne</bold> care simplifică afacerea și susțin creșterea."
+        "description": "Procesele manuale încetinesc business-ul. Trecem împreună la <bold>soluții digitale clare și eficiente</bold> care economisesc timp și bani."
       },
       "collaboration": {
-        "title": "Parteneriat pe Termen Lung",
-        "description": "Lucrăm <bold>împreună</bold> cu clienții noștri ca parteneri și oferim <bold>mentenanță după finalizarea proiectelor</bold> - succesul tău este și succesul nostru."
+        "title": "Suntem de partea ta",
+        "description": "Lucrăm ca parteneri, nu ca furnizori. <bold>Rămânem alături de tine</bold> și după livrare, ca soluția să reziste și să evolueze."
       },
       "craftsmanship": {
-        "title": "Experiență Diversificată",
-        "description": "Combinația de experiență în <bold>corporații, startup-uri și freelance</bold> ne dă o perspectivă completă asupra pieței."
+        "title": "Experiență aplicată",
+        "description": "Vedem business-ul tău din mai multe unghiuri - <bold>corporate, startup, freelance</bold>. Știm ce merge, ce nu și de ce."
       }
     }
   },
