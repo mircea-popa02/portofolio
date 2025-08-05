@@ -1,9 +1,33 @@
 import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
-import { User, Heart, Handshake, Blocks } from 'lucide-react';
+import { User, Heart, Handshake, Blocks, Search } from 'lucide-react';
+import React from 'react';
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export function AboutSection() {
 	const { t } = useTranslation();
+
+	// Custom component for search tooltips
+	const SearchTooltip = ({ tooltipKey, children }: { tooltipKey: string; children: React.ReactNode }) => (
+		<TooltipProvider>
+			<Tooltip>
+				<TooltipTrigger asChild>
+					<span className="search-tooltip">
+						{children}
+						<Search className="w-3 h-3 search-icon" />
+					</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<p className="max-w-xs">{t(`about.philosophy.tooltips.${tooltipKey}`)}</p>
+				</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	);
 
 	const personalValues = [
 		{
@@ -46,7 +70,7 @@ export function AboutSection() {
 						{t('about.title')}
 					</h2>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-						<Trans 
+						<Trans
 							i18nKey="about.subtitle"
 							components={{ bold: <strong className="text-foreground" /> }}
 						/>
@@ -66,13 +90,13 @@ export function AboutSection() {
 								{t('about.story.title')}
 							</h3>
 							<p className="text-muted-foreground text-base leading-relaxed mb-4">
-								<Trans 
+								<Trans
 									i18nKey="about.story.paragraph1"
 									components={{ bold: <strong className="text-foreground" /> }}
 								/>
 							</p>
 							<p className="text-muted-foreground text-base leading-relaxed">
-								<Trans 
+								<Trans
 									i18nKey="about.story.paragraph2"
 									components={{ bold: <strong className="text-foreground" /> }}
 								/>
@@ -92,16 +116,102 @@ export function AboutSection() {
 								{t('about.philosophy.title')}
 							</h3>
 							<p className="text-muted-foreground text-base leading-relaxed mb-4">
-								<Trans 
+								<Trans
 									i18nKey="about.philosophy.paragraph1"
-									components={{ bold: <strong className="text-foreground" /> }}
+									values={{ newYear: new Date().getFullYear() }}
+									components={{
+										search57: (
+											<SearchTooltip tooltipKey="57percent">
+												<span />
+											</SearchTooltip>
+										),
+										search30: (
+											<SearchTooltip tooltipKey="30percent">
+												<span />
+											</SearchTooltip>
+										),
+										searchOld: (
+											<SearchTooltip tooltipKey="oldMethods">
+												<span />
+											</SearchTooltip>
+										),
+										bold: <strong className="text-foreground" />,
+									}}
 								/>
 							</p>
-							<p className="text-muted-foreground text-base leading-relaxed">
-								<Trans 
+							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+								<Trans
 									i18nKey="about.philosophy.paragraph2"
-									components={{ bold: <strong className="text-foreground" /> }}
+									components={{
+										searchTransition: (
+											<SearchTooltip tooltipKey="digitalTransition">
+												<span />
+											</SearchTooltip>
+										),
+										searchInvest: (
+											<SearchTooltip tooltipKey="investments">
+												<span />
+											</SearchTooltip>
+										),
+										searchTime: (
+											<SearchTooltip tooltipKey="time">
+												<span />
+											</SearchTooltip>
+										),
+										searchMindset: (
+											<SearchTooltip tooltipKey="mindsetChange">
+												<span />
+											</SearchTooltip>
+										),
+										searchOldMethods: (
+											<SearchTooltip tooltipKey="oldMethods2">
+												<span />
+											</SearchTooltip>
+										),
+										searchRelevance: (
+											<SearchTooltip tooltipKey="loseRelevance">
+												<span />
+											</SearchTooltip>
+										),
+										searchClients: (
+											<SearchTooltip tooltipKey="fewerClients">
+												<span />
+											</SearchTooltip>
+										),
+										searchEfficiency: (
+											<SearchTooltip tooltipKey="lowEfficiency">
+												<span />
+											</SearchTooltip>
+										),
+										bold: <strong className="text-foreground" />,
+									}}
 								/>
+							</p>
+							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+								<Trans
+									i18nKey="about.philosophy.paragraph3"
+									components={{
+										searchExpand: (
+											<SearchTooltip tooltipKey="expand">
+												<span />
+											</SearchTooltip>
+										),
+										searchWebsite: (
+											<SearchTooltip tooltipKey="outdatedWebsite">
+												<span />
+											</SearchTooltip>
+										),
+										searchSameClients: (
+											<SearchTooltip tooltipKey="sameClients">
+												<span />
+											</SearchTooltip>
+										),
+										bold: <strong className="text-foreground" />,
+									}}
+								/>
+							</p>
+							<p className="text-xs text-muted-foreground/80 italic mt-6 border-t border-border pt-4">
+								{t('about.philosophy.citation1')}
 							</p>
 						</div>
 					</motion.div>
@@ -132,11 +242,38 @@ export function AboutSection() {
 										<value.icon className="w-12 h-12 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
 										<h4 className="text-lg font-semibold mb-3">{value.title}</h4>
 										<p className="text-muted-foreground text-sm leading-relaxed">
-											<Trans 
+											<Trans
 												i18nKey={value.descriptionKey}
-												components={{ 
+												components={{
 													bold: <strong className="text-foreground" />,
-													code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+													code: (
+														<code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+													),
+													searchErrors: (
+														<SearchTooltip tooltipKey="errors">
+															<span />
+														</SearchTooltip>
+													),
+													searchPartners: (
+														<SearchTooltip tooltipKey="partners">
+															<span />
+														</SearchTooltip>
+													),
+													searchCorporate: (
+														<SearchTooltip tooltipKey="corporate">
+															<span />
+														</SearchTooltip>
+													),
+													searchStartup: (
+														<SearchTooltip tooltipKey="startup">
+															<span />
+														</SearchTooltip>
+													),
+													searchFreelance: (
+														<SearchTooltip tooltipKey="freelance">
+															<span />
+														</SearchTooltip>
+													),
 												}}
 											/>
 										</p>

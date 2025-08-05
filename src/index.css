@@ -169,6 +169,25 @@ html, body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Custom styles for search tooltips */
+.search-tooltip {
+  @apply text-primary font-semibold cursor-pointer inline-flex items-center gap-1 transition-all duration-200;
+  border-bottom: 1px dashed hsl(var(--primary) / 0.6);
+}
+
+.search-tooltip:hover {
+  @apply text-primary/80;
+  border-bottom-color: hsl(var(--primary) / 0.8);
+}
+
+.search-tooltip .search-icon {
+  @apply opacity-70 transition-opacity duration-200;
+}
+
+.search-tooltip:hover .search-icon {
+  @apply opacity-100;
+}
+
 
 
 
