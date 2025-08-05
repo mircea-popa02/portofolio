@@ -25,35 +25,33 @@
     "subtitle": "Suntem o echipă de <bold>oameni practici și pasionați</bold>, absolvenți ai Facultății de <bold>Automatică și Calculatoare</bold> din București. Construim soluții digitale care chiar fac diferența în business.",
     "story": {
       "title": "Povestea Noastră",
-      "paragraph1": "Ne-am cunoscut la <bold>Politehnica din București</bold>, unde ne-am unit în jurul aceleiași idei: că tehnologia nu e un moft, ci o unealtă reală pentru firme care vor mai mult.",
-      "paragraph2": "Am lucrat prin <bold>multinaționale</bold>, am trecut prin <bold>startup-uri</bold> și ne-am descurcat și pe cont propriu. Acum aducem tot ce am învățat în slujba firmelor care au curajul să se digitalizeze."
+      "paragraph1": "Ne-am cunoscut la <bold>Politehnica din București</bold>, unde ne-am unit în jurul aceleiași idei: că <searchTech>tehnologia nu e un moft</searchTech>, ci o unealtă reală pentru firme care vor mai mult.",
+      "paragraph2": "Am lucrat prin <searchMulti>multinaționale</searchMulti>, am trecut prin <searchStartupExp>startup-uri</searchStartupExp> și ne-am descurcat și pe cont propriu. Acum aducem tot ce am învățat în slujba firmelor care au curajul să se digitalizeze."
     },
     "philosophy": {
       "title": "Realitatea Digitalizării în România",
-      "paragraph1": "<search57>57% dintre IMM-urile românești</search57> măsoară impactul digitalizării. Pentru un sfert dintre acestea, <search30>impactul estimat depășește 30%</search30> din cifra de afaceri*. Oare mai merge în {newYear} doar cu <searchOld>foaie, pix și un Excel</searchOld>?",
-      "paragraph2": "Știm că <searchTransition>tranziția la digital</searchTransition> nu e simplă. Implică <searchInvest>investiții</searchInvest>, <searchTime>timp</searchTime> și o <searchMindset>schimbare de mentalitate</searchMindset>. Dar să rămâi blocat în <searchOldMethods>metode vechi</searchOldMethods> costă și mai mult: <searchRelevance>pierderea relevanței</searchRelevance>, <searchClients>clienți mai puțini</searchClients> și <searchEfficiency>eficiență scăzută</searchEfficiency>.",
-      "paragraph3": "Poate afacerea ta are nevoie să <searchExpand>se extindă</searchExpand> sau ai un <searchWebsite>site învechit</searchWebsite>? Poate nu mai ai <searchSameClients>la fel de mulți clienți</searchSameClients> ca înainte? Noi ascultăm, înțelegem și propunem ce are sens pentru tine, fără promisiuni deșarte.",
+      "paragraph1": "<search57>57% dintre IMM-urile românești</search57> măsoară impactul digitalizării. Pentru un sfert dintre acestea, <search30>impactul estimat depășește 30%</search30> din cifra de afaceri*.",
+      "paragraph2": "Oare mai merge în {newYear} doar cu <searchOld>foaie, pix și un Excel</searchOld>?",
+      "paragraph3": "Știm că <searchTransition>tranziția la digital</searchTransition> nu e simplă. Dar să rămâi blocat în metode vechi costă mai mult: <searchRelevance>pierderea relevanței</searchRelevance> și <searchClients>clienți mai puțini</searchClients>.",
+      "paragraph4": "Poate afacerea ta are nevoie să <searchExpand>se extindă</searchExpand> sau ai un <searchWebsite>site învechit</searchWebsite>? Noi ascultăm, înțelegem și propunem ce are sens pentru tine.",
       "citation1": "* conform studiului MKOR Consulting, Digitalizarea în IMM-urile din România 2023",
       "tooltips": {
-        "57percent": "Studiul MKOR arată că majoritatea IMM-urilor din România înțeleg deja valoarea digitalizării și urmăresc activ rezultatele.",
+        "tech": "Tehnologia modernă nu e un lux - e o necesitate pentru competitivitate în 2025.",
+        "multi": "Experiența din corporații ne-a învățat despre procese scalabile și standardele înalte de calitate.",
+        "startupExp": "Agilitatea din startup-uri ne-a dezvoltat capacitatea de a livra rapid soluții eficiente.",
+        "57percent": "Majoritatea IMM-urilor din România înțeleg deja valoarea digitalizării și urmăresc activ rezultatele.",
         "30percent": "Pentru companiile care au investit în digitalizare, creșterea veniturilor a fost semnificativă - până la 30% din cifra de afaceri.",
-        "oldMethods": "Managementul tradițional cu instrumente fizice și Excel devine ineficient pentru afacerile moderne care vor să crească.",
-        "digitalTransition": "Trecerea de la procese manuale la sisteme digitale automatizate - primul pas către eficiență și scalabilitate.",
-        "investments": "Investițiile în digitalizare se întorc rapid prin automatizarea proceselor și reducerea costurilor operaționale.",
-        "time": "Timpul petrecut pe procese manuale poate fi redirecționat către activități strategice care aduc profit.",
-        "mindsetChange": "Adoptarea unei mentalități digitale în echipă - esențială pentru succesul transformării.",
-        "oldMethods2": "Procesele învechite frânează creșterea și creează vulnerabilități în fața concurenței digitalizate.",
+        "oldMethods": "Managementul tradițional cu Excel și procese manuale devine ineficient pentru afacerile moderne.",
+        "digitalTransition": "Trecerea de la procese manuale la sisteme digitale - primul pas către eficiență și scalabilitate.",
         "loseRelevance": "Companiile care nu se digitalizează riscă să devină irelevante în piața modernă.",
-        "fewerClients": "Clienții moderni preferă companiile cu procese digitale rapide și servicii online convenabile.",
-        "lowEfficiency": "Procesele manuale duc la erori costisitoare și timp pierdut care afectează profitabilitatea.",
+        "fewerClients": "Clienții moderni preferă companiile cu procese digitale rapide și servicii online.",
         "expand": "Creșterea sustenabilă necesită sisteme scalabile care să susțină volumul crescut de activitate.",
-        "outdatedWebsite": "Un site învechit transmite o imagine negativă și pierde potențiali clienți care caută servicii moderne.",
-        "sameClients": "Scăderea numărului de clienți poate fi legată de lipsa prezenței digitale și a proceselor moderne.",
+        "outdatedWebsite": "Un site învechit transmite o imagine negativă și pierde potențiali clienți.",
         "errors": "Greșelile umane în procesele manuale pot costa mult mai mult decât investiția în automatizare.",
         "partners": "O colaborare adevărată înseamnă că succesul tău devine și succesul nostru - de aceea rămânem alături pe termen lung.",
-        "corporate": "Experiența din marile corporații ne-a învățat despre scalabilitate, procese robuste și standardele de calitate.",
-        "startup": "Lucrul în startup-uri ne-a dezvoltat agilitatea, creativitatea și capacitatea de a livra rapid soluții eficiente.",
-        "freelance": "Experiența ca freelanceri ne-a învățat să înțelegem nevoile directe ale clienților și să fim responsabili pentru rezultate."
+        "corporate": "Experiența din marile corporații ne-a învățat despre scalabilitate și standardele de calitate.",
+        "startup": "Lucrul în startup-uri ne-a dezvoltat agilitatea și capacitatea de a livra rapid soluții eficiente.",
+        "freelance": "Experiența ca freelanceri ne-a învățat să înțelegem nevoile directe ale clienților."
       }
     },
     "valuesTitle": "De ce lucrăm altfel",
@@ -64,15 +62,15 @@
       },
       "passion": {
         "title": "De la Excel la Automatizare",
-        "description": "Procesele manuale încetinesc business-ul și te expun la <searchErrors>erori costisitoare</searchErrors>. Trecem împreună la soluții digitale clare și eficiente care economisesc timp și bani."
+        "description": "Procesele manuale încetinesc business-ul și te expun la <searchErrors>erori costisitoare</searchErrors>. Trecem împreună la soluții digitale clare și eficiente."
       },
       "collaboration": {
         "title": "Suntem de partea ta",
-        "description": "Lucrăm ca <searchPartners>parteneri</searchPartners>, nu ca simpli furnizori. Rămânem alături de tine și după livrare, ca soluția să reziste și să evolueze odată cu afacerea ta."
+        "description": "Lucrăm ca <searchPartners>parteneri</searchPartners>, nu ca simpli furnizori. Rămânem alături de tine și după livrare."
       },
       "craftsmanship": {
         "title": "Experiență aplicată, nu teorie",
-        "description": "Am văzut business-ul din toate unghiurile: <searchCorporate>corporate</searchCorporate>, <searchStartup>startup</searchStartup>, <searchFreelance>freelance</searchFreelance>. Știm ce merge, ce nu și, cel mai important, de ce. Adaptăm soluțiile la realitatea ta."
+        "description": "Am văzut business-ul din toate unghiurile: <searchCorporate>corporate</searchCorporate>, <searchStartup>startup</searchStartup>, <searchFreelance>freelance</searchFreelance>. Adaptăm soluțiile la realitatea ta."
       }
     }
   },

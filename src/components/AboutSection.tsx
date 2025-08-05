@@ -23,7 +23,7 @@ export function AboutSection() {
 					</span>
 				</TooltipTrigger>
 				<TooltipContent>
-					<p className="max-w-xs">{t(`about.philosophy.tooltips.${tooltipKey}`)}</p>
+					<p className="max-w-sm text-base leading-relaxed">{t(`about.philosophy.tooltips.${tooltipKey}`)}</p>
 				</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>
@@ -66,10 +66,10 @@ export function AboutSection() {
 					viewport={{ once: true }}
 					className="text-center mb-16"
 				>
-					<h2 className="text-4xl font-bold mb-6 text-foreground">
+					<h2 className="text-5xl font-bold mb-8 text-foreground">
 						{t('about.title')}
 					</h2>
-					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+					<p className="text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
 						<Trans
 							i18nKey="about.subtitle"
 							components={{ bold: <strong className="text-foreground" /> }}
@@ -86,19 +86,38 @@ export function AboutSection() {
 						className="space-y-8"
 					>
 						<div>
-							<h3 className="text-2xl font-semibold mb-4 text-primary">
+							<h3 className="text-3xl font-semibold mb-6 text-primary">
 								{t('about.story.title')}
 							</h3>
-							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+							<p className="text-muted-foreground text-lg leading-relaxed mb-6">
 								<Trans
 									i18nKey="about.story.paragraph1"
-									components={{ bold: <strong className="text-foreground" /> }}
+									components={{ 
+										bold: <strong className="text-foreground" />,
+										searchTech: (
+											<SearchTooltip tooltipKey="tech">
+												<span />
+											</SearchTooltip>
+										),
+									}}
 								/>
 							</p>
-							<p className="text-muted-foreground text-base leading-relaxed">
+							<p className="text-muted-foreground text-lg leading-relaxed">
 								<Trans
 									i18nKey="about.story.paragraph2"
-									components={{ bold: <strong className="text-foreground" /> }}
+									components={{ 
+										bold: <strong className="text-foreground" />,
+										searchMulti: (
+											<SearchTooltip tooltipKey="multi">
+												<span />
+											</SearchTooltip>
+										),
+										searchStartupExp: (
+											<SearchTooltip tooltipKey="startupExp">
+												<span />
+											</SearchTooltip>
+										),
+									}}
 								/>
 							</p>
 						</div>
@@ -112,13 +131,12 @@ export function AboutSection() {
 						className="space-y-8"
 					>
 						<div>
-							<h3 className="text-2xl font-semibold mb-4 text-primary">
+							<h3 className="text-3xl font-semibold mb-6 text-primary">
 								{t('about.philosophy.title')}
 							</h3>
-							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+							<p className="text-muted-foreground text-lg leading-relaxed mb-6">
 								<Trans
 									i18nKey="about.philosophy.paragraph1"
-									values={{ newYear: new Date().getFullYear() }}
 									components={{
 										search57: (
 											<SearchTooltip tooltipKey="57percent">
@@ -130,6 +148,15 @@ export function AboutSection() {
 												<span />
 											</SearchTooltip>
 										),
+										bold: <strong className="text-foreground" />,
+									}}
+								/>
+							</p>
+							<p className="text-muted-foreground text-lg leading-relaxed mb-6">
+								<Trans
+									i18nKey="about.philosophy.paragraph2"
+									values={{ newYear: new Date().getFullYear() }}
+									components={{
 										searchOld: (
 											<SearchTooltip tooltipKey="oldMethods">
 												<span />
@@ -139,32 +166,12 @@ export function AboutSection() {
 									}}
 								/>
 							</p>
-							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+							<p className="text-muted-foreground text-lg leading-relaxed mb-6">
 								<Trans
-									i18nKey="about.philosophy.paragraph2"
+									i18nKey="about.philosophy.paragraph3"
 									components={{
 										searchTransition: (
 											<SearchTooltip tooltipKey="digitalTransition">
-												<span />
-											</SearchTooltip>
-										),
-										searchInvest: (
-											<SearchTooltip tooltipKey="investments">
-												<span />
-											</SearchTooltip>
-										),
-										searchTime: (
-											<SearchTooltip tooltipKey="time">
-												<span />
-											</SearchTooltip>
-										),
-										searchMindset: (
-											<SearchTooltip tooltipKey="mindsetChange">
-												<span />
-											</SearchTooltip>
-										),
-										searchOldMethods: (
-											<SearchTooltip tooltipKey="oldMethods2">
 												<span />
 											</SearchTooltip>
 										),
@@ -178,18 +185,13 @@ export function AboutSection() {
 												<span />
 											</SearchTooltip>
 										),
-										searchEfficiency: (
-											<SearchTooltip tooltipKey="lowEfficiency">
-												<span />
-											</SearchTooltip>
-										),
 										bold: <strong className="text-foreground" />,
 									}}
 								/>
 							</p>
-							<p className="text-muted-foreground text-base leading-relaxed mb-4">
+							<p className="text-muted-foreground text-lg leading-relaxed mb-6">
 								<Trans
-									i18nKey="about.philosophy.paragraph3"
+									i18nKey="about.philosophy.paragraph4"
 									components={{
 										searchExpand: (
 											<SearchTooltip tooltipKey="expand">
@@ -201,16 +203,11 @@ export function AboutSection() {
 												<span />
 											</SearchTooltip>
 										),
-										searchSameClients: (
-											<SearchTooltip tooltipKey="sameClients">
-												<span />
-											</SearchTooltip>
-										),
 										bold: <strong className="text-foreground" />,
 									}}
 								/>
 							</p>
-							<p className="text-xs text-muted-foreground/80 italic mt-6 border-t border-border pt-4">
+							<p className="text-sm text-muted-foreground/80 italic mt-8 border-t border-border pt-6">
 								{t('about.philosophy.citation1')}
 							</p>
 						</div>
@@ -223,7 +220,7 @@ export function AboutSection() {
 					transition={{ duration: 0.8 }}
 					viewport={{ once: true }}
 				>
-					<h3 className="text-3xl font-semibold text-center mb-12">
+					<h3 className="text-4xl font-semibold text-center mb-16">
 						{t('about.valuesTitle')}
 					</h3>
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -240,8 +237,8 @@ export function AboutSection() {
 									<div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 									<div className="relative z-10">
 										<value.icon className="w-12 h-12 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
-										<h4 className="text-lg font-semibold mb-3">{value.title}</h4>
-										<p className="text-muted-foreground text-sm leading-relaxed">
+										<h4 className="text-xl font-semibold mb-4">{value.title}</h4>
+										<p className="text-muted-foreground text-base leading-relaxed">
 											<Trans
 												i18nKey={value.descriptionKey}
 												components={{
