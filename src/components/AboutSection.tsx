@@ -98,57 +98,6 @@ export function AboutSection() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-3xl font-semibold mb-6 text-primary">
-                {t("about.story.title")}
-              </h3>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                <Trans
-                  i18nKey="about.story.paragraph1"
-                  components={{
-                    bold: <strong className="text-foreground" />,
-                    code: (
-                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                    ),
-                    searchTech: (
-                      <SearchTooltip tooltipKey="tech">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                  }}
-                />
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                <Trans
-                  i18nKey="about.story.paragraph2"
-                  components={{
-                    bold: <strong className="text-foreground" />,
-                    searchMulti: (
-                      <SearchTooltip tooltipKey="multi">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    code: (
-                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                    ),
-                    searchStartupExp: (
-                      <SearchTooltip tooltipKey="startupExp">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                  }}
-                />
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -185,67 +134,47 @@ export function AboutSection() {
                   i18nKey="about.philosophy.paragraph2"
                   values={{ newYear: new Date().getFullYear() }}
                   components={{
-                    searchOld: (
-                      <SearchTooltip tooltipKey="oldMethods">
-                        <span />
-                      </SearchTooltip>
-                    ),
                     bold: <strong className="text-foreground" />,
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
+                  }}
+                />
+              </p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div>
+              <h3 className="text-3xl font-semibold mb-6 text-primary">
+                {t("about.story.title")}
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                <Trans
+                  i18nKey="about.story.paragraph1"
+                  components={{
+                    bold: <strong className="text-foreground" />,
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    )
                   }}
                 />
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                 <Trans
-                  i18nKey="about.philosophy.paragraph3"
+                  i18nKey="about.story.paragraph2"
                   components={{
-                    searchTransition: (
-                      <SearchTooltip tooltipKey="digitalTransition">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    searchRelevance: (
-                      <SearchTooltip tooltipKey="loseRelevance">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    searchClients: (
-                      <SearchTooltip tooltipKey="fewerClients">
-                        <span />
-                      </SearchTooltip>
-                    ),
                     bold: <strong className="text-foreground" />,
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
                   }}
                 />
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                <Trans
-                  i18nKey="about.philosophy.paragraph4"
-                  components={{
-                    searchExpand: (
-                      <SearchTooltip tooltipKey="expand">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    searchWebsite: (
-                      <SearchTooltip tooltipKey="outdatedWebsite">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    bold: <strong className="text-foreground" />,
-                    code: (
-                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                    ),
-                  }}
-                />
-              </p>
-              <p className="text-sm text-muted-foreground/80 italic mt-8 border-t border-border pt-6">
-                {t("about.philosophy.citation1")}
               </p>
             </div>
           </motion.div>
@@ -284,32 +213,7 @@ export function AboutSection() {
                           bold: <strong className="text-foreground" />,
                           code: (
                             <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                          ),
-                          searchErrors: (
-                            <SearchTooltip tooltipKey="errors">
-                              <span />
-                            </SearchTooltip>
-                          ),
-                          searchPartners: (
-                            <SearchTooltip tooltipKey="partners">
-                              <span />
-                            </SearchTooltip>
-                          ),
-                          searchCorporate: (
-                            <SearchTooltip tooltipKey="corporate">
-                              <span />
-                            </SearchTooltip>
-                          ),
-                          searchStartup: (
-                            <SearchTooltip tooltipKey="startup">
-                              <span />
-                            </SearchTooltip>
-                          ),
-                          searchFreelance: (
-                            <SearchTooltip tooltipKey="freelance">
-                              <span />
-                            </SearchTooltip>
-                          ),
+                          )
                         }}
                       />
                     </p>
