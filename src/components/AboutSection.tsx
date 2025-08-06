@@ -115,16 +115,6 @@ export function AboutSection() {
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
-                    search57: (
-                      <SearchTooltip tooltipKey="57percent">
-                        <span />
-                      </SearchTooltip>
-                    ),
-                    search30: (
-                      <SearchTooltip tooltipKey="30percent">
-                        <span />
-                      </SearchTooltip>
-                    ),
                     bold: <strong className="text-foreground" />,
                   }}
                 />
