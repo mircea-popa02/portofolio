@@ -20,8 +20,8 @@
     "scrollDown": "Derulează pentru detalii"
   },
   "about": {
-    "title": "Cine suntem și ce facem",
-    "subtitle": "Suntem o echipă de <bold>oameni practici și pasionați</bold>, absolvenți ai Facultății de <bold>Automatică și Calculatoare</bold> din București. Construim soluții digitale care chiar fac diferența în business.",
+    "title": "Cine suntem",
+    "subtitle": "Suntem o echipă de profesioniști în IT care livrăm <bold>soluții digitale personalizate</bold> care aduc afacerile în prezent și le pregătesc pentru viitor.",
     "story": {
       "title": "Povestea Noastră",
       "paragraph1": "Ne-am cunoscut la <bold>Politehnica din București</bold>, unde ne-am unit în jurul aceleiași idei: că <searchTech>tehnologia nu e un moft</searchTech>, ci o unealtă reală pentru firme care vor mai mult.",
@@ -33,25 +33,25 @@
       "paragraph2": "Oare mai merge în {newYear} doar cu <searchOld>foaie, pix și un Excel</searchOld>?",
       "paragraph3": "Știm că <searchTransition>tranziția la digital</searchTransition> nu e simplă. Dar să rămâi blocat în metode vechi costă mai mult: <searchRelevance>pierderea relevanței</searchRelevance> și <searchClients>clienți mai puțini</searchClients>.",
       "paragraph4": "<code>Poate afacerea ta are nevoie</code> să <searchExpand>se extindă</searchExpand> sau ai un <searchWebsite>site învechit</searchWebsite>? Noi ascultăm, înțelegem și propunem ce are sens pentru tine.</code>",
-      "citation1": "* conform studiului MKOR Consulting, Digitalizarea în IMM-urile din România 2023",
-      "tooltips": {
-        "tech": "Tehnologia modernă nu e un lux - e o necesitate pentru competitivitate în 2025.",
-        "multi": "Experiența din corporații ne-a învățat despre procese scalabile și standardele înalte de calitate.",
-        "startupExp": "Agilitatea din startup-uri ne-a dezvoltat capacitatea de a livra rapid soluții eficiente.",
-        "57percent": "Majoritatea IMM-urilor din România înțeleg deja valoarea digitalizării și urmăresc activ rezultatele.",
-        "30percent": "Pentru companiile care au investit în digitalizare, creșterea veniturilor a fost semnificativă - până la 30% din cifra de afaceri.",
-        "oldMethods": "Managementul tradițional cu Excel și procese manuale devine ineficient pentru afacerile moderne.",
-        "digitalTransition": "Trecerea de la procese manuale la sisteme digitale - primul pas către eficiență și scalabilitate.",
-        "loseRelevance": "Companiile care nu se digitalizează riscă să devină irelevante în piața modernă.",
-        "fewerClients": "Clienții moderni preferă companiile cu procese digitale rapide și servicii online.",
-        "expand": "Creșterea sustenabilă necesită sisteme scalabile care să susțină volumul crescut de activitate.",
-        "outdatedWebsite": "Un site învechit transmite o imagine negativă și pierde potențiali clienți.",
-        "errors": "Greșelile umane în procesele manuale pot costa mult mai mult decât investiția în automatizare.",
-        "partners": "O colaborare adevărată înseamnă că succesul tău devine și succesul nostru - de aceea rămânem alături pe termen lung.",
-        "corporate": "Experiența din marile corporații ne-a învățat despre scalabilitate și standardele de calitate.",
-        "startup": "Lucrul în startup-uri ne-a dezvoltat agilitatea și capacitatea de a livra rapid soluții eficiente.",
-        "freelance": "Experiența ca freelanceri ne-a învățat să înțelegem nevoile directe ale clienților."
-      }
+      "citation1": "* conform studiului MKOR Consulting, Digitalizarea în IMM-urile din România 2023"
+    },
+    "tooltips": {
+      "tech": "Tehnologia modernă nu e un lux - e o necesitate pentru competitivitate în 2025.",
+      "multi": "Experiența din corporații ne-a învățat despre procese scalabile și standardele înalte de calitate.",
+      "startupExp": "Agilitatea din startup-uri ne-a dezvoltat capacitatea de a livra rapid soluții eficiente.",
+      "57percent": "Majoritatea IMM-urilor din România înțeleg deja valoarea digitalizării și urmăresc activ rezultatele.",
+      "30percent": "Pentru companiile care au investit în digitalizare, creșterea veniturilor a fost semnificativă - până la 30% din cifra de afaceri.",
+      "oldMethods": "Managementul tradițional cu Excel și procese manuale devine ineficient pentru afacerile moderne.",
+      "digitalTransition": "Trecerea de la procese manuale la sisteme digitale - primul pas către eficiență și scalabilitate.",
+      "loseRelevance": "Companiile care nu se digitalizează riscă să devină irelevante în piața modernă.",
+      "fewerClients": "Clienții moderni preferă companiile cu procese digitale rapide și servicii online.",
+      "expand": "Creșterea sustenabilă necesită sisteme scalabile care să susțină volumul crescut de activitate.",
+      "outdatedWebsite": "Un site învechit transmite o imagine negativă și pierde potențiali clienți.",
+      "errors": "Greșelile umane în procesele manuale pot costa mult mai mult decât investiția în automatizare.",
+      "partners": "O colaborare adevărată înseamnă că succesul tău devine și succesul nostru - de aceea rămânem alături pe termen lung.",
+      "corporate": "Experiența din marile corporații ne-a învățat despre scalabilitate și standardele de calitate.",
+      "startup": "Lucrul în startup-uri ne-a dezvoltat agilitatea și capacitatea de a livra rapid soluții eficiente.",
+      "freelance": "Experiența ca freelanceri ne-a învățat să înțelegem nevoile directe ale clienților."
     },
     "valuesTitle": "De ce lucrăm altfel",
     "values": {

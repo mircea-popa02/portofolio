@@ -78,7 +78,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
             </motion.a>
 
             <div className="flex items-center gap-8">
-              <div className="hidden md:flex items-center gap-6">
+              <div className="hidden md:flex items-center gap-2">
                 {navItems.map((item) => (
                   <motion.a
                     key={item.href}

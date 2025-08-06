@@ -126,7 +126,7 @@ export function TechnologiesSection() {
 					viewport={{ once: true }}
 					className="text-center mb-16"
 				>
-					<h2 className="text-4xl font-bold mb-6 text-foreground">
+					<h2 className="text-5xl font-bold mb-6 text-foreground">
 						{t('expertise.title')}
 					</h2>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

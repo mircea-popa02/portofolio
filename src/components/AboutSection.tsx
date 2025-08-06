@@ -36,7 +36,7 @@ export function AboutSection() {
         </TooltipTrigger>
         <TooltipContent>
           <p className="max-w-sm text-base leading-relaxed">
-            {t(`about.philosophy.tooltips.${tooltipKey}`)}
+            {t(`about.tooltips.${tooltipKey}`)}
           </p>
         </TooltipContent>
       </Tooltip>
