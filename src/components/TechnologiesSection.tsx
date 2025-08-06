@@ -10,10 +10,20 @@ import ReactIcon from '../assets/react.svg';
 import ShopifyIcon from '../assets/shopify.svg';
 import WoocommerceIcon from '../assets/woocommerce.svg';
 import WordpressIcon from '../assets/wordpress.svg';
+import ApplePayIcon from '../assets/applepay.svg';
+import DockerIcon from '../assets/docker.svg';
+import GooglePayIcon from '../assets/googlepay.svg';
+import MongoDBIcon from '../assets/mongodb.svg';
+import PhpIcon from '../assets/php.svg';
+import PostgresqlIcon from '../assets/postgresql.svg';
+import StripeIcon from '../assets/stripe.svg';
+import PayPalIcon from '../assets/paypal.svg';
+import WixIcon from '../assets/wix.svg';
+import FigmaIcon from '../assets/figma.svg';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export function TechnologiesSection() {
 	const { t } = useTranslation();
-
 	const techIcons = [
 		{ src: ReactIcon, alt: 'React', name: 'React' },
 		{ src: AngularIcon, alt: 'Angular', name: 'Angular' },
@@ -23,6 +33,16 @@ export function TechnologiesSection() {
 		{ src: ShopifyIcon, alt: 'Shopify', name: 'Shopify' },
 		{ src: WoocommerceIcon, alt: 'WooCommerce', name: 'WooCommerce' },
 		{ src: WordpressIcon, alt: 'WordPress', name: 'WordPress' },
+		{ src: ApplePayIcon, alt: 'Apple Pay', name: 'Apple Pay' },
+		{ src: GooglePayIcon, alt: 'Google Pay', name: 'Google Pay' },
+		{ src: StripeIcon, alt: 'Stripe', name: 'Stripe' },
+		{ src: PayPalIcon, alt: 'PayPal', name: 'PayPal' },
+		{ src: PhpIcon, alt: 'PHP', name: 'PHP' },
+		{ src: PostgresqlIcon, alt: 'PostgreSQL', name: 'PostgreSQL' },
+		{ src: MongoDBIcon, alt: 'MongoDB', name: 'MongoDB' },
+		{ src: DockerIcon, alt: 'Docker', name: 'Docker' },
+		{ src: WixIcon, alt: 'Wix', name: 'Wix' },
+		{ src: FigmaIcon, alt: 'Figma', name: 'Figma' },
 	];
 
 	const expertise = [
@@ -124,7 +144,7 @@ export function TechnologiesSection() {
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 					viewport={{ once: true }}
-					className="text-center mb-16"
+					className="text-center mb-8 md:mb-12"
 				>
 					<h2 className="text-5xl font-bold mb-6 text-foreground">
 						{t('expertise.title')}
@@ -144,34 +164,37 @@ export function TechnologiesSection() {
 					whileInView={{ opacity: 1 }}
 					transition={{ duration: 1, delay: 0.5 }}
 					viewport={{ once: true }}
-					className="py-6 md:py-12 mt-4 md:mt-8"
+					className="py-6 md:py-12 mt-4 md:mt-8 mb-4 md:mb-8"
 				>
-					<div className="flex justify-center flex-wrap gap-4 md:gap-8">
-						{techIcons.map((tech, index) => (
-							<div
-								key={index}
-								className="flex flex-col items-center group"
-								style={{ width: '80px' }} // Fixed width container
-							>
-								<div className="relative">
-									<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
+					<div className="flex justify-center flex-wrap gap-4 md:gap-8 ">
+						{techIcons.map((tech) => (
+							<TooltipProvider key={tech.name}>
+								<Tooltip>
+									<TooltipTrigger asChild>
+										<div
+											className="flex flex-col items-center group"
+											style={{ width: '80px' }}
+										>
+											<div className="relative">
+												<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 hidden md:block"></div>
 
-									<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20">
-										<img
-											src={tech.src}
-											alt={tech.alt}
-											loading="eager"
-											decoding="async"
-											className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
-										/>
-									</div>
-								</div>
-								<div className="h-6 flex items-center justify-center"> {/* Fixed height container */}
-									<span className="text-xs font-medium text-muted-foreground mt-1 md:mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-primary absolute">
-										{tech.name}
-									</span>
-								</div>
-							</div>
+												<div className="relative w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-card via-card to-muted/50 border border-primary/20 md:border-2 rounded-full p-2 md:p-4 group-hover:border-primary/60 transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:rotate-3 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:shadow-primary/10 md:hover:shadow-primary/20">
+													<img
+														src={tech.src}
+														alt={tech.alt}
+														loading="eager"
+														decoding="async"
+														className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
+													/>
+												</div>
+											</div>
+										</div>
+									</TooltipTrigger>
+									<TooltipContent>
+										<p>{tech.name}</p>
+									</TooltipContent>
+								</Tooltip>
+							</TooltipProvider>
 						))}
 					</div>
 				</motion.div>
