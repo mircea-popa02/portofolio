@@ -29,29 +29,27 @@
     },
     "story": {
       "title": "Povestea noastră",
-      "paragraph1": "Echipa noastră a trecut prin startup-uri, corporații și proiecte pe cont propriu, iar din toate am învățat același lucru, tehnologia contează doar dacă răspunde unei nevoi reale de business.",
+      "paragraph1": "Echipa noastră a trecut prin startup-uri, corporații și proiecte pe cont propriu, iar din toate am învățat același lucru: tehnologia contează doar dacă răspunde unei nevoi reale de business.",
       "paragraph2": "Am văzut efectele deciziilor grăbite, a soluțiilor rigide și a lipsei de viziune tehnică. De aceea, am ales să lucrăm altfel, cu atenție la detalii, cu înțelegere pentru fiecare model de business și cu soluții durabile."
     },
-    "tooltips": {
-    
-    },
+    "tooltips": {},
     "valuesTitle": "De ce lucrăm altfel",
     "values": {
-      "innovation": {
-        "title": "Soluții care se potrivesc",
-        "description": "Fiecare firmă are altă realitate. Nu forțăm șabloane, ci livrăm <bold>ce funcționează concret</bold> pentru obiectivele tale."
+      "understanding": {
+        "title": "Business-ul înaintea tehnologiei",
+        "description": "Pornim de la realitatea companiei tale, nu de la ce e la modă. Înțelegem mai întâi nevoile, apoi propunem soluțiile."
       },
-      "passion": {
-        "title": "De la Excel la Automatizare",
-        "description": "Procesele manuale încetinesc business-ul și te expun la <searchErrors>erori costisitoare</searchErrors>. Trecem împreună la soluții digitale clare și eficiente."
+      "clarity": {
+        "title": "Soluții clare, nu complexe",
+        "description": "Credem în software simplu, scalabil și ușor de folosit. Codul bun nu se vede, ci îți face munca mai ușoară."
       },
-      "collaboration": {
-        "title": "Suntem de partea ta",
-        "description": "Lucrăm ca <searchPartners>parteneri</searchPartners>, nu ca simpli furnizori. Rămânem alături de tine și după livrare."
+      "longterm": {
+        "title": "Construit pentru viitor",
+        "description": "Lucrăm pe termen lung. Gândim arhitectura tehnică cu grijă, pentru ca soluția ta să reziste și să poată crește."
       },
-      "craftsmanship": {
-        "title": "Experiență aplicată, nu teorie",
-        "description": "Am văzut business-ul din toate unghiurile: <searchCorporate>corporate</searchCorporate>, <searchStartup>startup</searchStartup>, <searchFreelance>freelance</searchFreelance>. Adaptăm soluțiile la realitatea ta."
+      "involvement": {
+        "title": "Parteneriat real",
+        "description": "Suntem implicați în fiecare etapă, nu doar până la livrare. Rămânem alături pentru ajustări, mentenanță și evoluție."
       }
     }
   },

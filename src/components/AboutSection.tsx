@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import { User, Heart, Handshake, Blocks, Search } from "lucide-react";
+import { Handshake, Lightbulb, Blocks, Search, Hourglass } from "lucide-react";
 import React from "react";
 import {
   Tooltip,
@@ -45,24 +45,24 @@ export function AboutSection() {
 
   const personalValues = [
     {
-      icon: Blocks,
-      title: t("about.values.innovation.title"),
-      descriptionKey: "about.values.innovation.description",
+      icon: Lightbulb,
+      title: t("about.values.understanding.title"),
+      descriptionKey: "about.values.understanding.description",
     },
     {
-      icon: Heart,
-      title: t("about.values.passion.title"),
-      descriptionKey: "about.values.passion.description",
+      icon: Blocks,
+      title: t("about.values.clarity.title"),
+      descriptionKey: "about.values.clarity.description",
+    },
+    {
+      icon: Hourglass,
+      title: t("about.values.longterm.title"),
+      descriptionKey: "about.values.longterm.description",
     },
     {
       icon: Handshake,
-      title: t("about.values.collaboration.title"),
-      descriptionKey: "about.values.collaboration.description",
-    },
-    {
-      icon: User,
-      title: t("about.values.craftsmanship.title"),
-      descriptionKey: "about.values.craftsmanship.description",
+      title: t("about.values.involvement.title"),
+      descriptionKey: "about.values.involvement.description",
     },
   ];
 
