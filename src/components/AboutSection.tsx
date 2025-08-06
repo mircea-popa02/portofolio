@@ -83,11 +83,11 @@ export function AboutSection() {
           <h2 className="text-5xl font-bold mb-8 text-foreground">
             {t("about.title")}
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          <p className="text-2xl text-foreground max-w-4xl mx-auto leading-relaxed">
             <Trans
               i18nKey="about.subtitle"
               components={{
-                bold: <strong className="text-foreground" />,
+                bold: <strong className="text-primary" />,
                 code: (
                   <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                 ),
@@ -113,7 +113,9 @@ export function AboutSection() {
                   i18nKey="about.story.paragraph1"
                   components={{
                     bold: <strong className="text-foreground" />,
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />,
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                     searchTech: (
                       <SearchTooltip tooltipKey="tech">
                         <span />
@@ -132,7 +134,9 @@ export function AboutSection() {
                         <span />
                       </SearchTooltip>
                     ),
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />,
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                     searchStartupExp: (
                       <SearchTooltip tooltipKey="startupExp">
                         <span />
@@ -159,7 +163,9 @@ export function AboutSection() {
                 <Trans
                   i18nKey="about.philosophy.paragraph1"
                   components={{
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />,
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                     search57: (
                       <SearchTooltip tooltipKey="57percent">
                         <span />
@@ -185,7 +191,9 @@ export function AboutSection() {
                       </SearchTooltip>
                     ),
                     bold: <strong className="text-foreground" />,
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                   }}
                 />
               </p>
@@ -209,7 +217,9 @@ export function AboutSection() {
                       </SearchTooltip>
                     ),
                     bold: <strong className="text-foreground" />,
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                   }}
                 />
               </p>
@@ -228,7 +238,9 @@ export function AboutSection() {
                       </SearchTooltip>
                     ),
                     bold: <strong className="text-foreground" />,
-					code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    code: (
+                      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+                    ),
                   }}
                 />
               </p>

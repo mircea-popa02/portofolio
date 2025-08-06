@@ -182,7 +182,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center p-8 text-center z-10 w-full max-w-2xl mx-auto">
+      <div className="flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -211,13 +211,13 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl mb-8 text-center max-w-2xl"
+            className="text-lg md:text-2xl mb-8 text-center max-w-2xl"
           >
             <Trans
               i18nKey="hero.subtitle"
               components={{
-                bold: <strong className="text-foreground underline font-bold" style={{ fontWeight: 800 }} />,
-                code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-bold" style={{ fontWeight: 800 }} />
+                bold: <strong className="text-foreground font-bold"/>,
+                code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-bold"/>
               }}
             />
           </motion.p>
