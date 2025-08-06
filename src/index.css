@@ -7,8 +7,12 @@
 
 * {
   cursor: none !important;
-  font-family: JetBrains Mono, monospace !important;
   font-family: Outfit, sans-serif !important;
+}
+
+code {
+  font-family: JetBrains Mono, monospace !important;
+
 }
 
 html {
