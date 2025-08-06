@@ -1,13 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import './fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
-
 * {
   cursor: none !important;
-  font-family: Britanica, sans-serif;
+  font-family: JetBrains Mono, monospace !important;
+  font-family: Outfit, sans-serif !important;
 }
 
 html {
@@ -168,38 +169,3 @@ html, body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
-/* Custom styles for search tooltips */
-.search-tooltip {
-  color: hsl(var(--primary));
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: all 0.2s ease;
-  border-bottom: 1px dashed hsl(var(--primary) / 0.6);
-  text-decoration: none;
-}
-
-.search-tooltip:hover {
-  color: hsl(var(--primary) / 0.8);
-  border-bottom-color: hsl(var(--primary) / 0.8);
-  text-decoration: none;
-}
-
-.search-tooltip .search-icon {
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
-  color: hsl(var(--primary));
-  font-weight: 700;
-}
-
-.search-tooltip:hover .search-icon {
-  opacity: 1;
-}
-
-
-
-
-

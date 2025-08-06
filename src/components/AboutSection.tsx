@@ -12,12 +12,14 @@ import {
 export function AboutSection() {
 	const { t } = useTranslation();
 
-	// Custom component for search tooltips
 	const SearchTooltip = ({ tooltipKey, children }: { tooltipKey: string; children: React.ReactNode }) => (
 		<TooltipProvider>
 			<Tooltip>
 				<TooltipTrigger asChild>
-					<span className="search-tooltip">
+					<span
+						className="inline-flex items-center gap-1 text-primary underline underline-dashed decoration-1 cursor-pointer hover:text-primary"
+						style={{ textDecorationLine: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor' }}
+					>
 						{children}
 						<Search className="w-3 h-3 search-icon" />
 					</span>
