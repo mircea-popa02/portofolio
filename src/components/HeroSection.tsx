@@ -1,68 +1,80 @@
-import { motion } from 'framer-motion';
-import { useTranslation, Trans } from 'react-i18next';
-import { Button } from './ui/button';
-import { ArrowDown } from 'lucide-react';
-import { HeroBackground } from './HeroBackground';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
+import { Button } from "./ui/button";
+import { ArrowDown } from "lucide-react";
+import { HeroBackground } from "./HeroBackground";
+import { useState, useEffect } from "react";
 
-// Custom typewriter component that handles bold tags
-const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpeed = 3500 }: {
+const TypewriterWithBold = ({
+  words,
+  typeSpeed = 30,
+  deleteSpeed = 30,
+  delaySpeed = 3500,
+}: {
   words: string[];
   typeSpeed?: number;
   deleteSpeed?: number;
   delaySpeed?: number;
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const word = words[currentWordIndex];
-    const plainText = word.replace(/<\/?bold>/g, '');
+    const plainText = word.replace(/<\/?bold>/g, "");
 
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < plainText.length) {
-          setCurrentText(plainText.slice(0, currentText.length + 1));
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentText.length < plainText.length) {
+            setCurrentText(plainText.slice(0, currentText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), delaySpeed);
+          }
         } else {
-          setTimeout(() => setIsDeleting(true), delaySpeed);
+          if (currentText.length > 0) {
+            setCurrentText(plainText.slice(0, currentText.length - 1));
+          } else {
+            setIsDeleting(false);
+            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          }
         }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(plainText.slice(0, currentText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, isDeleting ? deleteSpeed : typeSpeed);
+      },
+      isDeleting ? deleteSpeed : typeSpeed
+    );
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentWordIndex, words, typeSpeed, deleteSpeed, delaySpeed]);
+  }, [
+    currentText,
+    isDeleting,
+    currentWordIndex,
+    words,
+    typeSpeed,
+    deleteSpeed,
+    delaySpeed,
+  ]);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
     return () => clearInterval(cursorInterval);
   }, []);
 
-  // Parse the current word to add bold formatting
   const renderTextWithBold = () => {
     const word = words[currentWordIndex];
     if (!word) return currentText;
 
-    // Create a version of the word that matches the current typed length
-    const plainText = word.replace(/<\/?bold>/g, '');
+    const plainText = word.replace(/<\/?bold>/g, "");
     const typedLength = currentText.length;
 
-    if (typedLength === 0) return '';
+    if (typedLength === 0) return "";
 
-    // Find bold sections in the original word
     const boldRegex = /<bold>(.*?)<\/bold>/g;
     let match;
-    const boldSections: Array<{ start: number, end: number }> = [];
+    const boldSections: Array<{ start: number; end: number }> = [];
     let adjustedWord = word;
     let offset = 0;
 
@@ -70,17 +82,14 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
       const originalStart = match.index - offset;
       const originalEnd = originalStart + match[1].length;
       boldSections.push({ start: originalStart, end: originalEnd });
-      // Remove the tags for position calculation
       adjustedWord = adjustedWord.replace(match[0], match[1]);
-      offset += 13; // Length of <bold></bold> tags
+      offset += 13;
     }
 
-    // Build the JSX with proper bold formatting
     const result = [];
     let lastIndex = 0;
 
     for (const section of boldSections) {
-      // Add text before bold section
       if (section.start > lastIndex && lastIndex < typedLength) {
         const endIndex = Math.min(section.start, typedLength);
         if (endIndex > lastIndex) {
@@ -92,7 +101,6 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
         }
       }
 
-      // Add bold section if we've typed up to it
       if (typedLength > section.start) {
         const boldEnd = Math.min(section.end, typedLength);
         if (boldEnd > section.start) {
@@ -107,7 +115,6 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
       lastIndex = section.end;
     }
 
-    // Add remaining text after last bold section
     if (lastIndex < typedLength) {
       result.push(
         <span key={`final-${lastIndex}`}>
@@ -122,7 +129,11 @@ const TypewriterWithBold = ({ words, typeSpeed = 30, deleteSpeed = 30, delaySpee
   return (
     <span>
       {renderTextWithBold()}
-      <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+      <span
+        className={`${
+          showCursor ? "opacity-100" : "opacity-0"
+        } transition-opacity`}
+      >
         |
       </span>
     </span>
@@ -151,7 +162,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             duration: 20,
             repeat: Infinity,
             ease: "linear",
-            repeatType: "loop"
+            repeatType: "loop",
           }}
         />
         <motion.div
@@ -164,7 +175,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             duration: 25,
             repeat: Infinity,
             ease: "linear",
-            repeatType: "loop"
+            repeatType: "loop",
           }}
         />
         <motion.div
@@ -177,7 +188,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             duration: 30,
             repeat: Infinity,
             ease: "linear",
-            repeatType: "loop"
+            repeatType: "loop",
           }}
         />
       </div>
@@ -197,9 +208,19 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             <span className="text-primary">
               <TypewriterWithBold
                 words={
-                  Array.isArray(i18n.getResource(i18n.language, 'translation', 'hero.titles'))
-                    ? i18n.getResource(i18n.language, 'translation', 'hero.titles')
-                    : [t('hero.title')]
+                  Array.isArray(
+                    i18n.getResource(
+                      i18n.language,
+                      "translation",
+                      "hero.titles"
+                    )
+                  )
+                    ? i18n.getResource(
+                        i18n.language,
+                        "translation",
+                        "hero.titles"
+                      )
+                    : [t("hero.title")]
                 }
                 typeSpeed={30}
                 deleteSpeed={30}
@@ -216,8 +237,10 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             <Trans
               i18nKey="hero.subtitle"
               components={{
-                bold: <strong className="text-foreground font-bold"/>,
-                code: <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-bold"/>
+                bold: <strong className="text-foreground font-bold" />,
+                code: (
+                  <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-bold" />
+                ),
               }}
             />
           </motion.p>
@@ -225,10 +248,18 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex gap-4 justify-center"
+            className="flex flex-wrap gap-4 justify-center"
           >
-            <Button size="lg" onClick={() => scrollTo('#projects')}>{t('hero.viewWork')}</Button>
-            <Button size="lg" variant="outline" onClick={() => scrollTo('#contact')}>{t('hero.getInTouch')}</Button>
+            <Button size="lg" onClick={() => scrollTo("#projects")}>
+              {t("hero.viewWork")}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollTo("#contact")}
+            >
+              {t("hero.getInTouch")}
+            </Button>
           </motion.div>
         </motion.div>
       </div>
@@ -238,7 +269,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         transition={{ duration: 0.8, delay: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <button onClick={() => scrollTo('#about')} className="animate-bounce">
+        <button onClick={() => scrollTo("#about")} className="animate-bounce">
           <ArrowDown className="h-6 w-6 text-muted-foreground" />
         </button>
       </motion.div>
