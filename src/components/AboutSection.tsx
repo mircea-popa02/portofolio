@@ -1,47 +1,47 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import { Handshake, Lightbulb, Blocks, Search, Hourglass } from "lucide-react";
-import React from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Handshake, Lightbulb, Blocks, Hourglass } from "lucide-react";
+// import React from "react";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "@/components/ui/tooltip";
 
 export function AboutSection() {
   const { t } = useTranslation();
 
-  const SearchTooltip = ({
-    tooltipKey,
-    children,
-  }: {
-    tooltipKey: string;
-    children: React.ReactNode;
-  }) => (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span
-            className="inline-flex items-center gap-1 text-primary underline underline-dashed decoration-1 cursor-pointer hover:text-primary"
-            style={{
-              textDecorationLine: "underline",
-              textDecorationStyle: "dashed",
-              textDecorationColor: "currentColor",
-            }}
-          >
-            {children}
-            <Search className="w-3 h-3 search-icon" />
-          </span>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className="max-w-sm text-base leading-relaxed">
-            {t(`about.tooltips.${tooltipKey}`)}
-          </p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
+  // const SearchTooltip = ({
+  //   tooltipKey,
+  //   children,
+  // }: {
+  //   tooltipKey: string;
+  //   children: React.ReactNode;
+  // }) => (
+  //   <TooltipProvider>
+  //     <Tooltip>
+  //       <TooltipTrigger asChild>
+  //         <span
+  //           className="inline-flex items-center gap-1 text-primary underline underline-dashed decoration-1 cursor-pointer hover:text-primary"
+  //           style={{
+  //             textDecorationLine: "underline",
+  //             textDecorationStyle: "dashed",
+  //             textDecorationColor: "currentColor",
+  //           }}
+  //         >
+  //           {children}
+  //           <Search className="w-3 h-3 search-icon" />
+  //         </span>
+  //       </TooltipTrigger>
+  //       <TooltipContent>
+  //         <p className="max-w-sm text-base leading-relaxed">
+  //           {t(`about.tooltips.${tooltipKey}`)}
+  //         </p>
+  //       </TooltipContent>
+  //     </Tooltip>
+  //   </TooltipProvider>
+  // );
 
   const personalValues = [
     {
