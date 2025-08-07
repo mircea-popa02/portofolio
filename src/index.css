@@ -37,6 +37,16 @@ html::-webkit-scrollbar {
   pointer-events: auto !important;
 }
 
+/* Prevent scroll jumping when drawer closes */
+[data-vaul-drawer-visible] body {
+  scroll-behavior: auto !important;
+}
+
+/* Smooth scroll when drawer is not open */
+body:not([data-vaul-drawer-visible]) {
+  scroll-behavior: smooth !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
