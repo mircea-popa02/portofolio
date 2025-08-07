@@ -12,7 +12,6 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll"
 import { Trans } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
-import { FilmGrainOverlay } from "./components/FilmGrainOverlay"
 import { Toaster } from "@/components/ui/sonner"
 
 
@@ -25,7 +24,6 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <div className="min-h-screen">
-        <FilmGrainOverlay />
         <LanguageSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
