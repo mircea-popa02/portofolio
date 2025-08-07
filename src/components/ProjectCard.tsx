@@ -83,7 +83,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </motion.div>
       </DrawerTrigger>
-      
+
       <DrawerContent className="max-h-[90vh] md:max-h-[90vh] max-w-5xl mx-auto">
         <div className="mx-auto w-full flex flex-col h-full overflow-hidden">
           <DrawerHeader className="relative flex-shrink-0">
@@ -102,7 +102,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </DrawerHeader>
           
           <div className="flex-1 overflow-y-auto overscroll-contain p-6 pb-24 min-h-0">
-            {/* Image Gallery - Grid Style */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
               <div className="space-y-2">
                 <img
@@ -124,7 +123,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ))}
             </div>
 
-            {/* Project Details */}
             <div className="space-y-6">
               <div>
                 <h4 className="text-lg font-semibold mb-3">About This Project</h4>
@@ -145,7 +143,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </div>
             </div>
           </div>
-          
+
           <DrawerFooter className="absolute bottom-0 left-0 right-0 border-t bg-background/95 backdrop-blur-sm rounded-b-2xl">
             <div className="flex gap-4 px-2">
               <Button asChild className="flex-1 shadow-lg">
