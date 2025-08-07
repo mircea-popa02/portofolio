@@ -13,6 +13,17 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-</body>
 
+  <script>
+    // Dynamically set meta description based on language
+    const descriptions = {
+      ro: "Proiecte software, portofoliu, aplicații web, dezvoltare, contact.",
+      en: "Software projects, portfolio, web apps, development, contact.",
+      // Add more languages if needed
+    };
+    const lang = (navigator.language || 'ro').split('-')[0];
+    const desc = descriptions[lang] || descriptions['ro'];
+    document.getElementById('meta-description').setAttribute('content', desc);
+  </script>
+</body>
 </html>

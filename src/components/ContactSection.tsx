@@ -4,7 +4,8 @@ import { Mail, Linkedin, Instagram, Facebook, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState, useEffect } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { lazy, Suspense } from "react";
+const HCaptcha = lazy(() => import("@hcaptcha/react-hcaptcha"));
 import { useTheme } from "./theme-provider";
 import { toast } from "sonner";
 
@@ -13,7 +14,26 @@ export function ContactSection() {
   const { theme } = useTheme();
   const [state, handleSubmit] = useForm("xldllzbj");
   const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
-  const captchaRef = useRef<HCaptcha>(null);
+  const captchaRef = useRef<any>(null);
+  const [showCaptcha, setShowCaptcha] = useState(false);
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowCaptcha(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (formRef.current) {
+      observer.observe(formRef.current);
+    }
+    return () => {
+      if (formRef.current) {
+        observer.unobserve(formRef.current);
+      }
+    };
+  }, []);
   const formRef = useRef<HTMLFormElement>(null);
   const [hcaptchaTheme, setHcaptchaTheme] = useState<"light" | "dark">("light");
 
@@ -98,11 +118,11 @@ export function ContactSection() {
 
               <div className="space-y-4">
                 <a
-                  href="mailto:hello@mirceapopa.dev"
+                  href="mailto:contact@proiectesoftware.ro"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-5 h-5" />
-                  hello@mirceapopa.dev
+                  contact@proiectesoftware.ro
                 </a>
 
                 <div className="flex gap-4 mt-6">
@@ -236,13 +256,19 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex flex-col items-center space-y-2">
-                  <HCaptcha
-                    sitekey="df1455a8-d312-4064-91b4-ff606282bbd4"
-                    onVerify={setHcaptchaToken}
-                    ref={captchaRef}
-                    theme={hcaptchaTheme}
-                    languageOverride={i18n.language}
-                  />
+                  {showCaptcha ? (
+                    <Suspense fallback={<div>Loading captcha...</div>}>
+                      <HCaptcha
+                        sitekey="df1455a8-d312-4064-91b4-ff606282bbd4"
+                        onVerify={setHcaptchaToken}
+                        ref={captchaRef}
+                        theme={hcaptchaTheme}
+                        languageOverride={i18n.language}
+                      />
+                    </Suspense>
+                  ) : (
+                    <div style={{ height: 78 }} />
+                  )}
                 </div>
 
                 <Button
