@@ -12,39 +12,25 @@
 
 code {
   font-family: JetBrains Mono, monospace !important;
-
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 html, body {
   overflow-x: hidden;
 }
+
 body, html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 body::-webkit-scrollbar,
 html::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
 [data-vaul-drawer][data-vaul-drawer-direction=bottom]::after {
   opacity: 0 !important;
   pointer-events: auto !important;
-}
-
-/* Prevent scroll jumping when drawer closes */
-[data-vaul-drawer-visible] body {
-  scroll-behavior: auto !important;
-}
-
-/* Smooth scroll when drawer is not open */
-body:not([data-vaul-drawer-visible]) {
-  scroll-behavior: smooth !important;
 }
 
 @layer base {
