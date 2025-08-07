@@ -22,22 +22,14 @@ html {
 html, body {
   overflow-x: hidden;
 }
-
-::-webkit-scrollbar {
-  width: 6px;
+body, html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none;
 }
 
 @layer base {

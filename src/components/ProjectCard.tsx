@@ -84,9 +84,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </motion.div>
       </DrawerTrigger>
       
-      <DrawerContent className="max-h-[90vh]">
-        <div className="mx-auto w-full max-w-4xl">
-          <DrawerHeader className="relative">
+      <DrawerContent className="max-h-[96vh] md:max-h-[90vh] max-w-5xl mx-auto">
+        <div className="mx-auto w-full flex flex-col h-full">
+          <DrawerHeader className="relative flex-shrink-0">
             <DrawerClose asChild>
               <Button variant="ghost" size="icon" className="absolute right-4 top-4">
                 <X className="h-4 w-4" />
@@ -101,33 +101,29 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </DrawerDescription>
           </DrawerHeader>
           
-          <div className="p-6 overflow-y-auto max-h-[60vh]">
-            {/* Image Gallery */}
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              <div className="aspect-video overflow-hidden rounded-lg">
+          <div className="flex-1 overflow-y-auto p-6 pb-4 min-h-0">
+            {/* Image Gallery - Masonry Style */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-6">
+              <div className="break-inside-avoid mb-4">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full rounded-lg object-cover"
                 />
               </div>
-              {project.images.length > 0 && (
-                <div className="grid gap-2">
-                  {project.images.slice(0, 2).map((image, index) => (
-                    <div key={index} className="aspect-video overflow-hidden rounded-lg">
-                      <img
-                        src={image}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
+              {project.images.map((image, index) => (
+                <div key={index} className="break-inside-avoid mb-4">
+                  <img
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    className="w-full rounded-lg object-cover"
+                  />
                 </div>
-              )}
+              ))}
             </div>
 
             {/* Project Details */}
-            <div className="space-y-6">
+            <div className="space-y-6 pb-20">
               <div>
                 <h4 className="text-lg font-semibold mb-3">About This Project</h4>
                 <p className="text-muted-foreground leading-relaxed">
@@ -145,36 +141,19 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   ))}
                 </div>
               </div>
-
-              {project.images.length > 2 && (
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">More Screenshots</h4>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {project.images.slice(2).map((image, index) => (
-                      <div key={index} className="aspect-video overflow-hidden rounded-lg">
-                        <img
-                          src={image}
-                          alt={`${project.title} screenshot ${index + 3}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
           
-          <DrawerFooter>
+          <DrawerFooter className="absolute bottom-0 left-0 right-0 border-t bg-background/95 backdrop-blur-sm">
             <div className="flex gap-4">
-              <Button asChild className="flex-1">
+              <Button asChild className="flex-1 h-12 text-lg font-semibold shadow-lg">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="mr-2 h-4 w-4" />
+                  <ExternalLink className="mr-2 h-5 w-5" />
                   View Live Demo
                 </a>
               </Button>
               <DrawerClose asChild>
-                <Button variant="outline" className="flex-1">
+                <Button variant="outline" className="flex-1 h-12 text-lg">
                   Close
                 </Button>
               </DrawerClose>
