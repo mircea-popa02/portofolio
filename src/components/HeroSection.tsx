@@ -151,7 +151,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
     <section className="h-screen flex items-center justify-center relative overflow-hidden">
       <HeroBackground />
 
-      <div className="hidden md:block absolute inset-0 pointer-events-none">
+      {/* <div className="hidden md:block absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-1/4 w-[50rem] h-[50rem] bg-gradient-to-br from-primary/8 to-purple-500/15 rounded-full blur-3xl opacity-60 will-change-transform"
           animate={{
@@ -191,7 +191,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
             repeatType: "loop",
           }}
         />
-      </div>
+      </div> */}
 
       <div className="flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-2xl mx-auto">
         <motion.div
@@ -269,7 +269,7 @@ export function HeroSection({ scrollTo }: HeroSectionProps) {
         transition={{ duration: 0.8, delay: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <button onClick={() => scrollTo("#about")} className="animate-bounce">
+        <button onClick={() => scrollTo("#about")} className="animate-bounce" aria-label={t("hero.scrollDown")}>
           <ArrowDown className="h-6 w-6 text-muted-foreground" />
         </button>
       </motion.div>

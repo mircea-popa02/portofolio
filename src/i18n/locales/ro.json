@@ -6,7 +6,9 @@
     "projects": "Proiecte",
     "contact": "Contact",
     "language": "Limbă",
-    "theme": "Mod întunecat"
+    "theme": "Mod întunecat",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul"
   },
   "hero": {
     "title": "Ai un <bold>proiect</bold> în minte?",
@@ -151,6 +153,12 @@
     "getInTouch": "Contactează echipa",
     "description": "Suntem deschiși la colaborări, <bold>proiecte noi</bold> și discuții despre digitalizarea afacerii tale.",
     "quickMessage": "Trimite un mesaj rapid",
+    "links": {
+      "linkedin": "Conectează-te cu noi pe LinkedIn",
+      "facebook": "Urmărește-ne pe Facebook",
+      "instagram": "Vezi ultimele noutăți pe Instagram",
+      "tiktok": "Urmărește-ne pe TikTok"
+    },
     "form": {
       "name": "Nume",
       "namePlaceholder": "Numele tău",

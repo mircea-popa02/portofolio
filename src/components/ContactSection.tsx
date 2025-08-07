@@ -111,6 +111,7 @@ export function ContactSection() {
                       href="https://linkedin.com/in/yourusername"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={t("contact.links.linkedin")}
                     >
                       <Linkedin className="w-4 h-4" />
                     </a>
@@ -120,6 +121,7 @@ export function ContactSection() {
                       href="https://www.instagram.com/proiectesoftware.ro/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={t("contact.links.instagram")}
                     >
                       <Instagram className="w-4 h-4" />
                     </a>
@@ -129,6 +131,7 @@ export function ContactSection() {
                       href="https://www.facebook.com/profile.php?id=61578853842662"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={t("contact.links.facebook")}
                     >
                       <Facebook className="w-4 h-4" />
                     </a>
@@ -138,6 +141,7 @@ export function ContactSection() {
                       href="https://tiktok.com/@yourusername"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={t("contact.links.tiktok")}
                     >
                       <svg
                         className="w-4 h-4"

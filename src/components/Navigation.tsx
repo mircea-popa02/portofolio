@@ -109,18 +109,17 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
                 ))}
               </div>
               
-              {/* Desktop Controls */}
               <div className="hidden md:flex items-center gap-4">
                 <LanguageSwitcher />
                 <ModeToggle />
               </div>
 
-              {/* Mobile Controls */}
               <div className="flex md:hidden items-center gap-4">
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="p-2 text-foreground hover:text-primary transition-colors"
                   whileTap={{ scale: 0.95 }}
+                  aria-label={isMobileMenuOpen ? t('navigation.closeMenu') : t('navigation.openMenu')}
                 >
                   {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </motion.button>
