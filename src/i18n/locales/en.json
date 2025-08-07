@@ -129,11 +129,11 @@
     "viewCode": "View Code",
     "items": {
       "ecommerce": {
-        "title": "E-Commerce Platform",
-        "description": "A complete online store solution with secure payment processing, inventory management, and admin dashboard. Built with modern technologies for optimal performance and user experience."
+        "title": "WooCommerce Online Shop",
+        "description": "A complete WordPress WooCommerce online shop with custom plugins for enhanced functionality. Features advanced product management, custom payment integrations, and tailored user experience."
       },
-      "taskmanager": {
-        "title": "Task Management System",
+      "presentation": {
+        "title": "Site de prezentare customizat",
         "description": "A collaborative project management tool with real-time updates, team collaboration features, and advanced reporting. Perfect for modern teams and agile workflows."
       },
       "crm": {

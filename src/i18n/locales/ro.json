@@ -131,10 +131,10 @@
     "viewCode": "Vezi codul sursă",
     "items": {
       "ecommerce": {
-        "title": "Magazin Online Complet",
-        "description": "Platformă e-commerce cu sistem de plăți securizat, gestionare stocuri și panou administrativ. Dezvoltată cu tehnologii moderne pentru performanță optimă."
+        "title": "Magazin online de flori",
+        "description": "Magazin online complet WordPress WooCommerce cu plugin-uri personalizate pentru funcționalități avansate. Include management produse, integrări plăți custom și experiență utilizator optimizată."
       },
-      "taskmanager": {
+      "presentation": {
         "title": "Sistem de Management Proiecte",
         "description": "Soluție colaborativă pentru gestionarea proiectelor cu actualizări în timp real, funcții pentru echipe și raportare avansată. Ideal pentru echipe moderne."
       },
