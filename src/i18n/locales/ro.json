@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "title": "Proiecte Software - Soluții Digitale și Automatizări pentru Business",
+    "description": "Echipă de specialiști IT care dezvoltă soluții digitale personalizate, site-uri de e-commerce, automatizări de business și aplicații moderne. Transformăm ideile în realitate digitală cu impact real.",
+    "keywords": "dezvoltare software, soluții digitale, automatizări business, e-commerce, aplicații web, website-uri, programare, IT, tehnologie, WordPress, WooCommerce, React, Node.js"
+  },
   "navigation": {
     "home": "Acasă",
     "about": "Despre",

@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "title": "Software Projects - Digital Solutions & Business Automation",
+    "description": "IT specialists team developing custom digital solutions, e-commerce websites, business automation and modern applications. We transform ideas into digital reality with real impact.",
+    "keywords": "software development, digital solutions, business automation, e-commerce, web applications, websites, programming, IT, technology, WordPress, WooCommerce, React, Node.js"
+  },
   "navigation": {
     "home": "Home",
     "about": "About",

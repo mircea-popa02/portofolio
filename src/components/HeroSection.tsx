@@ -21,9 +21,43 @@ const TypewriterWithBold = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
 
+  const parseText = (text: string) => {
+    const parts = [];
+    const regex = /<bold>(.*?)<\/bold>/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push({
+          text: text.slice(lastIndex, match.index),
+          bold: false
+        });
+      }
+      parts.push({
+        text: match[1],
+        bold: true
+      });
+      lastIndex = match.index + match[0].length;
+    }
+    
+    if (lastIndex < text.length) {
+      parts.push({
+        text: text.slice(lastIndex),
+        bold: false
+      });
+    }
+
+    return parts;
+  };
+
+  const getPlainText = (text: string) => {
+    return text.replace(/<\/?bold>/g, "");
+  };
+
   useEffect(() => {
     const word = words[currentWordIndex];
-    const plainText = word.replace(/<\/?bold>/g, "");
+    const plainText = getPlainText(word);
 
     const timeout = setTimeout(
       () => {
@@ -63,72 +97,54 @@ const TypewriterWithBold = ({
     return () => clearInterval(cursorInterval);
   }, []);
 
-  const renderTextWithBold = () => {
+  const renderText = () => {
     const word = words[currentWordIndex];
     if (!word) return currentText;
 
-    const plainText = word.replace(/<\/?bold>/g, "");
+    const parts = parseText(word);
     const typedLength = currentText.length;
 
     if (typedLength === 0) return "";
 
-    const boldRegex = /<bold>(.*?)<\/bold>/g;
-    let match;
-    const boldSections: Array<{ start: number; end: number }> = [];
-    let adjustedWord = word;
-    let offset = 0;
-
-    while ((match = boldRegex.exec(word)) !== null) {
-      const originalStart = match.index - offset;
-      const originalEnd = originalStart + match[1].length;
-      boldSections.push({ start: originalStart, end: originalEnd });
-      adjustedWord = adjustedWord.replace(match[0], match[1]);
-      offset += 13;
-    }
-
     const result = [];
-    let lastIndex = 0;
+    let currentIndex = 0;
 
-    for (const section of boldSections) {
-      if (section.start > lastIndex && lastIndex < typedLength) {
-        const endIndex = Math.min(section.start, typedLength);
-        if (endIndex > lastIndex) {
-          result.push(
-            <span key={`normal-${lastIndex}`}>
-              {plainText.slice(lastIndex, endIndex)}
-            </span>
-          );
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      const partLength = part.text.length;
+      const partEnd = currentIndex + partLength;
+
+      if (typedLength > currentIndex) {
+        const visibleLength = Math.min(typedLength - currentIndex, partLength);
+        const visibleText = part.text.slice(0, visibleLength);
+        
+        if (visibleText) {
+          if (part.bold) {
+            result.push(
+              <strong key={`bold-${i}`} className="text-primary">
+                {visibleText}
+              </strong>
+            );
+          } else {
+            result.push(
+              <span key={`normal-${i}`}>
+                {visibleText}
+              </span>
+            );
+          }
         }
       }
 
-      if (typedLength > section.start) {
-        const boldEnd = Math.min(section.end, typedLength);
-        if (boldEnd > section.start) {
-          result.push(
-            <strong key={`bold-${section.start}`} className="text-primary">
-              {plainText.slice(section.start, boldEnd)}
-            </strong>
-          );
-        }
-      }
-
-      lastIndex = section.end;
+      currentIndex = partEnd;
+      if (currentIndex >= typedLength) break;
     }
 
-    if (lastIndex < typedLength) {
-      result.push(
-        <span key={`final-${lastIndex}`}>
-          {plainText.slice(lastIndex, typedLength)}
-        </span>
-      );
-    }
-
-    return result.length > 0 ? result : currentText;
+    return result;
   };
 
   return (
     <span>
-      {renderTextWithBold()}
+      {renderText()}
       <span
         className={`${
           showCursor ? "opacity-100" : "opacity-0"

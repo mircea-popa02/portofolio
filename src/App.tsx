@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { useTranslation } from "react-i18next"
 import { LanguageSync } from "./components/LanguageSync"
+import { MetaSync } from "./components/MetaSync"
 import { CustomCursor } from "./components/CustomCursor"
 import { Navigation } from "./components/Navigation"
 import { HeroSection } from "./components/HeroSection"
@@ -25,6 +26,7 @@ function App() {
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <div className="min-h-screen">
         <LanguageSync />
+        <MetaSync />
         <CustomCursor />
         <Navigation scrollTo={scrollTo} currentSection={currentSection} />
 
