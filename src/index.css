@@ -32,6 +32,11 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+[data-vaul-drawer][data-vaul-drawer-direction=bottom]::after {
+  opacity: 0 !important;
+  pointer-events: auto !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
