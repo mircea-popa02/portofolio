@@ -1,47 +1,43 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import { Handshake, Lightbulb, Blocks, Hourglass } from "lucide-react";
-// import React from "react";
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@/components/ui/tooltip";
+import { Handshake, Lightbulb, Blocks, Hourglass, Search } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import type { ReactNode } from "react";
 
 export function AboutSection() {
   const { t } = useTranslation();
 
-  // const SearchTooltip = ({
-  //   tooltipKey,
-  //   children,
-  // }: {
-  //   tooltipKey: string;
-  //   children: React.ReactNode;
-  // }) => (
-  //   <TooltipProvider>
-  //     <Tooltip>
-  //       <TooltipTrigger asChild>
-  //         <span
-  //           className="inline-flex items-center gap-1 text-primary underline underline-dashed decoration-1 cursor-pointer hover:text-primary"
-  //           style={{
-  //             textDecorationLine: "underline",
-  //             textDecorationStyle: "dashed",
-  //             textDecorationColor: "currentColor",
-  //           }}
-  //         >
-  //           {children}
-  //           <Search className="w-3 h-3 search-icon" />
-  //         </span>
-  //       </TooltipTrigger>
-  //       <TooltipContent>
-  //         <p className="max-w-sm text-base leading-relaxed">
-  //           {t(`about.tooltips.${tooltipKey}`)}
-  //         </p>
-  //       </TooltipContent>
-  //     </Tooltip>
-  //   </TooltipProvider>
-  // );
+  const SearchTooltip = ({
+    tooltipKey,
+    children,
+  }: {
+    tooltipKey: string;
+    children?: ReactNode;
+  }) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span
+          className="inline-flex items-center gap-1 text-primary underline decoration-dashed decoration-1 cursor-help hover:text-primary"
+        >
+          {children}
+          <Search className="w-3 h-3" />
+        </span>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p className="max-w-sm text-base leading-relaxed">
+          <Trans
+            i18nKey={`about.tooltips.${tooltipKey}`}
+            components={{
+              bold: <strong className="text-primary-foreground font-semibold" />,
+              code: (
+                <code className="bg-primary-foreground/20 relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
+              ),
+            }}
+          />
+        </p>
+      </TooltipContent>
+    </Tooltip>
+  );
 
   const personalValues = [
     {
@@ -91,6 +87,7 @@ export function AboutSection() {
                 code: (
                   <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                 ),
+                solutions: <SearchTooltip tooltipKey="solutions" />,
               }}
             />
           </p>
@@ -116,6 +113,9 @@ export function AboutSection() {
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
                     bold: <strong className="text-foreground" />,
+                    optimize: <SearchTooltip tooltipKey="optimize" />,
+                    efficiency: <SearchTooltip tooltipKey="efficiency" />,
+                    transformation: <SearchTooltip tooltipKey="transformation" />,
                   }}
                 />
               </p>
@@ -128,6 +128,9 @@ export function AboutSection() {
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
+                    clarity: <SearchTooltip tooltipKey="clarity" />,
+                    quality: <SearchTooltip tooltipKey="quality" />,
+                    humanCentric: <SearchTooltip tooltipKey="humanCentric" />,
                   }}
                 />
               </p>
@@ -151,7 +154,8 @@ export function AboutSection() {
                     bold: <strong className="text-foreground" />,
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                    )
+                    ),
+                    needs: <SearchTooltip tooltipKey="needs" />,
                   }}
                 />
               </p>
@@ -163,6 +167,9 @@ export function AboutSection() {
                     code: (
                       <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
                     ),
+                    rushed: <SearchTooltip tooltipKey="rushed" />,
+                    rigid: <SearchTooltip tooltipKey="rigid" />,
+                    technicalVision: <SearchTooltip tooltipKey="technicalVision" />,
                   }}
                 />
               </p>
@@ -203,7 +210,11 @@ export function AboutSection() {
                           bold: <strong className="text-foreground" />,
                           code: (
                             <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" />
-                          )
+                          ),
+                          understanding: <SearchTooltip tooltipKey="understanding" />,
+                          clarity: <SearchTooltip tooltipKey="clarity" />,
+                          longterm: <SearchTooltip tooltipKey="longterm" />,
+                          involvement: <SearchTooltip tooltipKey="involvement" />,
                         }}
                       />
                     </p>

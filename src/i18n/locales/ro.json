@@ -28,35 +28,50 @@
   },
   "about": {
     "title": "Cine suntem",
-    "subtitle": "Suntem o echipă de profesioniști IT care livrează <bold>soluții digitale personalizate</bold> ce aduc afacerile în prezent și le pregătesc pentru viitor.",
+    "subtitle": "Suntem o echipă de profesioniști IT care livrează <solutions><bold>soluții digitale personalizate</bold></solutions> ce aduc afacerile în prezent și le pregătesc pentru viitor.",
     "philosophy": {
       "title": "Viziune",
-      "paragraph1": "Credem că tehnologia ar trebui să rezolve, nu să complice. Să optimizeze procese, să reducă timpul pierdut și să transforme modul în care funcționează o afacere.",
-      "paragraph2": "Viziunea noastră este simplă: să aducem claritate prin software bine gândit și să construim sisteme care lucrează pentru oameni, nu invers."
+      "paragraph1": "Credem că <bold>tehnologia</bold> ar trebui să <bold>rezolve</bold>, nu să complice. Să <optimize>optimizeze procese</optimize>, să <efficiency>reduca timpul pierdut</efficiency> și să <transformation>transforme modul în care funcționează o <code>afacere</code></transformation>.",
+      "paragraph2": "Viziunea noastră este simplă: să aducem <clarity>claritate</clarity> prin <quality>software bine gândit</quality> și să construim <bold>sisteme</bold> <humanCentric>care lucrează pentru oameni</humanCentric>, nu invers."
     },
     "story": {
       "title": "Povestea noastră",
-      "paragraph1": "Echipa noastră a trecut prin startup-uri, corporații și proiecte pe cont propriu, iar din toate am învățat același lucru: tehnologia contează doar dacă răspunde unei nevoi reale de business.",
-      "paragraph2": "Am văzut efectele deciziilor grăbite, a soluțiilor rigide și a lipsei de viziune tehnică. De aceea, am ales să lucrăm altfel, cu atenție la detalii, cu înțelegere pentru fiecare model de business și cu soluții durabile."
+      "paragraph1": "Echipa noastră a trecut prin <bold>startup-uri</bold>, <bold>corporații</bold> și proiecte pe cont propriu, iar din toate am învățat același lucru: tehnologia contează doar dacă răspunde unei <needs>nevoi reale de business</needs>.",
+      "paragraph2": "Am văzut efectele <rushed>deciziilor grăbite</rushed>, a <rigid>soluțiilor rigide</rigid> și a lipsei de <technicalVision>viziune tehnică</technicalVision>. De aceea, am ales să lucrăm altfel, cu <bold>atenție la detalii</bold>, cu <code>înțelegere</code> pentru fiecare model de business și cu <bold>soluții durabile</bold>."
     },
-    "tooltips": {},
+    "tooltips": {
+      "solutions": "<bold>Soluții digitale personalizate</bold> = <code>aplicații</code>, <code>site-uri</code> și <code>automatizări</code> concepute după nevoile și obiectivele afacerii tale, nu după o rețetă generală.",
+      "optimize": "<bold>Optimizarea proceselor</bold> înseamnă eliminarea pașilor manuali, <code>automatizări</code> și fluxuri mai rapide între <bold>echipe și sisteme</bold>.",
+      "efficiency": "<bold>Reducerea timpului pierdut</bold> = operațiuni repetitive mai scurte, mai puține <code>erori</code> și <bold>costuri operaționale mai mici</bold>.",
+      "transformation": "<bold>Transformare digitală</bold> = adaptarea modului de lucru cu ajutorul <code>tehnologiei</code> pentru <bold>rezultate măsurabile</bold>.",
+      "clarity": "<bold>Claritate</bold> = specificații ușor de înțeles, <bold>priorități bine stabilite</bold> și <code>rezultate măsurabile</code>.",
+      "quality": "<bold>Software bine gândit</bold> = <code>arhitectură curată</code>, <code>testare adecvată</code> și <bold>mentenanță facilă pe termen lung</bold>.",
+      "humanCentric": "<bold>Sisteme pentru oameni</bold> = <code>interfețe intuitive</code>, procese naturale și focus pe <bold>experiența utilizatorului</bold>.",
+      "needs": "<bold>Nevoi reale de business</bold> = probleme concrete, <code>KPI clari</code> și <bold>impact financiar pozitiv</bold>.",
+      "rushed": "<bold>Decizii grăbite</bold> = alegeri fără <code>analiză suficientă</code> care cresc <bold>costurile și timpul pe termen lung</bold>.",
+      "rigid": "<bold>Soluții rigide</bold> = produse greu de adaptat <code>schimbărilor</code> și <bold>noilor cerințe</bold>.",
+      "technicalVision": "<bold>Viziune tehnică</bold> = plan pe termen lung pentru <code>arhitectură</code>, <code>scalare</code>, <code>securitate</code> și <bold>integrare</bold>.",
+      "understanding": "Contextul <bold>business-ului tău</bold> ne ghidează alegerile <code>tehnice</code> și <bold>prioritățile</bold>.",
+      "longterm": "Gândim pentru viitor: soluții <code>scalabile</code>, <code>testabile</code> și <bold>ușor de extins</bold>.",
+      "involvement": "<bold>Parteneriat real</bold> = implicare continuă după <code>livrare</code> pentru <bold>ajustări, mentenanță și evoluție</bold>."
+    },
     "valuesTitle": "De ce lucrăm altfel",
     "values": {
       "understanding": {
         "title": "Business-ul înaintea tehnologiei",
-        "description": "Pornim de la realitatea companiei tale, nu de la ce e la modă. Înțelegem mai întâi nevoile, apoi propunem soluțiile."
+        "description": "Pornim de la <understanding>realitatea companiei tale</understanding>, nu de la ce e la modă. Înțelegem mai întâi nevoile, apoi propunem soluțiile."
       },
       "clarity": {
         "title": "Soluții clare, nu complexe",
-        "description": "Credem în software simplu, scalabil și ușor de folosit. Codul bun nu se vede, ci îți face munca mai ușoară."
+        "description": "Credem în <clarity>software simplu, scalabil și ușor de folosit</clarity>. Codul bun nu se vede, ci îți face munca mai ușoară."
       },
       "longterm": {
         "title": "Construit pentru viitor",
-        "description": "Lucrăm pe termen lung. Gândim arhitectura tehnică cu grijă, pentru ca soluția ta să reziste și să poată crește."
+        "description": "<longterm>Lucrăm pe termen lung</longterm>. Gândim arhitectura tehnică cu grijă, pentru ca soluția ta să reziste și să poată crește."
       },
       "involvement": {
         "title": "Parteneriat real",
-        "description": "Suntem implicați în fiecare etapă, nu doar până la livrare. Rămânem alături pentru ajustări, mentenanță și evoluție."
+        "description": "<involvement>Suntem implicați în fiecare etapă</involvement>, nu doar până la livrare. Rămânem alături pentru ajustări, mentenanță și evoluție."
       }
     }
   },
