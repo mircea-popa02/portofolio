@@ -20,7 +20,7 @@ export interface Project {
   longDescription: string;
   technologies: string[];
   image: string;
-  images: string[];
+  images: Array<string | { src: string; description: string }>;
   liveUrl: string;
   featured: boolean;
 }
@@ -111,16 +111,31 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 />
                 <p className="text-xs text-muted-foreground text-center">Main Screenshot</p>
               </div>
-              {project.images.map((image, index) => (
-                <div key={index} className="space-y-2">
-                  <img
-                    src={image}
-                    alt={`${project.title} screenshot ${index + 1}`}
-                    className="w-full aspect-video rounded-lg object-cover"
-                  />
-                  <p className="text-xs text-muted-foreground text-center">Screenshot {index + 1}</p>
-                </div>
-              ))}
+              {project.images.map((image, index) => {
+                if (typeof image === 'string') {
+                  return (
+                    <div key={index} className="space-y-2">
+                      <img
+                        src={image}
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        className="w-full aspect-video rounded-lg object-cover"
+                      />
+                      <p className="text-xs text-muted-foreground text-center">Screenshot {index + 1}</p>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={index} className="space-y-2">
+                      <img
+                        src={image.src}
+                        alt={image.description}
+                        className="w-full aspect-video rounded-lg object-cover"
+                      />
+                      <p className="text-xs text-muted-foreground text-center">{image.description}</p>
+                    </div>
+                  );
+                }
+              })}
             </div>
 
             <div className="space-y-6">

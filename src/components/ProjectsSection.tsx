@@ -12,8 +12,9 @@ const getProjects = (t: (key: string) => string): Project[] => [
     technologies: ["WordPress", "WooCommerce", "PHP", "Custom Plugins", "MySQL", "SEO", "Analytics"],
     image: "/florarie-braila.png",
     images: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center"
+      { src: "/florariebraila-product.png", description: t('projects.items.ecommerce.images.product') },
+      { src: "/florariebraila-products.png", description: t('projects.items.ecommerce.images.products') },
+      { src: "/florariebraila-filters.png", description: t('projects.items.ecommerce.images.filters') }
     ],
     liveUrl: "https://florariebraila.ro",
     featured: true

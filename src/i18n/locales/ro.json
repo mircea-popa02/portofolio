@@ -132,7 +132,12 @@
     "items": {
       "ecommerce": {
         "title": "Magazin online de flori",
-        "description": "Magazin online complet WordPress WooCommerce cu plugin-uri personalizate pentru funcționalități avansate. Include management produse, integrări plăți custom și experiență utilizator optimizată."
+        "description": "Magazin online complet WordPress WooCommerce cu plugin-uri personalizate pentru funcționalități avansate. Include management produse, integrări plăți custom și experiență utilizator optimizată.",
+        "images": {
+          "product": "Pagina produs individual - detalii și opțiuni personalizate.",
+          "products": "Listă produse - vizualizare rapidă și filtre avansate.",
+          "filters": "Filtre produse - căutare și selecție intuitivă."
+        }
       },
       "presentation": {
         "title": "Sistem de Management Proiecte",
