@@ -127,6 +127,15 @@
     "featured": "Featured",
     "viewProject": "View Project",
     "viewCode": "View Code",
+    "more": "more",
+    "gallery": {
+      "main": "Main Screenshot",
+      "screenshot": "Screenshot {{index}}"
+    },
+    "about": "About This Project",
+    "technologiesUsed": "Technologies Used",
+    "viewLiveDemo": "View Live Demo",
+    "close": "Close",
     "items": {
       "ecommerce": {
         "title": "WooCommerce Online Shop",

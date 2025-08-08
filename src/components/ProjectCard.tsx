@@ -12,6 +12,8 @@ import {
   DrawerTrigger,
 } from './ui/drawer';
 import { Badge } from './ui/badge';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface Project {
   id: number;
@@ -31,14 +33,28 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(max-width: 768px)').matches;
+  });
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
   return (
     <Drawer>
       <DrawerTrigger asChild>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? false : { opacity: 0, y: 30 }}
+          whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          viewport={{ once: true }}
+          viewport={isMobile ? undefined : { once: true }}
           className="group cursor-pointer"
         >
           <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
@@ -56,7 +72,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 </h3>
                 {project.featured && (
                   <Badge variant="secondary" className="text-xs">
-                    Featured
+                    {t('projects.featured')}
                   </Badge>
                 )}
               </div>
@@ -71,12 +87,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 ))}
                 {project.technologies.length > 3 && (
                   <Badge variant="outline" className="text-xs">
-                    +{project.technologies.length - 3} more
+                    +{project.technologies.length - 3} {t('projects.more')}
                   </Badge>
                 )}
               </div>
               <div className="flex items-center text-primary text-sm font-medium group-hover:text-primary/80 transition-colors">
-                Click to view details
+                {t('projects.viewProject')}
                 <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
@@ -84,13 +100,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </motion.div>
       </DrawerTrigger>
 
-      <DrawerContent className="max-h-[90vh] md:max-h-[90vh] max-w-5xl mx-auto">
+      <DrawerContent className="md:max-h-[90vh] max-w-5xl mx-auto">
         <div className="mx-auto w-full flex flex-col h-full overflow-hidden">
           <DrawerHeader className="relative flex-shrink-0">
             <DrawerClose asChild>
               <Button variant="ghost" size="icon" className="absolute right-4 top-4">
                 <X className="h-4 w-4" />
-                <span className="sr-only">Close</span>
+                <span className="sr-only">{t('projects.close')}</span>
               </Button>
             </DrawerClose>
             <DrawerTitle className="text-2xl font-bold pr-12">
@@ -102,36 +118,41 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </DrawerHeader>
           
           <div className="flex-1 overflow-y-auto overscroll-contain p-6 pb-24 min-h-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-              <div className="space-y-2">
+            {/* Masonry gallery */}
+            <div className="columns-2 md:columns-3 gap-3 mb-6 [column-fill:_balance]">
+              {/* Main image */}
+              <div className="mb-3 break-inside-avoid">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full aspect-video rounded-lg object-cover"
+                  className="w-full h-auto rounded-lg object-cover"
                 />
-                <p className="text-xs text-muted-foreground text-center">Main Screenshot</p>
+                <p className="text-xs text-muted-foreground text-center mt-2">{t('projects.gallery.main')}</p>
               </div>
+              {/* Additional images */}
               {project.images.map((image, index) => {
                 if (typeof image === 'string') {
                   return (
-                    <div key={index} className="space-y-2">
+                    <div key={index} className="mb-3 break-inside-avoid">
                       <img
                         src={image}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                        className="w-full aspect-video rounded-lg object-cover"
+                        alt={`${project.title} ${t('projects.gallery.screenshot', { index: index + 1 })}`}
+                        className="w-full h-auto rounded-lg object-cover"
                       />
-                      <p className="text-xs text-muted-foreground text-center">Screenshot {index + 1}</p>
+                      <p className="text-xs text-muted-foreground text-center mt-2">
+                        {t('projects.gallery.screenshot', { index: index + 1 })}
+                      </p>
                     </div>
                   );
                 } else {
                   return (
-                    <div key={index} className="space-y-2">
+                    <div key={index} className="mb-3 break-inside-avoid">
                       <img
                         src={image.src}
                         alt={image.description}
-                        className="w-full aspect-video rounded-lg object-cover"
+                        className="w-full h-auto rounded-lg object-cover"
                       />
-                      <p className="text-xs text-muted-foreground text-center">{image.description}</p>
+                      <p className="text-xs text-muted-foreground text-center mt-2">{image.description}</p>
                     </div>
                   );
                 }
@@ -140,14 +161,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-semibold mb-3">About This Project</h4>
+                <h4 className="text-lg font-semibold mb-3">{t('projects.about')}</h4>
                 <p className="text-muted-foreground leading-relaxed">
                   {project.longDescription}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+                <h4 className="text-lg font-semibold mb-3">{t('projects.technologiesUsed')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <Badge key={tech} variant="secondary">
@@ -164,12 +185,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <Button asChild className="flex-1 shadow-lg">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  View Live Demo
+                  {t('projects.viewLiveDemo')}
                 </a>
               </Button>
               <DrawerClose asChild>
                 <Button variant="outline" className="flex-1">
-                  Close
+                  {t('projects.close')}
                 </Button>
               </DrawerClose>
             </div>

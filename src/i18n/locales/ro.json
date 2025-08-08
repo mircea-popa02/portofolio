@@ -129,6 +129,15 @@
     "featured": "Reprezentativ",
     "viewProject": "Vezi detalii",
     "viewCode": "Vezi codul sursă",
+    "more": "în plus",
+    "gallery": {
+      "main": "Captură principală",
+      "screenshot": "Captură {{index}}"
+    },
+    "about": "Despre acest proiect",
+    "technologiesUsed": "Tehnologii folosite",
+    "viewLiveDemo": "Vezi demonstrația live",
+    "close": "Închide",
     "items": {
       "ecommerce": {
         "title": "Magazin online de flori",
@@ -140,8 +149,8 @@
         }
       },
       "presentation": {
-        "title": "Sistem de Management Proiecte",
-        "description": "Soluție colaborativă pentru gestionarea proiectelor cu actualizări în timp real, funcții pentru echipe și raportare avansată. Ideal pentru echipe moderne."
+        "title": "Site de prezentare personalizat",
+        "description": "Website modern Construit de la zero cu design personalizat, optimizat pentru SEO și experiență utilizator. Include integrări cu formulare de contact, Google Maps, galerii foto."
       },
       "crm": {
         "title": "Sistem CRM pentru Clienți",

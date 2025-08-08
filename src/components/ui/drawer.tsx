@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 function Drawer({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+  return <DrawerPrimitive.Root data-slot="drawer" shouldScaleBackground={false} {...props} />
 }
 
 function DrawerTrigger({
@@ -34,10 +34,7 @@ function DrawerOverlay({
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
-      className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/10 backdrop-blur-sm",
-        className
-      )}
+      className={cn("fixed inset-0 z-50 bg-background/30 backdrop-blur-sm", className)}
       {...props}
     />
   )
@@ -62,10 +59,12 @@ function DrawerContent({
           className
         )}
         {...props}
-        onOpenAutoFocus={() => {
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
           document.body.style.overflow = 'hidden';
         }}
-        onCloseAutoFocus={() => {
+        onCloseAutoFocus={(e) => {
+          e.preventDefault();
           document.body.style.overflow = '';
         }}
       >
