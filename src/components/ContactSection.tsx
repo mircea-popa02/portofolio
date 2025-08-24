@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import { Mail, Linkedin, Instagram, Facebook, Loader2Icon } from "lucide-react";
+import { Mail, Linkedin, Instagram, Facebook, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState, useEffect } from "react";
@@ -13,9 +13,14 @@ export function ContactSection() {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const [state, handleSubmit] = useForm("xldllzbj");
-  const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLFormElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const captchaRef = useRef<any>(null);
+  const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
   const [showCaptcha, setShowCaptcha] = useState(false);
+  const [hcaptchaTheme, setHcaptchaTheme] = useState<"light" | "dark">("light");
+
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       (entries) => {
@@ -25,17 +30,16 @@ export function ContactSection() {
       },
       { threshold: 0.2 }
     );
-    if (formRef.current) {
-      observer.observe(formRef.current);
+    const formNode = formRef.current;
+    if (formNode) {
+      observer.observe(formNode);
     }
     return () => {
-      if (formRef.current) {
-        observer.unobserve(formRef.current);
+      if (formNode) {
+        observer.unobserve(formNode);
       }
     };
   }, []);
-  const formRef = useRef<HTMLFormElement>(null);
-  const [hcaptchaTheme, setHcaptchaTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const currentTheme =
@@ -49,21 +53,14 @@ export function ContactSection() {
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!hcaptchaToken) {
-      return;
-    }
+    if (!hcaptchaToken) return;
 
-    const formData = new FormData(e.currentTarget);
-    handleSubmit(formData).then(() => {
-      if (captchaRef.current) {
-        captchaRef.current.resetCaptcha();
-      }
+    handleSubmit(e).then(() => {
+      captchaRef.current?.resetCaptcha();
       toast.success(t("contact.form.success"), {
         description: t("contact.form.messageDetails"),
       });
-      if (formRef.current) {
-        formRef.current.reset();
-      }
+      formRef.current?.reset();
       setHcaptchaToken(null);
     });
   };
@@ -200,7 +197,7 @@ export function ContactSection() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.namePlaceholder")}
                   />
                   <ValidationError
@@ -222,7 +219,7 @@ export function ContactSection() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary shadow-md focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.emailPlaceholder")}
                   />
                   <ValidationError
@@ -244,7 +241,7 @@ export function ContactSection() {
                     name="message"
                     required
                     rows={4}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none shadow-md focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.messagePlaceholder")}
                   />
                   <ValidationError
@@ -278,7 +275,7 @@ export function ContactSection() {
                 >
                   {state.submitting ? (
                     <>
-                      <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       {t("contact.form.sending", "Sending...")}
                     </>
                   ) : (
