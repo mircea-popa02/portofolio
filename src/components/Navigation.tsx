@@ -111,6 +111,7 @@ export function Navigation({ scrollTo, currentSection }: NavigationProps) {
               
               <div className="hidden md:flex items-center gap-4">
                 <LanguageSwitcher />
+                <span aria-hidden className="h-6 w-px bg-border" />
                 <ModeToggle />
               </div>
 

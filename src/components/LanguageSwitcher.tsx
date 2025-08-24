@@ -1,42 +1,49 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 export function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
 
-  const languages = [
-    { code: 'en', name: t('language.english'), flag: '🇺🇸' },
-    { code: 'ro', name: t('language.romanian'), flag: '🇷🇴' },
-  ];
+  const options = [
+    { code: 'en', label: 'EN', name: t('language.english'), flag: '🇺🇸' },
+    { code: 'ro', label: 'RO', name: t('language.romanian'), flag: '🇷🇴' },
+  ] as const;
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const baseLang = (i18n.language || 'en').split('-')[0] as 'en' | 'ro';
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <span className="text-sm">{currentLanguage.code.toUpperCase()}</span>
-          <span className="sr-only">Change language</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        {languages.map((language) => (
-          <DropdownMenuItem
-            key={language.code}
-            onClick={() => i18n.changeLanguage(language.code)}
-            className="cursor-pointer"
+    <div
+      className={cn(
+        'relative isolate flex h-8 rounded-full bg-background p-1 ring-1 ring-border scale-125'
+      )}
+      role="group"
+      aria-label={t('language.select', 'Select Language')}
+    >
+      {options.map(({ code, label, name }) => {
+        const isActive = baseLang === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => i18n.changeLanguage(code)}
+            className="relative h-6 min-w-10 rounded-full px-2 text-xs font-medium"
+            aria-label={name}
+            aria-pressed={isActive}
           >
-            <span className="mr-2">{language.flag}</span>
-            {language.name}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+            {isActive && (
+              <motion.div
+                className="absolute inset-0 rounded-full bg-secondary"
+                layoutId="activeLanguage"
+                transition={{ type: 'spring', duration: 0.5 }}
+              />
+            )}
+            <span className="relative z-10">
+              {label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
   );
 }

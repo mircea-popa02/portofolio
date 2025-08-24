@@ -17,7 +17,6 @@ const initialState: ThemeProviderState = {
     theme: "system",
     setTheme: () => null,
 }
-
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
@@ -26,33 +25,58 @@ export function ThemeProvider({
     storageKey = "vite-ui-theme",
     ...props
 }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Theme>(
-        () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-    )
+    // Initialize to stored theme if present, otherwise default to system
+    const [theme, setThemeState] = useState<Theme>(() => {
+        try {
+            const stored = (typeof window !== "undefined"
+                ? (localStorage.getItem(storageKey) as Theme | null)
+                : null)
+            return stored ?? defaultTheme
+        } catch {
+            return defaultTheme
+        }
+    })
 
     useEffect(() => {
         const root = window.document.documentElement
+        const media = window.matchMedia("(prefers-color-scheme: dark)")
 
-        root.classList.remove("light", "dark")
-
-        if (theme === "system") {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-                .matches
-                ? "dark"
-                : "light"
-
-            root.classList.add(systemTheme)
-            return
+        const applyTheme = (t: Theme) => {
+            root.classList.remove("light", "dark")
+            if (t === "system") {
+                root.classList.add(media.matches ? "dark" : "light")
+            } else {
+                root.classList.add(t)
+            }
         }
 
-        root.classList.add(theme)
+        applyTheme(theme)
+
+        // If following system, react to OS theme changes
+        if (theme === "system") {
+            const onChange = () => applyTheme("system")
+
+            if (typeof media.addEventListener === "function") {
+                media.addEventListener("change", onChange)
+                return () => media.removeEventListener("change", onChange)
+            }
+            if (typeof media.addListener === "function") {
+                media.addListener(onChange)
+                return () => media.removeListener(onChange)
+            }
+        }
     }, [theme])
 
     const value = {
         theme,
-        setTheme: (theme: Theme) => {
-            localStorage.setItem(storageKey, theme)
-            setTheme(theme)
+        setTheme: (t: Theme) => {
+            try {
+                localStorage.setItem(storageKey, t)
+            } catch {
+                // ignore write errors (e.g., private mode)
+                void 0
+            }
+            setThemeState(t)
         },
     }
 
