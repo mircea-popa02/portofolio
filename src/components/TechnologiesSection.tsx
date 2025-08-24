@@ -133,9 +133,13 @@ export function TechnologiesSection() {
 	return (
 		<section
 			id="technologies"
-			className="py-20 bg-gradient-to-b from-background to-secondary/10 relative"
+			className="py-20 relative"
 		>
-			<div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+			<div className="pointer-events-none w-full h-full absolute inset-0">
+				<div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2/3 h-2/3 bg-gradient-to-br from-yellow-500/10 to-primary/5 rounded-full blur-3xl opacity-30"></div>
+				<div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-yellow-500/10 rounded-full blur-3xl opacity-20"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br from-yellow-500/10 to-yellow-500/25 rounded-full blur-3xl opacity-15"></div>
+			</div>
 
 
 			<div className="container mx-auto px-4">

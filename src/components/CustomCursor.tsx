@@ -87,9 +87,9 @@ export function CustomCursor() {
           className="w-[160px] h-[160px] rounded-full"
           style={{
             background: `radial-gradient(circle, 
-              rgba(120, 119, 198, ${glowIntensity * 0.4}) 0%, 
-              rgba(120, 119, 198, ${glowIntensity * 0.2}) 30%, 
-              rgba(120, 119, 198, ${glowIntensity * 0.1}) 60%, 
+              var(--secondary) 0%, 
+              rgba(var(--secondary), 0.2) 30%, 
+              rgba(var(--secondary), 0.1) 60%, 
               transparent 80%
             )`,
             filter: 'blur(12px)',
@@ -115,9 +115,9 @@ export function CustomCursor() {
           className="w-[80px] h-[80px] rounded-full"
           style={{
             background: `radial-gradient(circle, 
-              rgba(var(--primary), ${glowIntensity * 0.6}) 0%, 
-              rgba(var(--primary), ${glowIntensity * 0.3}) 40%, 
-              rgba(var(--primary), ${glowIntensity * 0.1}) 70%, 
+              var(--secondary) 0%, 
+              rgba(var(--secondary), ${glowIntensity * 0.3}) 40%, 
+              rgba(var(--secondary), ${glowIntensity * 0.1}) 70%, 
               transparent 90%
             )`,
             filter: 'blur(6px)',
@@ -140,7 +140,7 @@ export function CustomCursor() {
           damping: 100,
         }}
         style={{
-          boxShadow: `0 0 ${20 + glowIntensity * 30}px rgba(var(--primary), ${glowIntensity})`,
+          boxShadow: `0 0 ${20 + glowIntensity * 30}px rgba(var(--secondary), ${glowIntensity})`,
         }}
       />
       
@@ -157,7 +157,7 @@ export function CustomCursor() {
           damping: 15,
         }}
         style={{
-          boxShadow: `0 0 ${15 + glowIntensity * 20}px rgba(var(--primary), ${glowIntensity * 0.5})`,
+          boxShadow: `0 0 ${15 + glowIntensity * 20}px rgba(var(--secondary), ${glowIntensity * 0.5})`,
         }}
       />
     </>

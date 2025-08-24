@@ -28,10 +28,10 @@
   },
   "about": {
     "title": "Cine suntem",
-    "subtitle": "Suntem o echipă de profesioniști IT care livrează <solutions><bold>soluții digitale personalizate</bold></solutions> ce aduc afacerile în prezent și le pregătesc pentru viitor.",
+    "subtitle": "Suntem o echipă de profesioniști IT care livrează <bold>soluții digitale personalizate</bold> ce aduc afacerile în prezent și le pregătesc pentru viitor.",
     "philosophy": {
       "title": "Viziune",
-      "paragraph1": "Credem că <bold>tehnologia</bold> ar trebui să <bold>rezolve</bold>, nu să complice. Să <optimize>optimizeze procese</optimize>, să <efficiency>reduca timpul pierdut</efficiency> și să <transformation>transforme modul în care funcționează o <code>afacere</code></transformation>.",
+      "paragraph1": "Credem că <bold>tehnologia</bold> ar trebui să <bold>rezolve</bold>, nu să complice. Să <optimize>optimizeze procese</optimize>, să <efficiency>reduca timpul pierdut</efficiency> și să transforme modul în care <transformation>funcționează o afacere</transformation>.",
       "paragraph2": "Viziunea noastră este simplă: să aducem <clarity>claritate</clarity> prin <quality>software bine gândit</quality> și să construim <bold>sisteme</bold> <humanCentric>care lucrează pentru oameni</humanCentric>, nu invers."
     },
     "story": {
@@ -40,7 +40,6 @@
       "paragraph2": "Am văzut efectele <rushed>deciziilor grăbite</rushed>, a <rigid>soluțiilor rigide</rigid> și a lipsei de <technicalVision>viziune tehnică</technicalVision>. De aceea, am ales să lucrăm altfel, cu <bold>atenție la detalii</bold>, cu <code>înțelegere</code> pentru fiecare model de business și cu <bold>soluții durabile</bold>."
     },
     "tooltips": {
-      "solutions": "<bold>Soluții digitale personalizate</bold> = <code>aplicații</code>, <code>site-uri</code> și <code>automatizări</code> concepute după nevoile și obiectivele afacerii tale, nu după o rețetă generală.",
       "optimize": "<bold>Optimizarea proceselor</bold> înseamnă eliminarea pașilor manuali, <code>automatizări</code> și fluxuri mai rapide între <bold>echipe și sisteme</bold>.",
       "efficiency": "<bold>Reducerea timpului pierdut</bold> = operațiuni repetitive mai scurte, mai puține <code>erori</code> și <bold>costuri operaționale mai mici</bold>.",
       "transformation": "<bold>Transformare digitală</bold> = adaptarea modului de lucru cu ajutorul <code>tehnologiei</code> pentru <bold>rezultate măsurabile</bold>.",
