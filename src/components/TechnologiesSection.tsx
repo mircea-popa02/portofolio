@@ -137,7 +137,7 @@ export function TechnologiesSection() {
 		>
 			<div className="pointer-events-none w-full h-full absolute inset-0">
 				<div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2/3 h-2/3 bg-gradient-to-br from-yellow-500/10 to-primary/5 rounded-full blur-3xl opacity-30"></div>
-				<div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-yellow-500/10 rounded-full blur-3xl opacity-20"></div>
+				<div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-yellow-500/10 rounded-full blur-3xl opacity-10"></div>
 				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br from-yellow-500/10 to-yellow-500/25 rounded-full blur-3xl opacity-15"></div>
 			</div>
 
@@ -221,7 +221,7 @@ export function TechnologiesSection() {
 								viewport={{ once: true }}
 								className="group"
 							>
-								<div className="bg-card border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30">
+								<div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30">
 									<area.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
 									<h4 className="text-lg font-semibold mb-4">{area.title}</h4>
 									<ul className="space-y-2">

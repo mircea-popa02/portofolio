@@ -57,7 +57,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           viewport={isMobile ? undefined : { once: true }}
           className="group cursor-pointer"
         >
-          <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="aspect-video overflow-hidden">
               <img
                 src={project.image}
@@ -182,12 +182,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           <DrawerFooter className="absolute bottom-0 left-0 right-0 border-t bg-background/95 backdrop-blur-sm rounded-b-2xl">
             <div className="flex gap-4 px-2">
-              <Button asChild className="flex-1 shadow-lg">
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  {t('projects.viewLiveDemo')}
-                </a>
-              </Button>
+                <Button
+                className="flex-1 shadow-lg"
+                onClick={() =>
+                  window.open(project.liveUrl, '_blank', 'noopener,noreferrer')
+                }
+                >
+                <ExternalLink className="mr-2 h-4 w-4" />
+                {t('projects.viewLiveDemo')}
+                </Button>
               <DrawerClose asChild>
                 <Button variant="outline" className="flex-1">
                   {t('projects.close')}

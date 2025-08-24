@@ -70,7 +70,7 @@ export function AboutSection() {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-1/3 transform -translate-x-1/2 w-[40rem] h-[40rem] bg-gradient-to-br from-blue-500/20 to-primary/10 rounded-full blur-3xl opacity-30"></div>
         <div className="absolute bottom-10 right-1/5 w-[32rem] h-[32rem] bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-full blur-3xl opacity-20"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] bg-gradient-to-br from-blue-500/10 to-blue-500/30 rounded-full blur-3xl opacity-15"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] bg-gradient-to-br from-blue-500/10 to-blue-500/30 rounded-full blur-3xl opacity-25"></div>
       </div>
       <div className="container mx-auto px-4">
         <motion.div
@@ -190,7 +190,7 @@ export function AboutSection() {
           <h3 className="text-4xl font-semibold text-center mb-16">
             {t("about.valuesTitle")}
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
             {personalValues.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -200,8 +200,7 @@ export function AboutSection() {
                 viewport={{ once: true }}
                 className="group text-center"
               >
-                <div className="bg-card border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30 relative overflow-hidden bg-opacity-60 bg-secondary/30">
                   <div className="relative z-10">
                     <value.icon className="w-12 h-12 text-primary mb-4 mx-auto group-hover:scale-110 transition-transform duration-300" />
                     <h4 className="text-xl font-semibold mb-4">
