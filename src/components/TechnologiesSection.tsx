@@ -1,5 +1,4 @@
 import { ShoppingCart, Code, Box, CreditCard, Database, Shield, Paintbrush, Globe } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'react-i18next';
 
 import AngularIcon from '../assets/angular.svg';
@@ -143,13 +142,7 @@ export function TechnologiesSection() {
 
 
 			<div className="container mx-auto px-4">
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					className="text-center mb-8 md:mb-12"
-				>
+				<div className="text-center mb-8 md:mb-12">
 					<h2 className="text-5xl font-bold mb-6 text-foreground">
 						{t('expertise.title')}
 					</h2>
@@ -162,14 +155,8 @@ export function TechnologiesSection() {
 							}}
 						/>
 					</p>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					transition={{ duration: 1, delay: 0.5 }}
-					viewport={{ once: true }}
-					className="py-6 md:py-12 mt-4 md:mt-8 mb-4 md:mb-8"
-				>
+				</div>
+				<div className="py-6 md:py-12 mt-4 md:mt-8 mb-4 md:mb-8">
 					<div className="flex justify-center flex-wrap gap-4 md:gap-8 ">
 						{techIcons.map((tech) => (
 							<TooltipProvider key={tech.name}>
@@ -186,7 +173,7 @@ export function TechnologiesSection() {
 													<img
 														src={tech.src}
 														alt={tech.alt}
-														loading="eager"
+														loading="lazy"
 														decoding="async"
 														className="w-full h-full object-contain transition-all duration-300 md:duration-500 group-hover:scale-105 md:group-hover:scale-110 dark:invert dark:brightness-0"
 													/>
@@ -201,24 +188,15 @@ export function TechnologiesSection() {
 							</TooltipProvider>
 						))}
 					</div>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-				>
+				</div>
+				<div>
 					<h3 className="text-3xl font-semibold text-center mb-12">
 						{t('expertise.areasTitle')}
 					</h3>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-						{expertise.map((area, index) => (
-							<motion.div
+						{expertise.map((area) => (
+							<div
 								key={area.title}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: index * 0.1 }}
-								viewport={{ once: true }}
 								className="group"
 							>
 								<div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl p-6 h-full hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:border-primary/30">
@@ -241,12 +219,12 @@ export function TechnologiesSection() {
 										))}
 									</ul>
 								</div>
-							</motion.div>
+							</div>
 						))}
 					</div>
 
 
-				</motion.div>
+				</div>
 			</div>
 		</section>
 	);

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
 import { Mail, Linkedin, Instagram, Facebook, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -77,13 +76,7 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {t("contact.title")}
           </h2>
@@ -93,16 +86,11 @@ export function ContactSection() {
               components={{ bold: <strong className="text-foreground" /> }}
             />
           </p>
-        </motion.div>
+        </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <h3 className="text-2xl font-semibold mb-6">
                 {t("contact.getInTouch")}
               </h3>
@@ -171,15 +159,9 @@ export function ContactSection() {
                   </Button>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
-            >
+            <div className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80">
               <h3 className="text-xl font-semibold mb-6">
                 {t("contact.quickMessage")}
               </h3>
@@ -283,7 +265,7 @@ export function ContactSection() {
                   )}
                 </Button>
               </form>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

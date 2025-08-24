@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ExternalLink, ChevronRight, X } from 'lucide-react';
 import { Button } from './ui/button';
 import {
@@ -12,7 +11,6 @@ import {
   DrawerTrigger,
 } from './ui/drawer';
 import { Badge } from './ui/badge';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export interface Project {
@@ -32,36 +30,20 @@ interface ProjectCardProps {
   index: number;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const { t } = useTranslation();
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.matchMedia('(max-width: 768px)').matches;
-  });
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 768px)');
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
 
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <motion.div
-          initial={isMobile ? false : { opacity: 0, y: 30 }}
-          whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          viewport={isMobile ? undefined : { once: true }}
-          className="group cursor-pointer"
-        >
+        <div className="group cursor-pointer">
           <div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="aspect-video overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -97,7 +79,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </DrawerTrigger>
 
       <DrawerContent className="md:max-h-[90vh] max-w-5xl mx-auto">
@@ -125,6 +107,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto rounded-lg object-cover"
                 />
                 <p className="text-xs text-muted-foreground text-center mt-2">{t('projects.gallery.main')}</p>
@@ -137,6 +121,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                       <img
                         src={image}
                         alt={`${project.title} ${t('projects.gallery.screenshot', { index: index + 1 })}`}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-auto rounded-lg object-cover"
                       />
                       <p className="text-xs text-muted-foreground text-center mt-2">
@@ -150,6 +136,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                       <img
                         src={image.src}
                         alt={image.description}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-auto rounded-lg object-cover"
                       />
                       <p className="text-xs text-muted-foreground text-center mt-2">{image.description}</p>

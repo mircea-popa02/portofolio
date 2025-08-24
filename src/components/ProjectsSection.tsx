@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ProjectCard, type Project } from './ProjectCard';
 
@@ -86,18 +85,12 @@ export function ProjectsSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br from-green-500/10 to-green-500/25 rounded-full blur-3xl opacity-15"></div>
       </div>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-6 text-foreground">{t('projects.featuredTitle')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('projects.featuredDescription')}
           </p>
-        </motion.div>
+        </div>
 
         {/* Featured Projects */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -109,15 +102,11 @@ export function ProjectsSection() {
         {/* Other Projects */}
         {otherProjects.length > 0 && (
           <>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+            <h3
               className="text-2xl font-semibold mb-8 text-center"
             >
               {t('projects.otherTitle')}
-            </motion.h3>
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
               {otherProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index + featuredProjects.length} />
