@@ -37,7 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Drawer>
       <DrawerTrigger asChild>
         <div className="group cursor-pointer">
-          <div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl overflow-hidden shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="aspect-video overflow-hidden">
               {project.image ? (
                 <img

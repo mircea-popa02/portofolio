@@ -51,7 +51,7 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer-content bg-background/80 backdrop-blur-md fixed z-50 flex h-auto flex-col border-1 border-primary/20 shadow-[0_0_30px_rgba(120,119,198,0.2)]",
+          "group/drawer-content bg-background/80 backdrop-blur-md fixed z-50 flex h-auto flex-col border-1 border-primary/20",
           "data-[vaul-drawer-direction=top]:inset-x-4 data-[vaul-drawer-direction=top]:top-4 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-2xl",
           "data-[vaul-drawer-direction=bottom]:inset-x-4 data-[vaul-drawer-direction=bottom]:bottom-4 data-[vaul-drawer-direction=bottom]:md:inset-x-8 data-[vaul-drawer-direction=bottom]:md:bottom-8 data-[vaul-drawer-direction=bottom]:max-h-[85vh] data-[vaul-drawer-direction=bottom]:md:max-h-[85vh] data-[vaul-drawer-direction=bottom]:rounded-2xl",
           "data-[vaul-drawer-direction=right]:inset-y-4 data-[vaul-drawer-direction=right]:right-4 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:sm:max-w-sm data-[vaul-drawer-direction=right]:rounded-2xl",
