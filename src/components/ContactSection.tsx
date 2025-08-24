@@ -178,7 +178,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-card p-6 rounded-xl border border-border shadow-2xl bg-opacity-60 bg-secondary/30"
+              className="bg-card p-6 rounded-xl border border-border shadow-2xl backdrop-blur-sm bg-card/80"
             >
               <h3 className="text-xl font-semibold mb-6">
                 {t("contact.quickMessage")}
@@ -197,7 +197,7 @@ export function ContactSection() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-3 py-2 border border-border rounded-md bg-opacity-60 bg-secondary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.namePlaceholder")}
                   />
                   <ValidationError
@@ -219,7 +219,7 @@ export function ContactSection() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-3 py-2 border border-border rounded-md bg-opacity-60 bg-secondary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.emailPlaceholder")}
                   />
                   <ValidationError
@@ -241,7 +241,7 @@ export function ContactSection() {
                     name="message"
                     required
                     rows={4}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-opacity-60 bg-secondary/30 focus:outline-none focus:ring-2 focus:ring-primary resize-none focus:shadow-lg transition-shadow"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none focus:shadow-lg transition-shadow"
                     placeholder={t("contact.form.messagePlaceholder")}
                   />
                   <ValidationError
