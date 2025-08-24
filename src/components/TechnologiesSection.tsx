@@ -162,7 +162,7 @@ export function TechnologiesSection() {
 							<TooltipProvider key={tech.name}>
 								<Tooltip>
 									<TooltipTrigger asChild>
-										<div
+										<span
 											className="flex flex-col items-center group"
 											style={{ width: '80px' }}
 										>
@@ -179,7 +179,7 @@ export function TechnologiesSection() {
 													/>
 												</div>
 											</div>
-										</div>
+										</span>
 									</TooltipTrigger>
 									<TooltipContent>
 										<p>{tech.name}</p>

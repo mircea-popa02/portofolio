@@ -79,11 +79,6 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="py-20 relative">
-      <div className="pointer-events-none w-full h-full absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2/3 h-2/3 bg-gradient-to-br from-green-500/10 to-primary/5 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-green-500/10 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br from-green-500/10 to-green-500/25 rounded-full blur-3xl opacity-15"></div>
-      </div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-6 text-foreground">{t('projects.featuredTitle')}</h2>

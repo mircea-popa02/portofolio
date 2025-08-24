@@ -39,13 +39,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="group cursor-pointer">
           <div className="bg-opacity-60 bg-secondary/30 border border-border rounded-xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="aspect-video overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-sm">
+                  {t('projects.noPreview', 'No preview')}
+                </div>
+              )}
             </div>
             <div className="p-6">
               <div className="flex items-center justify-between mb-2">
@@ -103,47 +109,35 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {/* Masonry gallery */}
             <div className="columns-2 md:columns-3 gap-3 mb-6 [column-fill:_balance]">
               {/* Main image */}
-              <div className="mb-3 break-inside-avoid">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto rounded-lg object-cover"
-                />
-                <p className="text-xs text-muted-foreground text-center mt-2">{t('projects.gallery.main')}</p>
-              </div>
+              {project.image && (
+                <div className="mb-3 break-inside-avoid">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto rounded-lg object-cover"
+                  />
+                  <p className="text-xs text-muted-foreground text-center mt-2">{t('projects.gallery.main')}</p>
+                </div>
+              )}
               {/* Additional images */}
               {project.images.map((image, index) => {
-                if (typeof image === 'string') {
-                  return (
-                    <div key={index} className="mb-3 break-inside-avoid">
-                      <img
-                        src={image}
-                        alt={`${project.title} ${t('projects.gallery.screenshot', { index: index + 1 })}`}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-auto rounded-lg object-cover"
-                      />
-                      <p className="text-xs text-muted-foreground text-center mt-2">
-                        {t('projects.gallery.screenshot', { index: index + 1 })}
-                      </p>
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div key={index} className="mb-3 break-inside-avoid">
-                      <img
-                        src={image.src}
-                        alt={image.description}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-auto rounded-lg object-cover"
-                      />
-                      <p className="text-xs text-muted-foreground text-center mt-2">{image.description}</p>
-                    </div>
-                  );
-                }
+                const src = typeof image === 'string' ? image : image.src
+                const description = typeof image === 'string' ? t('projects.gallery.screenshot', { index: index + 1 }) : image.description
+                if (!src) return null
+                return (
+                  <div key={index} className="mb-3 break-inside-avoid">
+                    <img
+                      src={src}
+                      alt={description}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto rounded-lg object-cover"
+                    />
+                    <p className="text-xs text-muted-foreground text-center mt-2">{description}</p>
+                  </div>
+                );
               })}
             </div>
 

@@ -15,12 +15,12 @@ export function AboutSection() {
   }) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div
+        <span
           className="inline-flex items-center gap-1 underline decoration-dashed decoration-1 cursor-help text-blue-500/80"
         >
           {children}
           <Search className="w-3 h-3" />
-        </div>
+        </span>
       </TooltipTrigger>
       <TooltipContent>
         <p className="max-w-sm text-base leading-relaxed">
