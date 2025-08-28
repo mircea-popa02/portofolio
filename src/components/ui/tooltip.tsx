@@ -26,7 +26,6 @@ function useIsTouchDevice() {
     const mql = window.matchMedia("(hover: none), (pointer: coarse)")
     const update = () => setIsTouch(mql.matches)
     update()
-    // Older browsers
     if (typeof mql.addEventListener === "function") {
       mql.addEventListener("change", update)
       return () => mql.removeEventListener("change", update)
