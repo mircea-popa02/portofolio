@@ -16,7 +16,6 @@ function TooltipProvider({
   )
 }
 
-// Detect if the current environment is likely a touch device
 function useIsTouchDevice() {
   const [isTouch, setIsTouch] = React.useState(false)
 
@@ -40,7 +39,6 @@ function useIsTouchDevice() {
   return isTouch
 }
 
-// Context to control tooltip on touch devices
 const TouchTooltipContext = React.createContext<{
   isTouch: boolean
   open: boolean
@@ -62,7 +60,6 @@ function Tooltip({
       setOpen(next)
       return
     }
-    // On touch, ignore the very first close right after a manual open (tap)
     if (!next && Date.now() - lastManualOpenTs.current < 700) {
       return
     }
@@ -112,13 +109,11 @@ function TooltipTrigger({
   return (
     <TooltipPrimitive.Trigger
       data-slot="tooltip-trigger"
-      // Ensure focusability for non-interactive elements like span when used with asChild
       tabIndex={tabIndex ?? (isTouch ? 0 : undefined)}
       onPointerDownCapture={
         isTouch
           ? (e) => {
               if (e.pointerType === "touch") {
-                // Open on touch down to avoid synthetic click closing immediately
                 e.preventDefault()
                 e.stopPropagation()
                 touchCtx?.openFromTrigger()
@@ -129,7 +124,6 @@ function TooltipTrigger({
       onClickCapture={
         isTouch
           ? (e) => {
-              // Guard against any synthetic click that still fires
               e.preventDefault()
               e.stopPropagation()
             }
