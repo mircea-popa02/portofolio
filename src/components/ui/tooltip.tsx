@@ -16,12 +16,87 @@ function TooltipProvider({
   )
 }
 
+// Detect if the current environment is likely a touch device
+function useIsTouchDevice() {
+  const [isTouch, setIsTouch] = React.useState(false)
+
+  React.useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return
+    }
+    const mql = window.matchMedia("(hover: none), (pointer: coarse)")
+    const update = () => setIsTouch(mql.matches)
+    update()
+    // Older browsers
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", update)
+      return () => mql.removeEventListener("change", update)
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(update)
+      return () => mql.removeListener(update)
+    }
+  }, [])
+
+  return isTouch
+}
+
+// Context to control tooltip on touch devices
+const TouchTooltipContext = React.createContext<{
+  isTouch: boolean
+  open: boolean
+  openFromTrigger: () => void
+} | null>(null)
+
 function Tooltip({
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+  const isTouch = useIsTouchDevice()
+  const [open, setOpen] = React.useState(false)
+  const lastManualOpenTs = React.useRef<number>(0)
+
+  const { children, onOpenChange, ...rest } = props
+
+  const handleOpenChange = (next: boolean) => {
+    if (!isTouch) {
+      onOpenChange?.(next)
+      setOpen(next)
+      return
+    }
+    // On touch, ignore the very first close right after a manual open (tap)
+    if (!next && Date.now() - lastManualOpenTs.current < 700) {
+      return
+    }
+    setOpen(next)
+    onOpenChange?.(next)
+  }
+
+  const openFromTrigger = () => {
+    setOpen((prev) => {
+      if (!prev) {
+        lastManualOpenTs.current = Date.now()
+        return true
+      }
+      return prev
+    })
+  }
+
   return (
     <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+      {isTouch ? (
+        <TouchTooltipContext.Provider value={{ isTouch, open, openFromTrigger }}>
+          <TooltipPrimitive.Root
+            data-slot="tooltip"
+            {...rest}
+            disableHoverableContent
+            open={open}
+            onOpenChange={handleOpenChange}
+          >
+            {children}
+          </TooltipPrimitive.Root>
+        </TouchTooltipContext.Provider>
+      ) : (
+        <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+      )}
     </TooltipProvider>
   )
 }
@@ -29,7 +104,40 @@ function Tooltip({
 function TooltipTrigger({
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
+  const touchCtx = React.useContext(TouchTooltipContext)
+  const isTouch = !!touchCtx?.isTouch
+
+  const { tabIndex, ...rest } = props
+
+  return (
+    <TooltipPrimitive.Trigger
+      data-slot="tooltip-trigger"
+      // Ensure focusability for non-interactive elements like span when used with asChild
+      tabIndex={tabIndex ?? (isTouch ? 0 : undefined)}
+      onPointerDownCapture={
+        isTouch
+          ? (e) => {
+              if (e.pointerType === "touch") {
+                // Open on touch down to avoid synthetic click closing immediately
+                e.preventDefault()
+                e.stopPropagation()
+                touchCtx?.openFromTrigger()
+              }
+            }
+          : undefined
+      }
+      onClickCapture={
+        isTouch
+          ? (e) => {
+              // Guard against any synthetic click that still fires
+              e.preventDefault()
+              e.stopPropagation()
+            }
+          : undefined
+      }
+      {...rest}
+    />
+  )
 }
 
 function TooltipContent({
